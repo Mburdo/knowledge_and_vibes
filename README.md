@@ -1,5 +1,7 @@
 # Knowledge & Vibes
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 **The premier agentic stack. December 2025.**
 
 Eight battle-tested tools that give AI coding agents what they've been missing: persistent memory, task tracking, multi-agent coordination, quality assurance, and real-time knowledge.
