@@ -2,9 +2,17 @@
 
 **The premier agentic stack. December 2025.**
 
-Eight battle-tested tools that give AI coding agents what they've been missing: persistent memory, task tracking, multi-agent coordination, quality assurance, and real-time knowledge. This is the infrastructure that turns Claude Code from a helpful assistant into an autonomous engineering force.
+Eight battle-tested tools that give AI coding agents what they've been missing: persistent memory, task tracking, multi-agent coordination, quality assurance, and real-time knowledge.
 
-> **New here?** Point your agent at this repo and say: "Set up Knowledge & Vibes for my project using the SETUP_GUIDE.md"
+## Install
+
+Copy this to your AI agent:
+
+```
+Clone https://github.com/Mburdo/knowledge_and_vibes and follow SETUP_GUIDE.md to set up Knowledge & Vibes for my project.
+```
+
+That's it. The agent handles the rest.
 
 ---
 
