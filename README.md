@@ -239,17 +239,20 @@ crawling              # Extract content from specific URLs
 ### Installation
 
 ```bash
-# Option 1: Interactive installer
-git clone https://github.com/Mburdo/knowledge_and_vibes.git
-cd knowledge_and_vibes
-./install-kv.sh
-kv install
-
-# Option 2: Direct install scripts
+# Agent Mail (installs bd, bv, am)
 curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/mcp_agent_mail/main/scripts/install.sh | bash -s -- --yes
+
+# CASS (session search)
 curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/coding_agent_session_search/main/install.sh | bash -s -- --easy-mode
+
+# cass-memory (see Troubleshooting if issues)
+curl -L https://github.com/Dicklesworthstone/cass_memory_system/releases/latest/download/cass-memory-darwin-arm64 -o ~/.local/bin/cm && chmod +x ~/.local/bin/cm
+
+# UBS (bug scanner)
 curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/ultimate_bug_scanner/master/install.sh | bash -s -- --easy-mode
 ```
+
+See [SETUP_GUIDE.md](./SETUP_GUIDE.md) for full setup including MCP servers.
 
 ### Project Setup
 
@@ -324,32 +327,45 @@ curl localhost:8765/health  # Agent Mail
 
 ---
 
-## Need the Tools?
-
-```bash
-# Beads (bd) - task tracking
-curl -fsSL https://raw.githubusercontent.com/steveyegge/beads/main/install.sh | bash
-
-# CASS - session search (optional)
-curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/coding_agent_session_search/main/install.sh | bash -s -- --easy-mode
-
-# UBS - bug scanner (optional)
-curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/ultimate_bug_scanner/master/install.sh | bash -s -- --easy-mode
-```
-
----
-
 ## Troubleshooting
 
 | Issue | Fix |
 |-------|-----|
 | `bd: command not found` | Add `~/.local/bin` to PATH |
 | CASS finds nothing | Run `cass index --full` |
-| `cm context` returns empty | Check CASS is indexed, run `cm doctor` |
+| `cm context` returns empty | Check CASS is indexed, run `cm doctor`. If still empty, apply patches (see below) |
+| `cm reflect` broken | Known CASS bug, use `cm context` instead |
 | Agent Mail won't start | Check port 8765 is free |
 | UBS module errors | Run `ubs doctor --fix` |
 | Warp-Grep not working | Check `/mcp` shows morph-fast-tools |
 | Exa not working | Check `/mcp` shows exa, verify API key |
+
+### CASS + cass-memory Compatibility
+
+If `cm context` returns empty results even with indexed sessions, you may need to apply patches for two upstream bugs:
+
+1. **Search parsing bug**: CASS returns `{hits:[...]}` but cass-memory expects `[...]`
+2. **Nullable field bug**: Some CASS hits have `created_at: null` which fails validation
+
+**To fix**, use our patched cass-memory:
+```bash
+cd /path/to/knowledge_and_vibes/cass_memory_system
+bun install && bun run build
+sudo mv ./dist/cass-memory /usr/local/bin/cm
+```
+
+Or apply patches to a fresh clone:
+```bash
+git clone https://github.com/Dicklesworthstone/cass_memory_system.git
+cd cass_memory_system
+/path/to/knowledge_and_vibes/patches/fix-cass-memory.sh .
+bun install && bun run build
+sudo mv ./dist/cass-memory /usr/local/bin/cm
+```
+
+**Tracking issues**:
+- [cass_memory_system#2](https://github.com/Dicklesworthstone/cass_memory_system/issues/2)
+- [coding_agent_session_search#7](https://github.com/Dicklesworthstone/coding_agent_session_search/issues/7)
 
 ---
 
@@ -357,14 +373,14 @@ curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/ultimate_bug_scan
 
 ```
 knowledge_and_vibes/
-├── kv                       # Interactive CLI installer
-├── install-kv.sh            # Curl-able installer
+├── README.md                # This file
+├── SETUP_GUIDE.md           # Agent-driven setup
+├── AGENTS_TEMPLATE.md       # Template for your projects
 ├── PHILOSOPHY.md            # 4-phase development framework
 ├── DECOMPOSITION.md         # Task breakdown + planning patterns
 ├── CODEMAPS_TEMPLATE.md     # Architecture documentation
-├── AGENTS_TEMPLATE.md       # Template for your projects
-├── SETUP_GUIDE.md           # Agent-driven setup
 ├── TUTORIAL.md              # Detailed workflow guide
+├── LICENSE                  # MIT
 ├── patches/                 # Upstream bug fixes
 └── cass_memory_system/      # Patched cass-memory
 ```
