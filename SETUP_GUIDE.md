@@ -7,8 +7,8 @@
 Run all of these (they skip if already installed):
 
 ```bash
-# Agent Mail (installs bd, bv, and am)
-curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/mcp_agent_mail/main/scripts/install.sh | bash -s -- --yes
+# Agent Mail (installs bd, bv, and am) - installs globally to ~/mcp_agent_mail
+curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/mcp_agent_mail/main/scripts/install.sh | bash -s -- --dir "$HOME/mcp_agent_mail" --yes
 
 # CASS (session search)
 curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/coding_agent_session_search/main/install.sh | bash -s -- --easy-mode
