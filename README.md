@@ -8,11 +8,13 @@ Eight battle-tested tools that give AI coding agents what they've been missing: 
 
 ## Install
 
-```bash
-bd init
+Tell your AI agent:
+
+```
+Follow https://raw.githubusercontent.com/Mburdo/knowledge_and_vibes/master/SETUP_GUIDE.md to set up Knowledge & Vibes for this project.
 ```
 
-That's it. [Need the tools?](#need-the-tools)
+Or manually: [SETUP_GUIDE.md](./SETUP_GUIDE.md)
 
 ---
 
