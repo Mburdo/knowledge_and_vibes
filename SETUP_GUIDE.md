@@ -13,9 +13,17 @@ curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/mcp_agent_mail/ma
 # CASS (session search)
 curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/coding_agent_session_search/main/install.sh | bash -s -- --easy-mode
 
-# cass-memory (cross-agent learning) - separate from CASS
-# Note: This is for Apple Silicon. For Intel/Linux see: https://github.com/Dicklesworthstone/cass_memory_system
-curl -L https://github.com/Dicklesworthstone/cass_memory_system/releases/latest/download/cass-memory-darwin-arm64 -o ~/.local/bin/cm && chmod +x ~/.local/bin/cm
+# cass-memory (cross-agent learning) - CHOOSE ONE OPTION:
+
+# Option A: Build from patched source (RECOMMENDED - fixes upstream bugs)
+# Requires: bun (install via: curl -fsSL https://bun.sh/install | bash)
+git clone --depth 1 https://github.com/Mburdo/knowledge_and_vibes.git /tmp/kv-install && \
+  cd /tmp/kv-install/cass_memory_system && bun install && bun run build && \
+  cp dist/cass-memory ~/.local/bin/cm && chmod +x ~/.local/bin/cm && \
+  cd ~ && rm -rf /tmp/kv-install
+
+# Option B: Use upstream binary (has known bugs - see patches/README.md)
+# curl -L https://github.com/Dicklesworthstone/cass_memory_system/releases/latest/download/cass-memory-darwin-arm64 -o ~/.local/bin/cm && chmod +x ~/.local/bin/cm
 
 # UBS (bug scanner)
 curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/ultimate_bug_scanner/master/install.sh | bash -s -- --easy-mode
