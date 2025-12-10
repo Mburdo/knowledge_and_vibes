@@ -8,13 +8,11 @@ Eight battle-tested tools that give AI coding agents what they've been missing: 
 
 ## Install
 
-Copy this to your AI agent:
-
-```
-Clone https://github.com/Mburdo/knowledge_and_vibes and follow SETUP_GUIDE.md to set up Knowledge & Vibes for my project.
+```bash
+bd init
 ```
 
-That's it. The agent handles the rest.
+That's it. [Need the tools?](#need-the-tools)
 
 ---
 
@@ -321,6 +319,21 @@ curl localhost:8765/health  # Agent Mail
 | Document | Description |
 |----------|-------------|
 | [cass_memory_system/AGENTS.md](./cass_memory_system/AGENTS.md) | Comprehensive AGENTS.md example |
+
+---
+
+## Need the Tools?
+
+```bash
+# Beads (bd) - task tracking
+curl -fsSL https://raw.githubusercontent.com/steveyegge/beads/main/install.sh | bash
+
+# CASS - session search (optional)
+curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/coding_agent_session_search/main/install.sh | bash -s -- --easy-mode
+
+# UBS - bug scanner (optional)
+curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/ultimate_bug_scanner/master/install.sh | bash -s -- --easy-mode
+```
 
 ---
 
