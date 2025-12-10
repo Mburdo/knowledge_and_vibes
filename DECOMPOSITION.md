@@ -489,3 +489,236 @@ Before starting work on decomposed beads:
 - [ ] Dependencies match logical implementation order
 - [ ] Parallel tracks are identified for multi-agent work
 - [ ] `.beads/` is committed to git
+
+---
+
+## Planning Patterns
+
+Different projects need different levels of planning detail. Choose the pattern that fits your situation.
+
+### Pattern A: Quick Decomposition (Most Common)
+
+**When to use**: Single feature, bug fix, or well-understood task.
+
+```
+1. Describe the goal to a reasoning model
+2. Get phased plan with dependencies
+3. Create beads directly from the plan
+4. Verify graph and start working
+```
+
+**Time**: 10-30 minutes of planning.
+
+This is the default pattern covered in Steps 1-6 above.
+
+### Pattern B: Technical Specification
+
+**When to use**: New system, complex architecture, multiple integrations.
+
+Create a detailed spec document covering:
+
+```markdown
+# Project Name - Technical Specification
+
+## Executive Summary
+- Problem statement
+- Proposed solution
+- Key constraints
+
+## Architecture
+- System diagram (ASCII or Mermaid)
+- Component responsibilities
+- Data flow
+
+## Data Models
+- Database schemas
+- API contracts
+- Type definitions
+
+## Implementation Phases
+- Phase 0: Foundation
+- Phase 1: Core functionality
+- Phase 2: Integration
+- Phase 3: Polish
+
+## Risks & Mitigations
+- What could go wrong
+- Spike tasks for unknowns
+
+## Roadmap
+- MVP scope
+- Future enhancements
+```
+
+Then decompose the spec into beads.
+
+**Time**: 1-4 hours of planning before any beads.
+
+### Pattern C: Proposal Synthesis
+
+**When to use**: Complex problem with multiple valid approaches.
+
+```
+1. Describe the problem to 2-3 different AI models
+2. Collect their proposals
+3. Create a "Best of All Worlds" synthesis:
+   - What each proposal got right
+   - Combined architecture
+   - Resolved trade-offs
+4. Decompose the synthesis into beads
+```
+
+**Structure**:
+
+```markdown
+# Feature Name - Design Synthesis
+
+## Proposals Considered
+| Source | Key Insight | Trade-off |
+|--------|-------------|-----------|
+| Claude | X approach  | Pro: A, Con: B |
+| GPT    | Y approach  | Pro: C, Con: D |
+| Gemini | Z approach  | Pro: E, Con: F |
+
+## Combined Design
+[Synthesized approach taking best from each]
+
+## Implementation Plan
+[Phases and tasks]
+```
+
+**Time**: 2-6 hours across multiple AI conversations.
+
+### Pattern D: Iterative Refinement
+
+**When to use**: UX-heavy features, visual tools, exploratory work.
+
+```
+1. Create initial implementation
+2. Review with screenshots/demos
+3. "Make it MUCH better across every dimension"
+4. Repeat until satisfied
+5. Capture learnings as beads for future reference
+```
+
+**Key phrases**:
+- "Think of 100 ideas, propose the best 10"
+- "Evaluate competing approaches with scores"
+- "What would make this world-class?"
+
+**Time**: Multiple sessions, iterating toward quality.
+
+### Pattern E: AGENTS.md Rules
+
+**When to use**: Establishing project conventions, onboarding future agents.
+
+Create operational rules rather than beads:
+
+```markdown
+# Project Rules
+
+## Absolute Constraints
+- Never delete files without explicit approval
+- Always use [specific tool] for [specific task]
+
+## Tool Usage
+- Use bd for all issue tracking
+- Use bv --robot-* flags (never bare bv)
+- Use cass search --robot (never bare cass)
+
+## Code Conventions
+- [Framework-specific patterns]
+- [Error handling approach]
+- [Testing requirements]
+
+## Common Pitfalls
+- [Mistake 1]: [How to avoid]
+- [Mistake 2]: [How to avoid]
+```
+
+**Time**: 30-60 minutes, updated as patterns emerge.
+
+---
+
+## When to Use Which Pattern
+
+| Situation | Pattern | Planning Time |
+|-----------|---------|---------------|
+| Single feature or bug | A: Quick Decomposition | 10-30 min |
+| New project or system | B: Technical Specification | 1-4 hours |
+| Architectural decision | C: Proposal Synthesis | 2-6 hours |
+| UX or exploratory work | D: Iterative Refinement | Multiple sessions |
+| Team/agent onboarding | E: AGENTS.md Rules | 30-60 min |
+
+### Combining Patterns
+
+Large projects often use multiple patterns:
+
+1. **Start with B** (Technical Spec) for overall architecture
+2. **Use C** (Proposal Synthesis) for key design decisions
+3. **Apply A** (Quick Decomposition) for each phase
+4. **Capture E** (AGENTS.md Rules) as conventions emerge
+5. **Use D** (Iterative Refinement) for UX polish
+
+---
+
+## Bead Description Quality
+
+Regardless of which pattern you use, bead descriptions should be:
+
+### Actionable
+```
+Good: "Implement POST /api/users endpoint with validation"
+Bad:  "User stuff"
+```
+
+### Self-Contained
+```
+Good: "Add bcrypt password hashing. Use cost factor 12.
+       See existing hash utility in src/lib/crypto.ts for patterns."
+Bad:  "Hash passwords"
+```
+
+### Testable
+```
+Good: "Create auth middleware that validates JWT tokens.
+       Tests: valid token passes, expired token returns 401,
+       missing token returns 401, malformed token returns 400."
+Bad:  "Add auth"
+```
+
+### Grounded
+```
+Good: "Integrate Stripe API for payments (see docs: stripe.com/docs/api).
+       Use PaymentIntents API, not deprecated Charges API."
+Bad:  "Add payment processing"
+```
+
+The "Grounded" pattern is especially important when working with AI agents—explicitly stating which APIs, versions, or approaches to use prevents hallucination about outdated methods.
+
+---
+
+## Advanced: Sub-Bead Decomposition
+
+For very large beads (1000+ lines of description), you may need to decompose into sub-beads:
+
+```
+bd-abc        (parent bead - the epic/feature)
+├── bd-abc.1  (sub-bead - foundation)
+├── bd-abc.2  (sub-bead - core implementation)
+├── bd-abc.3  (sub-bead - tests)
+└── bd-abc.4  (sub-bead - documentation)
+```
+
+**When to use sub-beads**:
+- Parent bead description exceeds 1000 lines
+- Multiple agents need to work on parts simultaneously
+- Clear internal phases within a single feature
+
+**Sub-bead structure**:
+1. **Context** (.1): Why this exists, architecture decisions, prerequisites
+2. **Implementation** (.2-.3): Core code changes
+3. **Tests** (.4-.6): Unit, integration, E2E tests
+4. **Documentation** (.7+): API docs, README updates
+
+**Key rule**: Sub-beads should be **lossless**—together they must capture everything from the parent, with nothing lost or paraphrased away.

@@ -367,9 +367,16 @@ See [DECOMPOSITION.md](./DECOMPOSITION.md) for guidelines on breaking work into 
 
 ## Links
 
+### Core Guides
+- [PHILOSOPHY.md](./PHILOSOPHY.md) - The 4-phase framework (Requirements → Plan → Implement → Reflect)
+- [DECOMPOSITION.md](./DECOMPOSITION.md) - Breaking work into beads + planning patterns
+- [CODEMAPS_TEMPLATE.md](./CODEMAPS_TEMPLATE.md) - Architecture documentation for AI agents
+
+### Setup & Reference
 - [SETUP_GUIDE.md](./SETUP_GUIDE.md) - Agent-driven setup instructions
-- [DECOMPOSITION.md](./DECOMPOSITION.md) - How to break work into beads
 - [AGENTS_TEMPLATE.md](./AGENTS_TEMPLATE.md) - Copy to your projects
 - [TUTORIAL.md](./TUTORIAL.md) - Full workflow walkthrough
+
+### Examples
+- [cass_memory_system/AGENTS.md](./cass_memory_system/AGENTS.md) - Comprehensive AGENTS.md example
 - [patches/README.md](./patches/README.md) - Upstream bug tracking
-- [cass_memory_system/AGENTS.md](./cass_memory_system/AGENTS.md) - Comprehensive example
