@@ -2,9 +2,20 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**The premier agentic stack. December 2025.**
+# Knowledge & Vibes
 
-Eight battle-tested tools that give AI coding agents what they've been missing: persistent memory, task tracking, multi-agent coordination, quality assurance, and real-time knowledge.
+This repository is my **personal source of truth** for building software with AI coding agents.  
+It contains the exact tools, workflows, patterns, and rules I use across *every* project — and I keep it continuously updated as I discover better ways to work.
+
+Think of this as the **official, up-to-date playbook** for my agentic development stack:  
+how I break down requirements, how agents coordinate, how tasks persist across sessions, and how the whole system stays reliable, searchable, and fast.
+
+If you're exploring multi-agent coding, this repo shows the stack that actually works in production:
+a combination of persistent memory, structured task graphs, cross-agent learning, automated QA, and real-time knowledge retrieval.  
+These workflows are not theoretical — they’re refined daily through real builds, real debugging, and real delivery.
+
+Everything here evolves as I refine my process.  
+If the file is in this repo, it’s because I actively use it.
 
 ## Install
 
