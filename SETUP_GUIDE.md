@@ -27,11 +27,14 @@ git clone --depth 1 https://github.com/Mburdo/knowledge_and_vibes.git /tmp/kv-in
 
 # UBS (bug scanner)
 curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/ultimate_bug_scanner/master/install.sh | bash -s -- --easy-mode
+
+# NTM (multi-agent tmux manager)
+curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/ntm/main/install.sh | bash
 ```
 
 Verify:
 ```bash
-bd --version && bv --version && cass --version && cm --version && ubs --version && echo "✓ All installed"
+bd --version && bv --version && cass --version && cm --version && ubs --version && ntm --version && echo "✓ All installed"
 ```
 
 ## Step 2: MCP Servers
@@ -87,7 +90,7 @@ Tell the user:
 ```
 Setup complete!
 
-Installed: bd, bv, cass, cm, ubs, am
+Installed: bd, bv, cass, cm, ubs, ntm, am
 Project: .beads/ and AGENTS.md added
 
 Commands:

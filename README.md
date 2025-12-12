@@ -39,6 +39,7 @@ Or manually: [SETUP_GUIDE.md](./SETUP_GUIDE.md)
   - [CASS (Session Search)](#cass-session-search)
   - [cass-memory (Cross-Agent Learning)](#cass-memory-cross-agent-learning)
   - [UBS (Bug Scanner)](#ubs-bug-scanner)
+  - [NTM (Multi-Agent Tmux Manager)](#ntm-multi-agent-tmux-manager)
   - [Agent Mail (Multi-Agent Coordination)](#agent-mail-multi-agent-coordination)
   - [Warp-Grep (Parallel Code Search)](#warp-grep-parallel-code-search)
   - [Exa (AI Web & Code Search)](#exa-ai-web--code-search)
@@ -107,6 +108,7 @@ bv --robot-priority                          # Get recommendations
 | [CASS](#cass-session-search) | Search past AI sessions | `cass` CLI |
 | [cass-memory](#cass-memory-cross-agent-learning) | Learn from past sessions | `cm` CLI |
 | [UBS](#ubs-bug-scanner) | Scan for 1000+ bug patterns | `ubs` CLI |
+| [NTM](#ntm-multi-agent-tmux-manager) | Multi-agent tmux orchestration | `ntm` CLI |
 | [Agent Mail](#agent-mail-multi-agent-coordination) | Multi-agent coordination | MCP server |
 | [Warp-Grep](#warp-grep-parallel-code-search) | Parallel codebase search | MCP server |
 | [Exa](#exa-ai-web--code-search) | Real-time web & code search | MCP server |
@@ -194,6 +196,36 @@ ubs . --format=sarif               # GitHub Code Scanning format
 | Languages | javascript, typescript, python, c, c++, rust, go, java, ruby |
 | Suppress | `// ubs:ignore` |
 
+### NTM (Multi-Agent Tmux Manager)
+
+Orchestrates multiple AI coding agents (Claude, Codex, Gemini) in tiled tmux panes.
+
+```bash
+# Spawn a multi-agent session
+ntm spawn myproject --cc=2 --cod=1    # 2 Claude + 1 Codex agents
+
+# Send prompts to agents
+ntm send myproject --cc "fix TypeScript errors"   # Send to all Claude agents
+ntm send myproject --all "analyze this code"      # Broadcast to all agents
+
+# Manage sessions
+ntm list                               # Show active sessions
+ntm attach myproject                   # Attach to session
+ntm kill myproject                     # End session
+
+# Interactive command palette
+ntm palette myproject                  # Fuzzy-search commands with TUI
+```
+
+| Feature | Details |
+|---------|---------|
+| Agents | Claude Code (`--cc`), Codex (`--cod`), Gemini (`--gem`) |
+| TUI | Command palette with fuzzy search, Catppuccin themes |
+| Hooks | Pre/post-command automation for logging/notifications |
+| Output | Capture and filter agent outputs |
+
+**Tip**: Use NTM to run multiple agents in parallel, then coordinate via Agent Mail.
+
 ### Agent Mail (Multi-Agent Coordination)
 
 ```python
@@ -267,6 +299,9 @@ curl -L https://github.com/Dicklesworthstone/cass_memory_system/releases/latest/
 
 # UBS (bug scanner)
 curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/ultimate_bug_scanner/master/install.sh | bash -s -- --easy-mode
+
+# NTM (multi-agent tmux manager)
+curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/ntm/main/install.sh | bash
 ```
 
 See [SETUP_GUIDE.md](./SETUP_GUIDE.md) for full setup including MCP servers.
@@ -313,6 +348,7 @@ ubs doctor             # UBS
 cm doctor              # cass-memory
 cass health            # CASS
 curl localhost:8765/health  # Agent Mail
+ntm doctor             # NTM
 ```
 
 ---
@@ -365,6 +401,9 @@ curl localhost:8765/health  # Agent Mail
 | Exa not working | Check `/mcp` shows exa, verify EXA_API_KEY |
 | `bun: command not found` | Install bun: `curl -fsSL https://bun.sh/install \| bash` (needed for cm from source) |
 | Permission denied on install | Use `~/.local/bin` instead of `/usr/local/bin`, or use `sudo` |
+| `ntm: command not found` | Run installer or add to PATH: `export PATH="$HOME/.local/bin:$PATH"` |
+| NTM can't find tmux | Install tmux: `brew install tmux` (macOS) or `apt install tmux` (Linux) |
+| NTM agents not spawning | Check agent CLIs are installed (`claude --version`, etc.) |
 
 ### Agent-Specific Rules
 
@@ -376,7 +415,7 @@ curl localhost:8765/health  # Agent Mail
 
 ```bash
 # Quick health check for all tools
-bd doctor && cm doctor && ubs doctor && cass health && curl -s localhost:8765/health
+bd doctor && cm doctor && ubs doctor && cass health && curl -s localhost:8765/health && ntm doctor
 ```
 
 ### CASS + cass-memory Compatibility
