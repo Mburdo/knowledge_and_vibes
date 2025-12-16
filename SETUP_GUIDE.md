@@ -71,6 +71,49 @@ EOF
 git add .claude/ && git commit -m "Add Claude Code configuration"
 ```
 
+### Add Recommended Safety Rule (Optional)
+
+This repo also ships a more explicit safety rule you can copy into your project:
+- `safety.md` → `.claude/rules/safety.md`
+
+Copy from a local clone:
+```bash
+cp /path/to/knowledge_and_vibes/.claude/rules/safety.md .claude/rules/safety.md
+git add .claude/rules/safety.md && git commit -m "Add safety rule"
+```
+
+Or fetch from GitHub:
+```bash
+curl -fsSL -o .claude/rules/safety.md https://raw.githubusercontent.com/Mburdo/knowledge_and_vibes/master/.claude/rules/safety.md
+git add .claude/rules/safety.md && git commit -m "Add safety rule"
+```
+
+### Add Recommended Slash Commands (Optional)
+
+This repo includes two starter slash commands you can copy into your project’s `.claude/commands/`:
+- `/prime` → `.claude/commands/prime.md`
+- `/next_bead` → `.claude/commands/next_bead.md`
+- `/ground` → `.claude/commands/ground.md`
+
+Copy them from a local clone of `knowledge_and_vibes`:
+```bash
+cp /path/to/knowledge_and_vibes/.claude/commands/prime.md .claude/commands/prime.md
+cp /path/to/knowledge_and_vibes/.claude/commands/next_bead.md .claude/commands/next_bead.md
+cp /path/to/knowledge_and_vibes/.claude/commands/ground.md .claude/commands/ground.md
+```
+
+Or fetch from GitHub:
+```bash
+curl -fsSL -o .claude/commands/prime.md https://raw.githubusercontent.com/Mburdo/knowledge_and_vibes/master/.claude/commands/prime.md
+curl -fsSL -o .claude/commands/next_bead.md https://raw.githubusercontent.com/Mburdo/knowledge_and_vibes/master/.claude/commands/next_bead.md
+curl -fsSL -o .claude/commands/ground.md https://raw.githubusercontent.com/Mburdo/knowledge_and_vibes/master/.claude/commands/ground.md
+```
+
+Then commit:
+```bash
+git add .claude/commands && git commit -m "Add Claude slash commands"
+```
+
 For detailed guidance on rules, skills, and commands, see:
 https://raw.githubusercontent.com/Mburdo/knowledge_and_vibes/master/CLAUDE_CONFIG_GUIDE.md
 

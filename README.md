@@ -133,7 +133,7 @@ bd blocked                         # What's waiting?
 
 # Maintenance
 bd doctor --fix                    # Health check
-# ⚠️  WARNING: Don't use `bd sync` in multi-agent environments (causes HEAD ref conflicts)
+bd sync                            # Optional: flush/import immediately (git is still the transport)
 ```
 
 | Concept | Values |
@@ -242,8 +242,8 @@ ntm palette myproject                  # Fuzzy-search commands with TUI
 
 ```python
 # Register yourself
-ensure_project(project_key="/path/to/project")
-register_agent(project_key, program="claude-code", model="opus-4.5")
+ensure_project(human_key="/path/to/project")
+register_agent(project_key="/path/to/project", program="claude-code", model="opus-4.5")
 
 # Reserve files before editing
 file_reservation_paths(project_key, agent_name, ["src/**"], exclusive=True)
@@ -320,18 +320,28 @@ Before running `bd ready`, check your inbox for recent `[CLAIMED]` messages.
 □ 1. Check inbox for recent [CLAIMED] messages
 □ 2. Run `bd ready --json` to find unblocked work
 □ 3. Run `bv --robot-priority` to confirm priority
-□ 4. Claim PARENT bead: `bd update <id> --status in_progress --assignee YOUR_NAME`
-□ 5. Claim ALL SUB-BEADS: `bd update <id.1> --status in_progress --assignee YOUR_NAME`
-□ 6. Reserve ALL file paths via file_reservation_paths()
-□ 7. Send [CLAIMED] message to all agents
-□ 8. Work on the bead
-□ 9. Close ALL sub-beads first, then parent
-□ 10. Send [CLOSED] message to all agents
-□ 11. Release file reservations
-□ 12. Commit with .beads/ included: `git add -A && git commit`
+□ 4. Check current file reservations (avoid conflicts)
+□ 5. Claim PARENT bead: `bd update <id> --status in_progress --assignee YOUR_NAME`
+□ 6. Claim ALL SUB-BEADS: `bd update <id.1> --status in_progress --assignee YOUR_NAME` (repeat for all)
+□ 7. Reserve ALL file paths you will touch (exclusive when appropriate)
+□ 8. Send `[CLAIMED]` message (use `thread_id="<id>"`, list reserved paths)
+□ 9. Work on the bead (keep updates in-thread)
 ```
 
-**DO NOT use `bd sync`** — it fails in multi-agent environments.
+### Bead Finish Checklist
+
+```
+□ 1. Run tests / builds relevant to your change
+□ 2. Run `ubs --staged` (fix issues in files you touched; rerun until clean)
+□ 3. Commit your work (include `.beads/issues.jsonl`): `git add -A && git commit`
+□ 4. Close ALL sub-beads first: `bd close <id>.1 ...` (repeat for all)
+□ 5. Close the parent bead: `bd close <id> --reason "Completed: ..."`
+□ 6. Release file reservations
+□ 7. Send `[CLOSED]` message in the same thread (what changed, tests run, reservations released)
+□ 8. `git push`
+```
+
+**Note:** `bd sync` is optional and only flushes/imports bead state locally; sharing happens via normal git commits of `.beads/issues.jsonl`.
 
 ### Warp-Grep (Parallel Code Search)
 
@@ -444,6 +454,11 @@ ntm doctor             # NTM
 | `.claude/skills/` | Detailed guides and capabilities | Reference when relevant |
 | `.claude/commands/` | Slash commands | Invoke with `/command-name` |
 
+Included commands in this repo (copy into your project):
+- `/prime` → `.claude/commands/prime.md`
+- `/next_bead` → `.claude/commands/next_bead.md`
+- `/ground` → `.claude/commands/ground.md`
+
 ### Philosophy & Approach
 | Document | Description |
 |----------|-------------|
@@ -478,13 +493,13 @@ ntm doctor             # NTM
 | `bv` or `cass` hangs | **Always** use `--robot` or `--json` flags. TUI mode hangs agents |
 | CASS finds nothing | Run `cass index --full` to index sessions |
 | `cm context` returns empty | Check CASS indexed, run `cm doctor`. Update to cm v0.2.0+ |
-| `cm reflect` broken | Known CASS SQL bug, use `cm context` instead |
+| `cm` errors | Upgrade `cm`/`cass` and retry; `cm context` is the primary entrypoint |
 | Agent Mail won't start | Check port 8765 is free: `lsof -i :8765` |
 | Agent Mail MCP not connecting | Run `am` to start server, check `curl localhost:8765/health` |
 | UBS module errors | Run `ubs doctor --fix` |
 | Warp-Grep not working | Check `/mcp` shows morph-fast-tools, verify MORPH_API_KEY |
 | Exa not working | Check `/mcp` shows exa, verify EXA_API_KEY |
-| `bd sync` fails with conflicts | Don't use `bd sync` in multi-agent setups. Commit `.beads/` with your code instead |
+| `git push` conflicts on `.beads/issues.jsonl` | Run `bd sync` (optional), then resolve the git conflict like any other text merge (the conflict is from concurrent pushes, not `bd sync`) |
 | Permission denied on install | Use `~/.local/bin` instead of `/usr/local/bin`, or use `sudo` |
 | `ntm: command not found` | Run installer or add to PATH: `export PATH="$HOME/.local/bin:$PATH"` |
 | NTM can't find tmux | Install tmux: `brew install tmux` (macOS) or `apt install tmux` (Linux) |

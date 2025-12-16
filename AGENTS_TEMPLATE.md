@@ -79,7 +79,11 @@ Available skills:
 ### Commands (User-Triggered)
 
 Slash commands in `.claude/commands/*.md`:
-- [List your commands here, e.g., `/audit-style <path>` — Check code style]
+- Recommended defaults (copy from `knowledge_and_vibes`):
+- `/prime [task_focus]` — New agent startup checklist
+- `/next_bead [focus_area]` — Find/verify/claim next work safely
+- `/ground [question-or-task]` — Decide whether to use Warp-Grep vs Exa vs CASS/cm
+- [Add your commands here, e.g., `/audit-style <path>` — Check code style]
 
 ---
 
@@ -128,7 +132,7 @@ bd doctor                          # Health check
 bd doctor --fix                    # Auto-fix issues
 bd compact --analyze --json        # Analyze for compaction
 bd --readonly list                 # Safe read-only mode
-# bd sync                          # Don't use in multi-agent environments!
+bd sync                            # Optional: flush/import immediately (git is still the transport)
 ```
 
 **Types**: `bug`, `feature`, `task`, `epic`, `chore`
@@ -157,7 +161,7 @@ bd --readonly list                 # Safe read-only mode
 11. **Release file reservations**
 12. Commit `.beads/` in the same commit as code changes: `git add -A && git commit`
 
-**Warning:** Don't use `bd sync` in multi-agent environments - it fails due to HEAD ref conflicts when multiple agents push concurrently. Include `.beads/` in your regular commits instead.
+**Note:** `bd sync` only flushes/imports bead state locally; you still share it via normal git commits (include `.beads/issues.jsonl` with your code changes).
 
 Never:
 - Use markdown TODO lists
@@ -251,7 +255,7 @@ cm doctor                          # Health check
 ```
 
 You do NOT need to:
-- Run `cm reflect` (automation handles this)
+- Manually run reflection/learning steps
 - Manually add rules to the playbook
 - Worry about the learning pipeline
 
@@ -380,18 +384,28 @@ Before running `bd ready`, check your inbox for recent `[CLAIMED]` messages.
 □ 1. Check inbox for recent [CLAIMED] messages
 □ 2. Run `bd ready --json` to find unblocked work
 □ 3. Run `bv --robot-priority` to confirm priority
-□ 4. Claim PARENT bead: `bd update <id> --status in_progress --assignee YOUR_NAME`
-□ 5. Claim ALL SUB-BEADS: `bd update <id.1> --status in_progress --assignee YOUR_NAME`
-□ 6. Reserve ALL file paths via file_reservation_paths()
-□ 7. Send [CLAIMED] message to all agents
-□ 8. Work on the bead
-□ 9. Close ALL sub-beads first, then parent
-□ 10. Send [CLOSED] message to all agents
-□ 11. Release file reservations
-□ 12. Commit with .beads/ included: `git add -A && git commit`
+□ 4. Check current file reservations (avoid conflicts)
+□ 5. Claim PARENT bead: `bd update <id> --status in_progress --assignee YOUR_NAME`
+□ 6. Claim ALL SUB-BEADS: `bd update <id.1> --status in_progress --assignee YOUR_NAME` (repeat for all)
+□ 7. Reserve ALL file paths you will touch (exclusive when appropriate)
+□ 8. Send `[CLAIMED]` message (use `thread_id="<id>"`, list reserved paths)
+□ 9. Work on the bead (keep updates in-thread)
 ```
 
-**DO NOT use `bd sync`** — it fails in multi-agent environments.
+## Bead Finish Checklist
+
+```
+□ 1. Run tests / builds relevant to your change
+□ 2. Run `ubs --staged` (fix issues in files you touched; rerun until clean)
+□ 3. Commit your work (include `.beads/issues.jsonl`): `git add -A && git commit`
+□ 4. Close ALL sub-beads first: `bd close <id>.1 ...` (repeat for all)
+□ 5. Close the parent bead: `bd close <id> --reason "Completed: ..."`
+□ 6. Release file reservations
+□ 7. Send `[CLOSED]` message in the same thread (what changed, tests run, reservations released)
+□ 8. `git push`
+```
+
+**Note:** `bd sync` is optional and only flushes/imports bead state locally; sharing happens via normal git commits of `.beads/issues.jsonl`.
 
 ---
 
@@ -402,8 +416,8 @@ Agent Mail is available as an MCP server for coordinating multiple agents.
 ### Registration (Required First)
 
 ```python
-ensure_project(project_key="/abs/path/to/project")
-register_agent(project_key, program="claude-code", model="opus-4.5")
+ensure_project(human_key="/abs/path/to/project")
+register_agent(project_key="/abs/path/to/project", program="claude-code", model="opus-4.5")
 # Returns auto-generated name like "GreenCastle"
 ```
 
@@ -587,7 +601,7 @@ git add -A && git commit && git push   # .beads/ included automatically
 release_file_reservations(...)     # If multi-agent
 ```
 
-**Note:** Don't use `bd sync` - it fails in multi-agent environments. The `.beads/` directory is included in your regular commits.
+**Note:** `bd sync` is optional; it does not push. Commit/push your changes normally (including `.beads/issues.jsonl`).
 
 ---
 

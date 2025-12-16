@@ -12,7 +12,12 @@ warp_grep/warp_grep/
 .DS_Store
 
 # AI / agent tooling
-.claude/
+# Keep local Claude settings/hooks untracked, but shareable slash commands can live in git.
+.claude/*
+!.claude/commands/
+!.claude/commands/*.md
+!.claude/rules/
+!.claude/rules/*.md
 .cursor/
 .gemini/
 .codex/

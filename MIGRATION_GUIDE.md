@@ -93,7 +93,7 @@ bd --version && bv --version && cass --version && cm --version && ubs --version
 | `bd` | 0.29.0 | Homebrew tap `steveyegge/beads` |
 | `bv` | 0.10.2 | Agent Mail install script |
 | `cass` | 0.1.35 | Install script |
-| `cm` | 0.1.0 | Build from K&V patched source |
+| `cm` | 0.1.0 | Install from cass-memory releases |
 | `ubs` | 5.0.0 | Install script |
 
 ---
@@ -642,7 +642,7 @@ bd info
 
 1. **Always commit `.beads/`** with code changes
 2. **Never edit `.beads/*.jsonl`** directly - only via `bd` commands
-3. **Use `bd sync`** to force sync to git
+3. **Use `bd sync` (optional)** to flush/import immediately before committing
 4. **Use `bd doctor --fix`** if issues arise
 
 ---

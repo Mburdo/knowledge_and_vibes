@@ -54,7 +54,7 @@ These tools work together as a complete system. Let's learn how.
 
 **For humans**: Think of it as a todo list that understands "I can't do X until Y is done."
 
-**For agents**: Always start sessions with `bd ready --json` to get unblocked work. Always end with `bd sync && git push` to persist state.
+**For agents**: Always start sessions with `bd ready --json` to get unblocked work. End sessions by committing/pushing `.beads/issues.jsonl` (optionally run `bd sync` first to flush immediately).
 
 **Advanced features**:
 ```bash
@@ -109,8 +109,8 @@ bv --robot-diff --diff-since HEAD~5        # Changes in last 5 commits
 **For agents**:
 ```python
 # Always register first
-ensure_project(project_key="/abs/path")
-register_agent(project_key, program="claude-code", model="opus-4.5")
+ensure_project(human_key="/abs/path")
+register_agent(project_key="/abs/path", program="claude-code", model="opus-4.5")
 
 # Reserve before editing
 file_reservation_paths(project_key, agent_name, paths=["src/auth/**"], exclusive=True)
@@ -224,7 +224,7 @@ cm doctor
 }
 ```
 
-**Automation note**: You don't need to run `cm reflect` - the system learns automatically from your sessions.
+**Automation note**: You don't need to run separate reflection/learning steps — the system learns automatically from your sessions.
 
 ### UBS - Bug Scanner
 
@@ -430,7 +430,7 @@ This starts Agent Mail on port 8765.
 #### Step 2: Register your identity
 
 ```python
-ensure_project(project_key="/Users/you/project")
+ensure_project(human_key="/Users/you/project")
 
 register_agent(
     project_key="/Users/you/project",
@@ -726,7 +726,8 @@ send_message(
 **Never skip this:**
 
 ```bash
-bd sync && git push
+bd sync  # optional: flush immediately
+git add -A && git commit && git push
 ```
 
 This persists your beads changes and pushes everything.
@@ -772,8 +773,8 @@ cm context "what I'm trying to do" --json
 
 **Multi-Agent (if needed):**
 ```python
-ensure_project(project_key="/abs/path")
-register_agent(project_key, program="claude-code", model="opus-4.5")
+ensure_project(human_key="/abs/path")
+register_agent(project_key="/abs/path", program="claude-code", model="opus-4.5")
 file_reservation_paths(project_key, agent_name, paths=["src/**"], exclusive=True, reason="bd-XXX")
 send_message(project_key, sender_name, to=["OtherAgent"], subject="[bd-XXX] Starting", body_md="...", thread_id="bd-XXX")
 ```
@@ -787,7 +788,8 @@ ubs --staged --fail-on-warning  # Must exit 0
 **Session End:**
 ```bash
 bd close bd-XXX --reason "Completed: summary"
-bd sync && git push
+bd sync  # optional: flush immediately
+git add -A && git commit && git push
 ```
 ```python
 release_file_reservations(project_key, agent_name)
@@ -799,7 +801,7 @@ release_file_reservations(project_key, agent_name)
 2. **ALWAYS use `--robot` or `--json` with CASS/cm** - for machine-readable output
 3. **ALWAYS run `cm context` before non-trivial tasks** - get distilled knowledge first
 4. **ALWAYS register before messaging** - `ensure_project` + `register_agent` first
-5. **ALWAYS `bd sync && git push` before ending** - don't lose your work
+5. **ALWAYS commit/push `.beads/issues.jsonl` before ending** (run `bd sync` first if you want zero-lag flush)
 6. **ALWAYS run `ubs --staged` before commits** - catch bugs early
 7. **ALWAYS release file reservations when done** - don't block other agents
 
@@ -810,7 +812,7 @@ release_file_reservations(project_key, agent_name)
 3. **Run `cm context` first** - get distilled lessons from past sessions
 4. **Search with `cass` for details** - when you need specific past solutions
 5. **Run `ubs` before commits** - catch bugs before they're merged
-6. **Sync before you leave** - `bd sync && git push`
+6. **Sync before you leave** - commit/push (run `bd sync` first if you want)
 
 ---
 
@@ -873,15 +875,16 @@ git add . && git commit -m "Feature X - Fixes bd-a1b2"
 
 # End session
 bd close bd-a1b2 --reason "Completed"
-bd sync && git push
+bd sync  # optional: flush immediately
+git add -A && git commit && git push
 ```
 
 ### Scenario 2: Two Agents, Same Project
 
 **Agent 1 (Backend):**
 ```python
-ensure_project(project_key="/project")
-register_agent(project_key, "claude-code", "opus-4.5")  # Gets name "GreenCastle"
+ensure_project(human_key="/project")
+register_agent(project_key="/project", program="claude-code", model="opus-4.5")  # Gets name "GreenCastle"
 
 file_reservation_paths(project_key, "GreenCastle",
     paths=["src/api/**", "src/db/**"],
@@ -896,8 +899,8 @@ send_message(project_key, "GreenCastle",
 
 **Agent 2 (Frontend):**
 ```python
-ensure_project(project_key="/project")
-register_agent(project_key, "claude-code", "opus-4.5")  # Gets name "BlueLake"
+ensure_project(human_key="/project")
+register_agent(project_key="/project", program="claude-code", model="opus-4.5")  # Gets name "BlueLake"
 
 # Check inbox first
 messages = fetch_inbox(project_key, "BlueLake")
