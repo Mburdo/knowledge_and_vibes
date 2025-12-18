@@ -10,7 +10,7 @@ After completing a task, use this command to find the logically next available w
 ## Usage
 
 ```
-/next_bead [focus_area]
+/next-bead [focus_area]
 ```
 
 ## Arguments

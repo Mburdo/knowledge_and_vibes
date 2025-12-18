@@ -238,4 +238,4 @@ When done or switching tasks:
 - Commit your work (include `.beads/issues.jsonl`) and push
 - Release file reservations
 - Close ALL sub-beads first, then the parent bead
-- Run `/next_bead` to find your next task
+- Run `/next-bead` to find your next task

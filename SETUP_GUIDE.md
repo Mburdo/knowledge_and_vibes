@@ -92,21 +92,24 @@ git add .claude/rules/safety.md && git commit -m "Add safety rule"
 
 This repo includes two starter slash commands you can copy into your project’s `.claude/commands/`:
 - `/prime` → `.claude/commands/prime.md`
-- `/next_bead` → `.claude/commands/next_bead.md`
+- `/next-bead` → `.claude/commands/next-bead.md`
 - `/ground` → `.claude/commands/ground.md`
+- `/decompose-task` → `.claude/commands/decompose-task.md`
 
 Copy them from a local clone of `knowledge_and_vibes`:
 ```bash
 cp /path/to/knowledge_and_vibes/.claude/commands/prime.md .claude/commands/prime.md
-cp /path/to/knowledge_and_vibes/.claude/commands/next_bead.md .claude/commands/next_bead.md
+cp /path/to/knowledge_and_vibes/.claude/commands/next-bead.md .claude/commands/next-bead.md
 cp /path/to/knowledge_and_vibes/.claude/commands/ground.md .claude/commands/ground.md
+cp /path/to/knowledge_and_vibes/.claude/commands/decompose-task.md .claude/commands/decompose-task.md
 ```
 
 Or fetch from GitHub:
 ```bash
 curl -fsSL -o .claude/commands/prime.md https://raw.githubusercontent.com/Mburdo/knowledge_and_vibes/master/.claude/commands/prime.md
-curl -fsSL -o .claude/commands/next_bead.md https://raw.githubusercontent.com/Mburdo/knowledge_and_vibes/master/.claude/commands/next_bead.md
+curl -fsSL -o .claude/commands/next-bead.md https://raw.githubusercontent.com/Mburdo/knowledge_and_vibes/master/.claude/commands/next-bead.md
 curl -fsSL -o .claude/commands/ground.md https://raw.githubusercontent.com/Mburdo/knowledge_and_vibes/master/.claude/commands/ground.md
+curl -fsSL -o .claude/commands/decompose-task.md https://raw.githubusercontent.com/Mburdo/knowledge_and_vibes/master/.claude/commands/decompose-task.md
 ```
 
 Then commit:
@@ -135,5 +138,5 @@ Commands:
   cass search "..." --robot # Search past sessions
 
 Next: Create a plan for what you want to build.
-Read PHILOSOPHY.md and DECOMPOSITION.md for guidance.
+Read PHILOSOPHY.md and PLANNING_AND_DECOMPOSITION.md for guidance.
 ```

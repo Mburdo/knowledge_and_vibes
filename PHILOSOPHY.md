@@ -42,14 +42,17 @@ Every task, every feature, every bug fix follows this loop:
 **Goal**: Create a detailed plan BEFORE writing any code.
 
 ```
-1. Ask for step-by-step plan
-2. Ground the plan with real documentation (Exa MCP)
-3. Review for architectural fit
-4. Get approval before implementation
+1. Use frontier reasoning models (Opus, o1, o3) with thinking cranked up
+2. Go from idea → massive, fully fleshed out plan
+3. Human breaks the plan into phases (logical chunks, 1-2 weeks each)
+4. Use /decompose-task to turn each phase into beads + sub-beads
+5. Ground the plan with real documentation (Exa MCP)
+6. Review for architectural fit before implementation
 ```
 
 **Our tools for this**:
-- `/plan` slash command
+- Frontier models with extended thinking → Heavy reasoning, full plan generation
+- `/decompose-task` → Turn phases into atomic beads
 - `web_search_exa()` → Current documentation
 - `get_code_context_exa()` → Implementation examples
 - `bv --robot-insights` → Dependency impact
@@ -122,7 +125,18 @@ See [CODEMAPS_TEMPLATE.md](./CODEMAPS_TEMPLATE.md) for structure.
 
 ### Grounding Tools
 
-Hallucinations are a solved problem. Use grounding tools:
+**AI-generated code follows training data, which may be outdated, deprecated, or wrong.**
+
+LLMs are trained on snapshots of documentation, tutorials, and code samples from months or years ago. This means:
+
+- **Deprecated APIs**: The AI might use `library.oldMethod()` when `library.newMethod()` replaced it 6 months ago
+- **Outdated patterns**: The "recommended approach" from 2023 might be an anti-pattern in 2024
+- **Hallucinated methods**: For niche libraries, the AI may confidently invent methods that never existed
+- **Wrong defaults**: Configuration options, flags, and parameters change across versions
+
+**This is critical for non-technical users** who can't spot when AI is hallucinating outdated patterns. If you can't read the code and know "that method was deprecated in v3.0," grounding is your safety net.
+
+**The solution: ground everything in current documentation.**
 
 ```
 # Check current documentation
@@ -134,6 +148,11 @@ get_code_context_exa("pattern implementation")
 # Pull specific page content
 crawling("https://docs.example.com/api")
 ```
+
+Use the `/ground` command to choose the right grounding tool:
+- **Repo truth** → Warp-Grep (local codebase discovery)
+- **Web truth** → Exa (current external docs/APIs)
+- **History truth** → CASS / cass-memory (what we did before)
 
 If you're getting outdated API suggestions, you're not using grounding tools.
 
@@ -348,9 +367,10 @@ Initial setup takes time. But once it's there:
 ```
 REQUIREMENTS → PLAN → IMPLEMENT → REFLECT
      ↓            ↓         ↓           ↓
-  Codemaps      Exa      TDD/Beads     UBS
-  cm context    /plan    Scaffolding   Tests
-  Warp-Grep   Approval   Incremental   Review
+  Codemaps    Frontier   TDD/Beads     UBS
+  cm context   Models    Scaffolding   Tests
+  Warp-Grep  /decompose  Incremental   Review
+              -task
 ```
 
 Each tool maps to a phase. Use them together, not in isolation.
@@ -367,7 +387,7 @@ You can fight it, or you can get very, very good at it.
 
 ## Further Reading
 
-- [DECOMPOSITION.md](./DECOMPOSITION.md) - Breaking work into atomic beads
+- [PLANNING_AND_DECOMPOSITION.md](./PLANNING_AND_DECOMPOSITION.md) - Planning and breaking work into beads
 - [CODEMAPS_TEMPLATE.md](./CODEMAPS_TEMPLATE.md) - Architecture documentation
 - [SETUP_GUIDE.md](./SETUP_GUIDE.md) - Getting started
 - [TUTORIAL.md](./TUTORIAL.md) - Complete workflow

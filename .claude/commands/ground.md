@@ -5,7 +5,28 @@ argument-hint: [question-or-task]
 
 # Ground — Grounding Protocol
 
-Use this command when you’re about to answer a question or start a task and you’re not sure whether the truth is **in the repo**, **on the web**, or **in prior sessions**.
+Use this command when you're about to answer a question or start a task and you're not sure whether the truth is **in the repo**, **on the web**, or **in prior sessions**.
+
+---
+
+## Why Grounding Matters
+
+**AI-generated code follows training data, which may be outdated, deprecated, or wrong.**
+
+LLMs are trained on snapshots of documentation, tutorials, and code samples from months or years ago. This means:
+
+- **Deprecated APIs**: The AI might use `library.oldMethod()` when `library.newMethod()` replaced it 6 months ago
+- **Outdated patterns**: The "recommended approach" from 2023 might be an anti-pattern in 2024
+- **Hallucinated methods**: For niche libraries, the AI may confidently invent methods that never existed
+- **Wrong defaults**: Configuration options, flags, and parameters change across versions
+
+**Grounding pulls your code back to reality.**
+
+Before implementing anything that touches external libraries, APIs, or frameworks, use Exa to fetch the **current** documentation. This sanity-checks your implementation against what actually exists today.
+
+**This is critical for non-technical users** who can't spot when AI is hallucinating outdated patterns. If you can't read the code and know "that method was deprecated in v3.0," grounding is your safety net.
+
+---
 
 ## Usage
 

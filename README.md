@@ -455,8 +455,9 @@ ntm doctor             # NTM
 
 Included commands in this repo (copy into your project):
 - `/prime` → `.claude/commands/prime.md`
-- `/next_bead` → `.claude/commands/next_bead.md`
+- `/next-bead` → `.claude/commands/next-bead.md`
 - `/ground` → `.claude/commands/ground.md`
+- `/decompose-task` → `.claude/commands/decompose-task.md`
 
 ### Philosophy & Approach
 | Document | Description |
@@ -467,7 +468,7 @@ Included commands in this repo (copy into your project):
 ### Planning & Decomposition
 | Document | Description |
 |----------|-------------|
-| [DECOMPOSITION.md](./DECOMPOSITION.md) | Breaking work into beads + 5 planning patterns |
+| [PLANNING_AND_DECOMPOSITION.md](./PLANNING_AND_DECOMPOSITION.md) | Planning workflow + breaking work into beads |
 | [TUTORIAL.md](./TUTORIAL.md) | Complete workflow walkthrough |
 
 ### Setup & Templates
@@ -529,7 +530,7 @@ knowledge_and_vibes/
 ├── AGENTS_TEMPLATE.md       # Template for your projects
 ├── CLAUDE_CONFIG_GUIDE.md   # Organizing .claude/ directory
 ├── PHILOSOPHY.md            # 4-phase development framework
-├── DECOMPOSITION.md         # Task breakdown + planning patterns
+├── PLANNING_AND_DECOMPOSITION.md  # Planning workflow + task breakdown
 ├── CODEMAPS_TEMPLATE.md     # Architecture documentation
 ├── TUTORIAL.md              # Detailed workflow guide
 └── LICENSE                  # MIT

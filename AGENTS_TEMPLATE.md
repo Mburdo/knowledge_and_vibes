@@ -81,8 +81,9 @@ Available skills:
 Slash commands in `.claude/commands/*.md`:
 - Recommended defaults (copy from `knowledge_and_vibes`):
 - `/prime [task_focus]` — New agent startup checklist
-- `/next_bead [focus_area]` — Find/verify/claim next work safely
+- `/next-bead [focus_area]` — Find/verify/claim next work safely
 - `/ground [question-or-task]` — Decide whether to use Warp-Grep vs Exa vs CASS/cm
+- `/decompose-task [phase]` — Turn a phase from your plan into beads and sub-beads
 - [Add your commands here, e.g., `/audit-style <path>` — Check code style]
 
 ---

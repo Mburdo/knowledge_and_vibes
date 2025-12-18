@@ -392,5 +392,5 @@ pnpm db:studio → Open Prisma Studio
 ## Further Reading
 
 - [PHILOSOPHY.md](./PHILOSOPHY.md) - The 4-phase framework
-- [DECOMPOSITION.md](./DECOMPOSITION.md) - Breaking work into beads
+- [PLANNING_AND_DECOMPOSITION.md](./PLANNING_AND_DECOMPOSITION.md) - Planning and breaking work into beads
 - [AGENTS_TEMPLATE.md](./AGENTS_TEMPLATE.md) - Agent instructions
