@@ -441,6 +441,16 @@ ntm doctor             # NTM
 
 ## Documentation
 
+### Start Here
+
+| If you want to... | Read |
+|-------------------|------|
+| Understand the philosophy | [PHILOSOPHY.md](./PHILOSOPHY.md) → [TUTORIAL.md](./TUTORIAL.md) |
+| Set up a new project | [SETUP_GUIDE.md](./SETUP_GUIDE.md) |
+| Onboard an existing project | [MIGRATION_GUIDE.md](./MIGRATION_GUIDE.md) |
+| Deep dive on planning & beads | [PLANNING_AND_DECOMPOSITION.md](./PLANNING_AND_DECOMPOSITION.md) |
+| Configure Claude Code (.claude/) | [CLAUDE_CONFIG_GUIDE.md](./CLAUDE_CONFIG_GUIDE.md) |
+
 ### Configuration Locations
 
 | Location | Purpose | When to Use |
