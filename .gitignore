@@ -30,6 +30,8 @@ warp_grep/warp_grep/
 # Temp
 *.bak
 *.tmp
+.bv_backups/
+_upstream_beads_viewer/
 
 # Legacy/internal docs (if any)
 _NLU/

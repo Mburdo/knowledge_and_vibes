@@ -193,6 +193,23 @@ Common patterns:
 - Implementation blocks tests (.4-.8)
 - All sub-beads block parent phase completion
 
+### Step 7: Validate the Graph (bv)
+
+Once dependencies are set, use `bv` to catch structural planning errors early (cycles, missing deps, impossible ordering).
+
+```bash
+# Hygiene: duplicates / missing deps / cycle break suggestions
+bv --robot-suggest
+
+# Can work proceed in dependency order? (tracks + what unblocks what)
+bv --robot-plan
+
+# Proactive warnings (stale, cascades, drift signals)
+bv --robot-alerts
+```
+
+If anything looks wrong, fix the dependency structure *before* agents start executing.
+
 ---
 
 ## Sizing Guidelines

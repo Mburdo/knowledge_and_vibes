@@ -83,17 +83,21 @@ bd show bd-42                                     # Full task details
 ```
 CRITICAL: Never run `bv` without --robot-* flags!
 The interactive TUI will hang your session permanently.
-Always use: bv --robot-priority, bv --robot-insights, etc.
+Always use: bv --robot-triage/--robot-next/--robot-plan/--robot-insights, etc.
 ```
 
-**All robot commands**:
+**K&V default bv toolkit**:
 ```bash
-bv --robot-priority                # Ranked recommendations with confidence scores
+bv --robot-triage                  # Unified triage bundle (recommended entrypoint)
+bv --robot-next                    # Minimal: single top pick + claim command
 bv --robot-plan                    # Parallel execution tracks
 bv --robot-insights                # Graph metrics (PageRank, betweenness, HITS)
-bv --robot-recipes                 # Available filter presets
+bv --robot-priority                # Priority adjustment recommendations (NOT “next task”)
+bv --robot-alerts                  # Proactive warnings (stale, cascades, drift)
+bv --robot-suggest                 # Hygiene suggestions (deps/dupes/labels/cycles)
 bv --robot-diff --diff-since "1 hour ago"  # What changed recently
 bv --robot-diff --diff-since HEAD~5        # Changes in last 5 commits
+bv --as-of HEAD~10 --robot-triage           # Historical point-in-time analysis
 ```
 
 ### Agent Mail - Multi-Agent Coordination
@@ -358,24 +362,13 @@ This returns tasks with no unresolved dependencies. Example output:
 #### Step 2: Get priority recommendations
 
 ```bash
-bv --robot-priority
+bv --robot-triage
 ```
 
-This analyzes the graph and returns:
-```json
-{
-  "recommendations": [
-    {
-      "id": "bd-a1b2",
-      "confidence": 0.92,
-      "reasoning": "High betweenness centrality - unblocks 3 downstream tasks",
-      "impact": ["bd-e5f6", "bd-g7h8", "bd-i9j0"]
-    }
-  ]
-}
-```
-
-**Why this matters**: Not all tasks are equal. This tells you which one has the biggest impact.
+**Why this matters**: `bv --robot-triage` is an opinionated “session kickoff bundle”:
+- top picks + ranked recommendations (with reasons + unblock info)
+- quick wins + top blockers to clear
+- copy/paste next-step commands
 
 #### Step 3: Get context from past learning
 
@@ -748,7 +741,8 @@ This shows tasks that became "ready" because of your work.
 **Session Start:**
 ```bash
 bd ready --json
-bv --robot-priority
+bv --robot-next
+bv --robot-triage
 cm context "your task description" --json    # Get distilled knowledge
 cass search "problem" --robot --limit 5       # If cm suggests or you need more
 bd update bd-XXX --status in_progress
@@ -768,6 +762,16 @@ crawling("https://docs.example.com/api")
 # If stuck on implementation
 cass search "similar problem" --robot
 cm context "what I'm trying to do" --json
+
+# If blocked on your current bead
+bv --robot-blocker-chain bd-XXX
+
+# Before a risky refactor (understand coupling/impact)
+bv --robot-impact path/to/file1,path/to/file2
+bv --robot-file-relations path/to/core_file
+
+# If the project feels messy (blockers/quick wins/health)
+bv --robot-triage
 ```
 
 **Multi-Agent (if needed):**
@@ -806,7 +810,8 @@ release_file_reservations(project_key, agent_name)
 ### For Humans: What to Remember
 
 1. **Start with `bd ready`** - see what's actually ready to work on
-2. **Use `bv` for priority** - it knows which task matters most
+2. **Start with `bv --robot-next`** - it tells you the best next task fast
+3. **Use `bv --robot-triage` when things feel messy** - it surfaces blockers, quick wins, and project health in one call
 3. **Run `cm context` first** - get distilled lessons from past sessions
 4. **Search with `cass` for details** - when you need specific past solutions
 5. **Run `ubs` before commits** - catch bugs before they're merged
@@ -838,7 +843,8 @@ release_file_reservations(project_key, agent_name)
 ```bash
 # Morning: What should I work on?
 bd ready --json
-bv --robot-priority
+bv --robot-next
+# or: bv --robot-triage
 
 # Pick task bd-a1b2
 bd update bd-a1b2 --status in_progress

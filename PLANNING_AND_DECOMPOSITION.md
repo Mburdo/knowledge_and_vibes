@@ -61,6 +61,10 @@ Think of it like chunking for LLMs — you wouldn't stuff 100k tokens into a pro
    └─ Agent creates parent bead + atomic sub-beads
    └─ Each sub-bead is ~500 lines, 30-120 minutes of work
 
+4. GRAPH VALIDATION (bv)
+   └─ Catch cycles / missing deps before execution
+   └─ Confirm there is an actionable execution order
+
 ```
 
 ---
@@ -752,6 +756,18 @@ After decomposition, verify:
 1. **Character count**: Sub-beads total >= original (overhead is expected)
 2. **Content check**: Every section from original appears somewhere
 3. **Standalone test**: Each sub-bead makes sense without the others
+
+### Graph Verification (bv)
+
+Once you’ve set dependencies between sub-beads, validate the plan as a graph (this catches planning bugs early):
+
+```bash
+bv --robot-suggest   # Missing deps, cycle breaks, duplicates, label suggestions
+bv --robot-plan      # Parallel tracks + what unblocks what
+bv --robot-alerts    # Proactive warnings (stale, cascades, drift signals)
+```
+
+If `bv` reports cycles or “impossible” ordering signals, fix your dependency structure *before* agents start claiming beads.
 
 ---
 

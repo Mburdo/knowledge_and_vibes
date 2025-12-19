@@ -104,13 +104,13 @@ If you don't have an in_progress task, proceed to Step 3.
 Use bv to understand what's logically next:
 
 ```bash
-bv --robot-priority
+bv --robot-triage
 ```
 
-This gives you ranked recommendations based on:
-- Dependency graph (what's unblocked)
-- Priority levels
-- Logical sequencing
+This gives you a unified bundle:
+- Ranked recommendations (with scores + reasons + unblock info)
+- Quick wins + top blockers to clear
+- Copy/paste next-step commands
 
 Also check for parallel execution opportunities:
 
@@ -119,6 +119,13 @@ bv --robot-plan
 ```
 
 Note which tasks are recommended and their priorities.
+
+If multiple agents are active, group triage output to split work cleanly:
+
+```bash
+bv --robot-triage --robot-triage-by-track
+# or: bv --robot-triage --robot-triage-by-label
+```
 
 ---
 
@@ -361,7 +368,10 @@ This prevents other agents from claiming the same bead or its sub-beads.
 
 ```bash
 # See what's recommended
-bv --robot-priority
+bv --robot-triage
+
+# Minimal "what next?"
+bv --robot-next
 
 # See what's unblocked
 bd ready --json

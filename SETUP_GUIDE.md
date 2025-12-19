@@ -28,6 +28,21 @@ Verify:
 bd --version && bv --version && cass --version && cm --version && ubs --version && ntm --version && echo "✓ All installed"
 ```
 
+### Update Beads Viewer (Recommended)
+
+`bv` has a built-in updater (v0.10.6+):
+
+```bash
+bv --check-update
+bv --update --yes
+```
+
+If your `bv` is older and lacks `--update`, run the installer:
+
+```bash
+curl -fsSL "https://raw.githubusercontent.com/Dicklesworthstone/beads_viewer/main/install.sh?$(date +%s)" | bash
+```
+
 ## Step 2: MCP Servers
 
 **Get API keys:**
@@ -132,7 +147,8 @@ Project: .beads/ and AGENTS.md added
 
 Commands:
   bd ready --json           # See tasks
-  bv --robot-priority       # Recommended next task
+  bv --robot-next           # Recommended next task (minimal)
+  bv --robot-triage         # Full triage bundle (recommended)
   cm context "task" --json  # Get relevant context
   ubs --staged              # Scan for bugs
   cass search "..." --robot # Search past sessions

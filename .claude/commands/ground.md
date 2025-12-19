@@ -39,6 +39,7 @@ Before implementing anything that touches external libraries, APIs, or framework
 - **Repo truth** → **Warp-Grep** (local codebase discovery)
 - **Web truth** → **Exa** (current external docs/APIs/examples)
 - **History truth** → **CASS** / **cass-memory (`cm`)** (what we did/learned before)
+- **Task/graph truth** → **Beads Viewer (`bv`)** (what to do next, what blocks what, what changed)
 
 ## When to use what
 
@@ -75,6 +76,23 @@ Protocol:
 - Prefer **Warp-Grep first** for repo questions.
 - Use **Exa only** when you explicitly need external/current facts.
 - Use **`cm` first** when looking for “how we do it”.
+- Use **`bv` first** when the question is “what should we do next?” or “how does the task graph look?”.
+
+### Beads Viewer (`bv`) (task graph truth)
+Use when the question is about the *project’s work graph*, not the code or the web:
+- “What should I work on next?”
+- “Why is this bead blocked / what’s the blocker chain?”
+- “What looks risky/stale right now?”
+- “What changed in the task graph since yesterday / last commit?”
+
+Opinionated defaults:
+```bash
+bv --robot-next                    # Fast: single best next task
+bv --robot-triage                  # Full: blockers, quick wins, commands
+bv --robot-blocker-chain bd-123    # If blocked: show the chain to clear
+bv --robot-alerts                  # Risk/hygiene signals (stale, cascades, drift)
+bv --robot-diff --diff-since HEAD~5  # Graph changes since a ref
+```
 
 ## Output you should produce (when using this command)
 

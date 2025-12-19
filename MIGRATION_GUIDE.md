@@ -73,6 +73,14 @@ bd --version && bv --version && cass --version && cm --version && ubs --version
 # Install/update Agent Mail (includes bd, bv)
 curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/mcp_agent_mail/main/scripts/install.sh | bash -s -- --dir "$HOME/mcp_agent_mail" --yes
 
+# Update bv to latest (recommended: unlocks --robot-triage, --robot-next, label analytics, history, etc.)
+# If your installed bv supports it:
+bv --check-update
+bv --update --yes
+#
+# If `bv --update` is not available (older bv), use the official installer:
+# curl -fsSL "https://raw.githubusercontent.com/Dicklesworthstone/beads_viewer/main/install.sh?$(date +%s)" | bash
+
 # Install/update CASS
 curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/coding_agent_session_search/main/install.sh | bash -s -- --easy-mode
 
@@ -91,7 +99,7 @@ bd --version && bv --version && cass --version && cm --version && ubs --version
 | Tool | Minimum Version | Install Method |
 |------|-----------------|----------------|
 | `bd` | 0.29.0 | Homebrew tap `steveyegge/beads` |
-| `bv` | 0.10.2 | Agent Mail install script |
+| `bv` | 0.10.6 | `bv --update --yes` (preferred) or beads_viewer install script |
 | `cass` | 0.1.35 | Install script |
 | `cm` | 0.1.0 | Install from cass-memory releases |
 | `ubs` | 5.0.0 | Install script |

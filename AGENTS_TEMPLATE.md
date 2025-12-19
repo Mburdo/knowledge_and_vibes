@@ -143,7 +143,7 @@ bd --readonly list                 # Safe read-only mode
 
 1. **Check inbox** for recent `[CLAIMED]` messages from other agents
 2. `bd ready --json` to find unblocked work
-3. `bv --robot-priority` to confirm priority
+3. `bv --robot-triage` (or `bv --robot-next`) to pick the best next task deterministically
 4. **Claim PARENT bead AND ALL SUB-BEADS together:**
    ```bash
    bd update <id> --status in_progress --assignee YOUR_AGENT_NAME
@@ -179,13 +179,27 @@ Never:
 **Always use robot flags. Never run bare `bv`.**
 
 ```bash
-bv --robot-help                    # Overview of all robot commands
-bv --robot-priority                # Ranked recommendations with confidence
-bv --robot-plan                    # Parallel execution tracks
-bv --robot-insights                # Graph metrics (PageRank, betweenness, HITS)
-bv --robot-recipes                 # List available filter presets
-bv --robot-diff --diff-since "1 hour ago"  # What changed recently
-bv --robot-diff --diff-since HEAD~5        # Changes in last 5 commits
+# Session kickoff (default)
+bv --robot-next                    # Single best next task (fast)
+bv --robot-triage                  # Full triage bundle (blockers, quick wins, commands)
+
+# Multi-agent task partitioning
+bv --robot-triage --robot-triage-by-track  # Split work by parallel tracks
+bv --robot-plan                            # Track details + what each task unblocks
+
+# Risk & hygiene (use before starting “big” work)
+bv --robot-alerts                  # Stale issues, blocking cascades, drift warnings
+bv --robot-suggest                 # Duplicates, missing deps, cycle breaks, label fixes
+
+# Debugging regressions / “what changed?”
+bv --robot-diff --diff-since HEAD~5
+bv --as-of HEAD~10 --robot-triage
+
+# Handoff / audit trail (when needed)
+bv --robot-history --bead-history bd-123
+
+# Keep bv current
+bv --check-update && bv --update --yes
 ```
 
 **Graph metrics explained**:
@@ -383,7 +397,7 @@ Before running `bd ready`, check your inbox for recent `[CLAIMED]` messages.
 ```
 □ 1. Check inbox for recent [CLAIMED] messages
 □ 2. Run `bd ready --json` to find unblocked work
-□ 3. Run `bv --robot-priority` to confirm priority
+□ 3. Run `bv --robot-next` (or `bv --robot-triage`) to pick the best next task
 □ 4. Check current file reservations (avoid conflicts)
 □ 5. Claim PARENT bead: `bd update <id> --status in_progress --assignee YOUR_NAME`
 □ 6. Claim ALL SUB-BEADS: `bd update <id.1> --status in_progress --assignee YOUR_NAME` (repeat for all)
@@ -586,7 +600,15 @@ cm context "task description" --json
 ```bash
 # If stuck
 cass search "similar problem" --robot
-bv --robot-priority
+bv --robot-triage
+# or: bv --robot-next
+
+# If blocked on your current bead
+bv --robot-blocker-chain <id>
+
+# Before a risky refactor (understand coupling/impact)
+bv --robot-impact path/to/file1,path/to/file2
+bv --robot-file-relations path/to/core_file
 
 # If multi-agent
 fetch_inbox(project_key, agent_name)

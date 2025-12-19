@@ -59,7 +59,9 @@ Every task, every feature, every bug fix follows this loop:
 - `/decompose-task` → Turn phases into atomic beads
 - `web_search_exa()` → Current documentation
 - `get_code_context_exa()` → Implementation examples
-- `bv --robot-insights` → Dependency impact
+- `bv --robot-plan` → Dependency-respecting execution order (sanity-check deps)
+- `bv --robot-suggest` → Catch missing deps / cycles early (planning hygiene)
+- `bv --robot-insights` → Deep graph metrics + cycle detection (structural health)
 
 **Key question**: "Does this plan fit our architecture and constraints?"
 
@@ -355,7 +357,7 @@ Initial setup takes time. But once it's there:
 | Tool | Purpose |
 |------|---------|
 | Beads | Task tracking with dependencies |
-| Beads Viewer | Graph analysis for priority |
+| Beads Viewer | Graph intelligence for what-to-do-next |
 | CASS | Search past solutions |
 | cass-memory | Distilled learning from sessions |
 | UBS | Automated bug detection |

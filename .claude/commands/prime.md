@@ -176,6 +176,18 @@ bd ready --json
 
 See what's unblocked and available.
 
+Also get bv's deterministic recommendation bundle:
+
+```bash
+bv --robot-triage
+```
+
+If multiple agents are active, use track grouping so everyone can grab different lanes:
+
+```bash
+bv --robot-triage --robot-triage-by-track
+```
+
 ---
 
 ### Step 9: Claim a Task

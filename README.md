@@ -85,13 +85,17 @@ Resume sessions later with `claude --resume myapp-GreenCastle-20251210-143022`
 
 ```bash
 cass search "similar problem" --robot        # Search past sessions
-bv --robot-priority                          # Get recommendations
+bv --robot-triage                            # Full recommendations bundle
+# or: bv --robot-next                        # Minimal “what next?”
+bv --robot-alerts                            # What looks risky/stale right now?
+bv --search "your query" --robot-search      # Semantic search over beads
 # Use Exa MCP for current docs/APIs          # Real-time web search
 ```
 
 ### Rules
 
-- **Always** use `--robot` or `--json` flags with `bv` and `cass` (TUIs will hang)
+- **Always** use `--robot-*` flags with `bv` (bare `bv` launches a TUI and will hang)
+- **Always** use `--robot` or `--json` flags with `cass`
 - **Never** delete files without explicit user approval
 - **Never** run destructive git commands (`--force`, `--hard`)
 
@@ -151,11 +155,24 @@ bd doctor --fix                    # Health check
 ### Beads Viewer (Graph Analysis)
 
 ```bash
-bv --robot-priority                # What should I work on?
-bv --robot-plan                    # Parallel execution tracks
-bv --robot-insights                # Graph metrics (PageRank, betweenness, HITS)
-bv --robot-diff --diff-since "1 hour ago"  # Recent changes
-bv --robot-recipes                 # Available filter presets
+# Default session kickoff
+bv --robot-next                    # Minimal “what should I do next?”
+bv --robot-triage                  # Full bundle (blockers, quick wins, commands)
+
+# Multi-agent partitioning
+bv --robot-triage --robot-triage-by-track
+bv --robot-plan
+
+# Risk & hygiene (use before big work)
+bv --robot-alerts
+bv --robot-suggest
+
+# Debugging / regression analysis
+bv --robot-diff --diff-since HEAD~5
+bv --as-of HEAD~10 --robot-triage
+
+# Handoff (when needed)
+bv --robot-history --bead-history bd-123
 ```
 
 **Graph metrics explained:**
@@ -316,7 +333,7 @@ Before running `bd ready`, check your inbox for recent `[CLAIMED]` messages.
 ```
 □ 1. Check inbox for recent [CLAIMED] messages
 □ 2. Run `bd ready --json` to find unblocked work
-□ 3. Run `bv --robot-priority` to confirm priority
+□ 3. Run `bv --robot-next` (or `bv --robot-triage`) to pick the best next task
 □ 4. Check current file reservations (avoid conflicts)
 □ 5. Claim PARENT bead: `bd update <id> --status in_progress --assignee YOUR_NAME`
 □ 6. Claim ALL SUB-BEADS: `bd update <id.1> --status in_progress --assignee YOUR_NAME` (repeat for all)
@@ -498,7 +515,7 @@ Included commands in this repo (copy into your project):
 |-------|-----|
 | `bd: command not found` | Add `~/.local/bin` to PATH: `export PATH="$HOME/.local/bin:$PATH"` |
 | `bv: command not found` | Same PATH fix, or reinstall via agent-mail installer |
-| `bv` or `cass` hangs | **Always** use `--robot` or `--json` flags. TUI mode hangs agents |
+| `bv` or `cass` hangs | For `bv`: always use `bv --robot-*` flags. For `cass`: always use `--robot` or `--json`. |
 | CASS finds nothing | Run `cass index --full` to index sessions |
 | `cm context` returns empty | Check CASS indexed, run `cm doctor`. Update to cm v0.2.0+ |
 | `cm` errors | Upgrade `cm`/`cass` and retry; `cm context` is the primary entrypoint |
