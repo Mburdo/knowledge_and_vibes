@@ -85,7 +85,9 @@ bv --update --yes
 curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/coding_agent_session_search/main/install.sh | bash -s -- --easy-mode
 
 # Install/update cass-memory
-curl -L https://github.com/Dicklesworthstone/cass_memory_system/releases/latest/download/cass-memory-macos-arm64 -o ~/.local/bin/cm && chmod +x ~/.local/bin/cm
+# One-liner install (Linux/macOS)
+curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/cass_memory_system/main/install.sh \
+  | bash -s -- --easy-mode --verify
 
 # Install/update UBS
 curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/ultimate_bug_scanner/master/install.sh | bash -s -- --easy-mode
@@ -193,7 +195,7 @@ Create rules with path filters for your language:
 
 **For TypeScript/JavaScript projects:**
 
-```bash
+````bash
 cat > .claude/rules/typescript.md << 'EOF'
 ---
 paths:
@@ -227,11 +229,11 @@ npm run lint
 
 If you see errors, understand and resolve each one carefully.
 EOF
-```
+````
 
 **For Python projects:**
 
-```bash
+````bash
 cat > .claude/rules/python.md << 'EOF'
 ---
 paths:
@@ -271,7 +273,7 @@ ruff check . --fix
 ruff format .
 ```
 EOF
-```
+````
 
 ### Step 4.4: Create Domain-Specific Rules (Optional)
 
@@ -349,7 +351,7 @@ description: Code style guidelines for this project. Auto-activates when editing
 
 ## When This Activates
 
-This skill auto-activates when you're:
+This skill auto-activates when you are:
 - Editing source files
 - Creating new components or modules
 - Working on API integrations
@@ -395,7 +397,7 @@ grep -n "NEVER\|MUST\|Rule #1" CLAUDE.md
 
 ### Step 6.2: CLAUDE.md Template
 
-```markdown
+````markdown
 # CLAUDE.md
 
 This file provides guidance to Claude Code when working with this repository.
@@ -436,7 +438,7 @@ This file provides guidance to Claude Code when working with this repository.
 ## Architecture
 
 [Brief architecture overview - keep concise]
-```
+````
 
 ---
 
@@ -509,7 +511,7 @@ See `AGENTS_TEMPLATE.md` for complete sections to copy.
 
 ### Step 7.4: Add Session Naming Section
 
-```markdown
+````markdown
 ## Session Workflow
 
 ### Session Naming (Claude Code 2.0.64+)
@@ -535,7 +537,7 @@ To resume later:
 ```bash
 claude --resume myproject-GreenCastle-20251210-143022
 ```
-```
+````
 
 ---
 
@@ -744,7 +746,9 @@ cass index --full
 
 ```bash
 # Download latest release
-curl -L https://github.com/Dicklesworthstone/cass_memory_system/releases/latest/download/cass-memory-macos-arm64 -o ~/.local/bin/cm && chmod +x ~/.local/bin/cm
+# One-liner install (Linux/macOS)
+curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/cass_memory_system/main/install.sh \
+  | bash -s -- --easy-mode --verify
 ```
 
 ### Skills not activating
