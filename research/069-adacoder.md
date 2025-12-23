@@ -1,3 +1,9 @@
+---
+title: AdaCoder - Adaptive Planning Multi-Agent Framework
+tags: [adaptive, multi-agent, model-profiling, decomposition, generalizability, planning]
+protocols: [P3, P10]
+---
+
 # AdaCoder: Adaptive Planning Multi-Agent Framework
 
 **Paper:** AdaCoder: An Adaptive Planning and Multi-Agent Framework for Function-Level Code Generation

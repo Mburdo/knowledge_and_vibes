@@ -1,3 +1,9 @@
+---
+title: SWE-bench - GitHub Issue Resolution
+tags: [benchmark, localization, multi-file, execution-based, github]
+protocols: [P6, P8]
+---
+
 # SWE-bench: Real-World GitHub Issue Resolution
 
 **Paper:** SWE-bench: Can Language Models Resolve Real-World GitHub Issues?

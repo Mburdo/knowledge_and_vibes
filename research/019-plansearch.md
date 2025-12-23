@@ -1,3 +1,9 @@
+---
+title: PlanSearch - Natural Language Plan Search
+tags: [planning, search, diversity, code-generation, sampling, observations]
+protocols: [P3, P10]
+---
+
 # PlanSearch: Search Over Natural-Language Plans
 
 **Paper:** Planning In Natural Language Improves LLM Search For Code Generation

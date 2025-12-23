@@ -1,3 +1,9 @@
+---
+title: Live-SWE-agent - Dynamic Tool Creation
+tags: [agents, tool-creation, reflection, swe-bench, self-evolution]
+protocols: [P8]
+---
+
 # Live-SWE-agent: Dynamic Tool Creation
 
 **Paper:** Live-SWE-agent: Can Software Engineering Agents Self-Evolve on the Fly?

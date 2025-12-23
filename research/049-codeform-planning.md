@@ -1,3 +1,9 @@
+---
+title: Code-Form Planning - Structured Plans for Reasoning
+tags: [planning, structured-plans, pseudocode, control-flow, reasoning, code-generation]
+protocols: [P3]
+---
+
 # Code-Form Planning: Structured Plans for Reasoning
 
 **Paper:** Unlocking Reasoning Potential in Large Language Models by Scaling Code-form Planning

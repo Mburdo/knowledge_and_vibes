@@ -1,3 +1,10 @@
+---
+title: Decisions Template (ADRs)
+description: Capture significant decisions - what you decided, alternatives, and what would change your mind.
+category: templates
+stage: 3
+---
+
 # Decisions Template (ADRs)
 
 ADRs (Architecture Decision Records) capture significant decisions so they don't get relitigated later.

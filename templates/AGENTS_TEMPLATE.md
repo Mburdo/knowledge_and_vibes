@@ -1,3 +1,9 @@
+---
+title: AGENTS.md Template
+description: Project overview and workflow baseline for AI agents working in your codebase.
+category: templates
+---
+
 # AGENTS.md
 
 <!-- CUSTOMIZE: Replace bracketed items with your project specifics -->

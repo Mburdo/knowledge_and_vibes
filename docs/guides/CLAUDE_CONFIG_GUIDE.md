@@ -1,3 +1,9 @@
+---
+title: Claude Code Configuration Guide
+description: How to organize agent instructions using Claude Code's official configuration system - rules, skills, and commands.
+category: guides
+---
+
 # Claude Code Configuration Guide
 
 How to organize agent instructions using Claude Code's official configuration system: rules, skills, and commands.

@@ -1,3 +1,10 @@
+---
+title: Requirements Template
+description: Define what must be true when done. REQ-* for requirements, AC-* for acceptance criteria.
+category: templates
+stage: 1
+---
+
 # Requirements Template
 
 Requirements define what must be true when you're done. They describe outcomes and constraints, not solutions.

@@ -1,3 +1,9 @@
+---
+title: Context Retrieval for Repository Editing
+tags: [context, retrieval, reasoning, sufficiency, localization, precision]
+protocols: [P2, P5]
+---
+
 # Reasoning for Context Retrieval in Repository-Level Code Editing
 
 **Paper:** On The Importance of Reasoning for Context Retrieval in Repository-Level Code Editing

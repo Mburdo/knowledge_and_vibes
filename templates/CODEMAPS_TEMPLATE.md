@@ -1,3 +1,9 @@
+---
+title: Codemaps Template
+description: Token-aware architecture documentation for AI agents. Navigation aids, not comprehensive docs.
+category: templates
+---
+
 # Codemaps Template
 
 **Token-aware architecture documentation for AI agents.**

@@ -1,3 +1,9 @@
+---
+title: Anthropic Context Engineering
+tags: [context, minimal, signal-to-noise, tools, positioning, attention]
+protocols: [P5]
+---
+
 # Anthropic Context Engineering 2025
 
 **Paper:** Context Engineering for Claude: Best Practices from Anthropic

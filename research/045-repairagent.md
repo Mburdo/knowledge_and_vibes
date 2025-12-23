@@ -1,3 +1,9 @@
+---
+title: RepairAgent - Autonomous Program Repair Agent
+tags: [repair, agentic, state-machine, tools, structured, debugging]
+protocols: [P8]
+---
+
 # RepairAgent: Autonomous Program Repair Agent
 
 **Paper:** RepairAgent: An Autonomous, LLM-Based Agent for Program Repair

@@ -1,3 +1,9 @@
+---
+title: Coeditor - Leveraging Repo-level Diffs
+tags: [editing, diffs, temporal-context, repo-level, editing-prediction, attention]
+protocols: [P5, P8]
+---
+
 # Coeditor: Leveraging Repo-level Diffs for Code Auto-Editing
 
 **Paper:** Coeditor: Leveraging Repo-level Diffs for Code Auto-editing

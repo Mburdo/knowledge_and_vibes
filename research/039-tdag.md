@@ -1,3 +1,9 @@
+---
+title: TDAG - Dynamic Task Decomposition
+tags: [decomposition, dynamic, agents, skills, adaptive, multi-agent]
+protocols: [P3, P8]
+---
+
 # TDAG: Dynamic Task Decomposition and Agent Generation
 
 **Paper:** TDAG: A Multi-Agent Framework based on Dynamic Task Decomposition and Agent Generation

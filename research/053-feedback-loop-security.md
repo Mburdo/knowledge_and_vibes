@@ -1,3 +1,9 @@
+---
+title: Security Degradation in Iterative Repair
+tags: [security, degradation, iteration, vulnerabilities, feedback, auth]
+protocols: [P13]
+---
+
 # Feedback Loop Security Degradation 2025
 
 **Paper:** Security Implications of Iterative LLM Code Repair

@@ -1,3 +1,9 @@
+---
+title: HumanEval Pro - Self-Invoking Code Generation
+tags: [benchmark, self-invocation, multi-phase, tool-reuse, progressive, calibration]
+protocols: [P12]
+---
+
 # HumanEval Pro: Self-Invoking Code Generation
 
 **Paper:** HumanEval Pro and MBPP Pro: Evaluating Large Language Models on Self-invoking Code Generation

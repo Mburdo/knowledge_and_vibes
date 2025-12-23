@@ -1,3 +1,9 @@
+---
+title: Agentic Software Engineering (SE 3.0) 2025
+tags: [agentic-se, se-3.0, trust, autonomous, orchestration, framework]
+protocols: [P10, P14]
+---
+
 # Agentic Software Engineering (SE 3.0) 2025
 
 **Sources:**

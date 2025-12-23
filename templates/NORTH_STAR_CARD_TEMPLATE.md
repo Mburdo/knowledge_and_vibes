@@ -1,3 +1,10 @@
+---
+title: North Star Card Template
+description: Anchors everything - what success looks like, what's out of scope, and when to stop and ask.
+category: templates
+stage: 0
+---
+
 # North Star Card
 
 The North Star Card anchors everything. Before anyone writes code, this document pins down what success looks like, what's out of scope, and when to stop and ask.

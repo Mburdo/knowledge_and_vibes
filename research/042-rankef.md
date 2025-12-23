@@ -1,3 +1,9 @@
+---
+title: RankEF - Execution-Feedback Reranking
+tags: [ranking, selection, execution-feedback, multi-candidate, proxy-signals, validation]
+protocols: [P6, P10]
+---
+
 # RankEF: Execution-Feedback Reranking
 
 **Paper:** Sifting through the Chaff: On Utilizing Execution Feedback for Ranking the Generated Code Candidates

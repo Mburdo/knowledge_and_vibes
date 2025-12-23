@@ -1,3 +1,9 @@
+---
+title: Philosophy
+description: Make it hard to be wrong. The principles behind Knowledge & Vibes and why workflow beats prompting.
+category: workflow
+---
+
 <div align="center">
 
 # Philosophy
@@ -15,6 +21,40 @@ There's a widening divide in software development right now. Not between languag
 The second group doesn't see it yet. They're keeping up—for now. But the first group is shipping in days what used to take weeks, and the quality metrics aren't suffering. They're flat or improving.
 
 This isn't about tools. Cursor vs Claude Code vs whatever dropped last week—that's noise. The gap is **workflow**. It's how you structure the work, what you verify, when you decompose, and what you refuse to skip.
+
+---
+
+## The Core Principle
+
+**Plan as much as appropriate. Give the AI as few decisions as possible.**
+
+Any decision you don't claim, you implicitly delegate. When you prompt, you're delegating the choices you didn't lock down and hoping the model makes them correctly. When you plan, you're making those decisions yourself and handing off only the execution.
+
+This is the difference between hoping and knowing.
+
+> **The plan is complete when there's nothing left to interpret.**
+
+If an agent would need to ask you a question, you're not done planning yet. That question represents a gap—and gaps become assumptions the model makes without you.
+
+---
+
+## The Compression Trap
+
+You have an idea containing thousands of tiny decisions. The data model. The user flow. What happens when someone clicks that button. How authentication works. All of it is in your head.
+
+Then you compress it into a short prompt. The model fills the gaps with training data—not your intent.
+
+The output might look right. Buttons click. But underneath: a stack of defaults, assumptions, and placeholder logic that have nothing to do with what you wanted.
+
+> **Gaps become assumptions. Assumptions become architecture. Bad architecture becomes a rewrite.**
+
+This is why projects feel fine at the start and suddenly fall apart. The early assumptions were small. Manageable. But they accumulated. Each layer inherits the assumptions below it. Three features in, you're debugging decisions you never made, in a session you no longer have.
+
+Planning isn't slower. The time gets spent either way. You either spend it upfront, thinking through decisions before the model touches them. Or you spend it later, untangling decisions the model made without you.
+
+**Same hours. Different outcomes.**
+
+See `DISCOVERY.md` for the complete guide to surfacing every decision before implementation begins.
 
 ---
 
@@ -240,6 +280,7 @@ The tools will keep changing. These principles won't.
 
 ## Next
 
+- **Discovery (start here for new projects):** `docs/workflow/DISCOVERY.md`
 - **Lifecycle and gates:** `docs/workflow/EVIDENCE_BASED_GUIDE.md`
 - **Protocols:** `docs/workflow/PROTOCOLS.md`
 - **Decomposition mechanics:** `docs/workflow/DECOMPOSITION.md`

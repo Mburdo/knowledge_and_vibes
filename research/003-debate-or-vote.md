@@ -1,3 +1,9 @@
+---
+title: Debate or Vote
+tags: [multi-agent, voting, debate, decision-making, calibration]
+protocols: [P10, P11]
+---
+
 # Debate or Vote: Multi-Agent Decision Making
 
 **Paper:** Debate or Vote: Which Yields Better Decisions in Multi-Agent Large Language Models?

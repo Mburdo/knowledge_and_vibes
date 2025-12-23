@@ -1,3 +1,9 @@
+---
+title: Orchestrator-Subagent Pattern
+description: Spawn specialized subagents for each phase instead of one agent holding everything in context. 90% improvement over single-agent approaches.
+category: guides
+---
+
 # Orchestrator-Subagent Pattern
 
 Instead of one agent holding everything in context, spawn specialized subagents for each phase. Each gets fresh context. Pass only **summaries and file paths** between phases, not full content.

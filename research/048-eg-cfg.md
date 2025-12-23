@@ -1,3 +1,9 @@
+---
+title: EG-CFG - Execution-Guided Line-by-Line Code Generation
+tags: [execution-guided, decoding, beam-search, line-by-line, incremental, validation]
+protocols: [P6, P8]
+---
+
 # EG-CFG: Execution-Guided Line-by-Line Code Generation
 
 **Paper:** Execution Guided Line-by-Line Code Generation

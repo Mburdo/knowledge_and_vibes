@@ -1,3 +1,9 @@
+---
+title: Toggle - Token-Level Bug Localization and Repair
+tags: [localization, token-level, repair, constrained-editing, surgical-edits, encoder-decoder]
+protocols: [P2, P8]
+---
+
 # Toggle: Token-Level Bug Localization and Repair
 
 **Paper:** A Deep Dive into Large Language Models for Automated Bug Localization and Repair (Toggle framework)

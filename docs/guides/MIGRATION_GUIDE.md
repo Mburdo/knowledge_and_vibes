@@ -1,3 +1,9 @@
+---
+title: Migration Guide
+description: Bring an existing project into the Knowledge & Vibes stack - restructuring Claude Code configuration, installing tools, and setting up documentation.
+category: guides
+---
+
 # Migration Guide
 
 Bring an existing project into the Knowledge & Vibes stack. This guide covers restructuring Claude Code configuration, installing tools, and setting up proper documentation.

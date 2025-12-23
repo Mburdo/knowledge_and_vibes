@@ -1,3 +1,10 @@
+---
+title: Requirements QA Template
+description: Remove ambiguity and make requirements compile into tests and implementation tasks.
+category: templates
+stage: 2
+---
+
 # Requirements QA (Template)
 
 Use this after drafting `REQ-*` / `AC-*`. The goal is to remove ambiguity and make requirements "compile" into tests and implementation tasks.

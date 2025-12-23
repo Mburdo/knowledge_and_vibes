@@ -1,3 +1,9 @@
+---
+title: ChatRepair - Conversation-Driven Repair
+tags: [repair, debugging, conversation, iteration, feedback, testing]
+protocols: [P6, P11]
+---
+
 # ChatRepair: Conversation-Driven Program Repair
 
 **Paper:** Automated Program Repair via Conversation: Fixing 162 out of 337 Bugs for $0.42 Each using ChatGPT

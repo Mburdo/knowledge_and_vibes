@@ -84,16 +84,6 @@ Research papers read in full and summarized with practical implications for the 
 
 ---
 
-## Workflow Impact Analysis
-
-For a comprehensive analysis of how this research should update our workflow, see:
-
-**[2025-RESEARCH-UPDATE-ANALYSIS.md](../docs/workflow/2025-RESEARCH-UPDATE-ANALYSIS.md)**
-
-This document maps each research paper to specific protocol updates with priority levels and cross-references.
-
----
-
 ## Key Takeaways
 
 ### What Works

@@ -1,3 +1,9 @@
+---
+title: Decomposition
+description: Breaking plans into executable phases and beads. Addresses long-context degradation by chunking work into manageable units.
+category: workflow
+---
+
 <div align="center">
 
 # Decomposition
@@ -19,6 +25,7 @@ How to break a completed plan into phases and beads that AI agents can execute w
 - [Prerequisites](#prerequisites)
 - [The Hierarchy: Plan → Phases → Beads](#the-hierarchy-plan--phases--beads)
 - [Why Phases and Beads Exist](#why-phases-and-beads-exist-context-control)
+- [The Three Rules of Lossless Decomposition](#the-three-rules-of-lossless-decomposition)
 - [Phase Breakdown](#phase-breakdown-operator-led)
 - [Scheduling Calibration Points](#scheduling-calibration-points-between-phases)
 - [Adaptive Decomposition (ADaPT)](#adaptive-decomposition-adapt-pattern)
@@ -34,14 +41,16 @@ How to break a completed plan into phases and beads that AI agents can execute w
 ## Prerequisites
 
 This guide assumes you already have:
+- A Master Plan where nothing is left to interpret (see `DISCOVERY.md`)
 - A pinned North Star Card (`templates/NORTH_STAR_CARD_TEMPLATE.md`)
 - Requirements with falsifiable acceptance criteria (`REQ-*` / `AC-*`)
 - Key architectural decisions captured (ADRs), and top risks spiked
 
-If you're still in ideation/requirements, start here instead:
-- `PLANNING_DEEP_DIVE.md`
-- `EVIDENCE_BASED_GUIDE.md`
-- `PROTOCOLS.md`
+If you're still in discovery/ideation/requirements, start here instead:
+- `DISCOVERY.md` — Pre-pipeline curiosity-driven architecture
+- `PLANNING_DEEP_DIVE.md` — Formalizing into artifacts
+- `EVIDENCE_BASED_GUIDE.md` — Full evidence-based workflow
+- `PROTOCOLS.md` — Protocol cards
 
 New to the repo? Start with:
 - `START_HERE.md`
@@ -99,6 +108,77 @@ The goal is **semantic coherence**: can an agent hold the full context without l
 **The 500-line number is not about file length.** It's about: "Can an agent understand the full semantic context without degradation?" 500 lines of boilerplate ≠ 500 lines of complex interdependent logic. Adjust based on semantic density.
 
 Evidence anchors: `research/004-context-length-hurts.md`, `research/005-lost-in-middle-code.md`, `research/057-anthropic-context-engineering.md`.
+
+---
+
+## The Three Rules of Lossless Decomposition
+
+When breaking a master plan into phases, three rules determine success or failure. Miss any one, and your plan dies through lossy summarization.
+
+### Rule 1: Size Your Chunks
+
+Agents perform poorly on large documents. Give them a 5,000-line markdown file and they'll start summarizing, paraphrasing, losing details. Give them 500-1,500 lines and they can hold every specification in working memory.
+
+Keep each phase document at a manageable size. That's the secret.
+
+**Why this matters:** Long context degrades reasoning even with perfect retrieval. The model "forgets" or de-prioritizes information in the middle of large documents. Chunking keeps semantic reasoning reliable.
+
+### Rule 2: Decompose Losslessly
+
+When you split a large plan into smaller pieces, you do not summarize. You *reorganize*. Every decision survives. Every edge case lives somewhere.
+
+Think of it like Russian nesting dolls. Your master plan is the biggest doll. You open it, and inside are your phases—smaller, but each one complete and fully formed. You open a phase, and inside are your tasks. Open a task, and inside are your sub-tasks.
+
+The key: each layer is whole. Not a summary of the layer above it. Not a simplified version. A complete specification at a smaller scale.
+
+**If a detail doesn't appear in a sub-task, that detail is gone forever.**
+
+There's one word that makes or breaks this: **LOSSLESS.**
+
+| Lossy (Bad) | Lossless (Good) |
+|-------------|-----------------|
+| "Handle authentication as described in the master plan" | Full auth spec copied into phase doc with all edge cases |
+| "See main requirements for error handling" | Error handling rules inlined where they apply |
+| "Follow the patterns established earlier" | Patterns explicitly stated in each phase that uses them |
+| Summarizing to save space | Reorganizing to maintain completeness |
+
+### Rule 3: Verify With Fresh Eyes
+
+The agent that created the breakdown can't audit its own work. It has the full context in memory—it doesn't notice what's missing because it can still "see" it.
+
+Bring in a different agent. Have it check:
+
+- Does every section from the original appear somewhere?
+- Can each task stand alone?
+- Could someone implement any piece without asking a single question?
+
+If the answer is no, you're not done.
+
+**Verification prompt:**
+
+```
+You are auditing a decomposition. You have NOT seen the original master plan.
+
+For each phase/task document:
+1. Is it self-contained? Could you implement it without asking questions?
+2. Are there references to "the main plan" or "as described above"? (These are gaps)
+3. Are edge cases explicit or implied?
+4. What questions would you need to ask to implement this?
+
+List every gap you find.
+```
+
+### The Mantra
+
+**Bounded. Complete. Verified.**
+
+- **Bounded** = scoped to what an agent can hold in working memory
+- **Complete** = every detail survives the decomposition
+- **Verified** = audited by someone who wasn't there
+
+Master these three, and your plans survive execution.
+
+> **Gaps become assumptions. Assumptions become architecture. Bad architecture becomes a rewrite.**
 
 ---
 
@@ -263,6 +343,7 @@ Before closing:
 
 ## Further Reading
 
+- `DISCOVERY.md` (pre-pipeline curiosity-driven architecture)
 - `EVIDENCE_BASED_GUIDE.md` (end-to-end gates + artifacts)
 - `PROTOCOLS.md` (protocol cards)
 - `PLANNING_DEEP_DIVE.md` (nontechnical planning tutorial)
@@ -272,6 +353,11 @@ Before closing:
 
 ---
 
-## NLU (No Longer Used)
+## Key Refrains
 
-- NLU/DECOMPOSITION_LEGACY.md — legacy version kept for reference.
+**The plan is complete when there's nothing left to interpret.**
+
+**Bounded. Complete. Verified.**
+
+**Gaps become assumptions. Assumptions become architecture. Bad architecture becomes a rewrite.**
+

@@ -1,3 +1,9 @@
+---
+title: LLMs vs Human Experts in Requirements Engineering
+tags: [requirements, human-comparison, cost, quality, perception, validation]
+protocols: [P1]
+---
+
 # LLMs vs Human Experts in Requirements Engineering
 
 **Paper:** Analysis of LLMs vs Human Experts in Requirements Engineering

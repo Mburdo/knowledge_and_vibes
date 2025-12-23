@@ -1,3 +1,9 @@
+---
+title: Planning-Driven Programming (LPW)
+tags: [planning, debugging, verification, code-generation, workflow]
+protocols: [P3, P8]
+---
+
 # Planning-Driven Programming (LPW)
 
 **Paper:** Planning-Driven Programming: A Large Language Model Programming Workflow

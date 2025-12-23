@@ -1,3 +1,9 @@
+---
+title: RLEF - Reinforcement Learning from Execution Feedback
+tags: [reinforcement-learning, execution-feedback, repair, grounding, training, feedback-loop]
+protocols: [P6, P8, P11]
+---
+
 # RLEF: Reinforcement Learning from Execution Feedback
 
 **Paper:** RLEF: Grounding Code LLMs in Execution Feedback with Reinforcement Learning

@@ -1,3 +1,9 @@
+---
+title: Live-SWE-agent - Self-Evolving Agents
+tags: [self-evolution, adaptation, tool-creation, runtime, learning, guardrails]
+protocols: [P8]
+---
+
 # Live-SWE-agent: Self-Evolving Agents
 
 **Paper:** Live-SWE-agent: Can Software Engineering Agents Self-Evolve on the Fly?

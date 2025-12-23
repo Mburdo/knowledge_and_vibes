@@ -1,3 +1,9 @@
+---
+title: Debugging Decay Index 2025
+tags: [debugging, decay, iteration, self-correction, effectiveness, repair]
+protocols: [P8, P11]
+---
+
 # Debugging Decay Index 2025
 
 **Paper:** Measuring and mitigating debugging effectiveness decay in code language models

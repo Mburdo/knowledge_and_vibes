@@ -1,3 +1,9 @@
+---
+title: ADaPT - Adaptive Decomposition and Planning
+tags: [decomposition, planning, adaptive, execution-first, iteration, recursion]
+protocols: [P3, P8, P11]
+---
+
 # ADaPT: As-Needed Decomposition and Planning with Language Models
 
 **Paper:** ADaPT: As-Needed Decomposition and Planning with Language Models

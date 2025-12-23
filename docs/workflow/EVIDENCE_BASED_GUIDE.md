@@ -1,3 +1,9 @@
+---
+title: Evidence-Based Guide
+description: The operational manual for Knowledge & Vibes - a gated, artifact-driven pipeline that maximizes the probability of correct outcomes.
+category: workflow
+---
+
 <div align="center">
 
 # Evidence-Based Guide
@@ -16,7 +22,7 @@ The operational manual for Knowledge & Vibes, a gated, artifact-driven pipeline 
 
 | Section | What You'll Learn |
 |:--------|:------------------|
-| [The Five Principles](#-the-five-principles) | The core ideas that shape everything |
+| [The Six Principles](#-the-six-principles) | The core ideas that shape everything |
 | [Roles](#-roles-who-does-what) | What operators and agents each handle |
 | [The Tool Stack](#-the-tool-stack) | What each tool addresses |
 | [The 10-Stage Pipeline](#-the-10-stage-pipeline) | The complete workflow from idea to ship |
@@ -24,9 +30,20 @@ The operational manual for Knowledge & Vibes, a gated, artifact-driven pipeline 
 
 ---
 
-## 💡 The Five Principles
+## 💡 The Six Principles
 
 <table>
+<tr><td>
+
+### 0. Give AI Few Decisions
+
+**Plan as much as appropriate. Give the AI as few decisions as possible.**
+
+Any decision you don't claim, you implicitly delegate. Gaps become assumptions. Assumptions become architecture. Bad architecture becomes a rewrite.
+
+**Implication:** The plan is complete when there's nothing left to interpret. See `DISCOVERY.md`.
+
+</td></tr>
 <tr><td>
 
 ### 1. Truth Lives Outside the Model
@@ -365,9 +382,20 @@ bd close <id> --reason "..."     # Then parent
 
 | If you want... | Read... |
 |:---------------|:--------|
+| Pre-pipeline discovery (start here for new projects) | [DISCOVERY.md](./DISCOVERY.md) |
 | Exact protocol checklists | [PROTOCOLS.md](./PROTOCOLS.md) |
 | Deep planning tutorial | [PLANNING_DEEP_DIVE.md](./PLANNING_DEEP_DIVE.md) |
 | Decomposition mechanics | [DECOMPOSITION.md](./DECOMPOSITION.md) |
 | Tool operations & multi-agent | [Tool Stack & Operations](../guides/TOOL_STACK_AND_OPERATIONS.md) |
 | Research summaries | [research/README.md](../../research/README.md) |
 | Why this approach works | [PHILOSOPHY.md](./PHILOSOPHY.md) |
+
+---
+
+## Key Refrains
+
+**Plan as much as appropriate. Give the AI as few decisions as possible.**
+
+**The plan is complete when there's nothing left to interpret.**
+
+**Same hours. Different outcomes.**

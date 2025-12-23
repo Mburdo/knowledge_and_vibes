@@ -1,3 +1,8 @@
+---
+title: Templates
+description: The artifacts that make plans explicit and verifiable. North Star, Requirements, ADRs, and more.
+---
+
 <div align="center">
 
 # Templates
@@ -189,9 +194,10 @@ Located in `.claude/templates/beads/`:
 | Template | Used By | Purpose |
 |:---------|:--------|:--------|
 | `bead-structure.md` | `/decompose-task` | Structure for new beads |
-| `claimed-announcement.md` | `/next-bead` | [CLAIMED] message format |
-| `closed-announcement.md` | Bead close | [CLOSED] message format |
-| `verification-report.md` | Bead close | Evidence of completion |
+| `claimed.md` | `/next-bead` | [CLAIMED] message format |
+| `closed.md` | Bead close | [CLOSED] message format |
+| `next-bead-output.md` | `/next-bead` | Output format for task discovery |
+| `verification.md` | Bead close | Evidence of completion |
 
 ### Planning Templates
 
@@ -202,6 +208,8 @@ Located in `.claude/templates/planning/`:
 | `phase-document.md` | Phase breakdown | Structure for phase specs |
 | `sub-bead-structure.md` | ADaPT decomposition | When tasks need splitting |
 | `audit-report.md` | Plan audits | Gap and risk analysis |
+| `content-manifest.md` | Plan assembly | Track plan pack contents |
+| `decompose-output.md` | `/decompose-task` | Output format for decomposition |
 
 ### Calibration Templates
 
@@ -210,9 +218,12 @@ Located in `.claude/templates/calibration/`:
 | Template | Used By | Purpose |
 |:---------|:--------|:--------|
 | `broadcast.md` | `/calibrate` | Request for agent assessments |
-| `challenge-response.md` | Calibration | Test-based disagreement resolution |
-| `decisions.md` | `/calibrate` | Recording calibration outcomes |
+| `response.md` | Calibration | Test-based disagreement resolution |
+| `decision.md` | `/calibrate` | Recording calibration outcomes |
+| `summary.md` | `/calibrate` | Agent-to-agent summary |
 | `user-report.md` | `/calibrate` | Summary for operator |
+| `change-log-entry.md` | `/calibrate` | Plan change records |
+| `verification.md` | `/calibrate` | Evidence verification format |
 
 ---
 

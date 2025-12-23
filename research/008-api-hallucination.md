@@ -1,3 +1,9 @@
+---
+title: API Hallucination
+tags: [hallucination, api, documentation, grounding, retrieval]
+protocols: [P2]
+---
+
 # API Hallucination and Documentation Augmented Generation
 
 **Paper:** On Mitigating Code LLM Hallucinations with API Documentation

@@ -1,3 +1,9 @@
+---
+title: Agentless
+tags: [agents, swe-bench, pipeline, localization, simplicity]
+protocols: [P8]
+---
+
 # Agentless: Demystifying SWE Agents
 
 **Paper:** Agentless: Demystifying LLM-based Software Engineering Agents

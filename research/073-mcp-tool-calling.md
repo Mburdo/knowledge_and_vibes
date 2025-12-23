@@ -1,3 +1,9 @@
+---
+title: Model Context Protocol (MCP) and Tool Calling 2025
+tags: [mcp, tool-calling, protocol, agents, standardization, code-mode]
+protocols: [P8]
+---
+
 # Model Context Protocol (MCP) and Tool Calling 2025
 
 **Sources:**

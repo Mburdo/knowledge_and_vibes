@@ -1,3 +1,9 @@
+---
+title: SWE-rebench - Decontaminated Standardized SWE Evaluation
+tags: [benchmark, contamination, scaffold, standardization, statistical, evaluation]
+protocols: [P12]
+---
+
 # SWE-rebench: Decontaminated, Standardized SWE Evaluation
 
 **Paper:** SWE-rebench: An Automated Pipeline for Task Collection and Decontaminated Evaluation of Software Engineering Agents

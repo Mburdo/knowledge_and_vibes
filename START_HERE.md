@@ -1,3 +1,8 @@
+---
+title: Start Here
+description: The fastest path to understanding and using Knowledge & Vibes. Navigation hub for the entire framework.
+---
+
 <div align="center">
 
 # Start Here
@@ -26,11 +31,14 @@ Knowledge & Vibes gives you a structured system for building software with AI:
 
 ## The Solution in 60 Seconds
 
+0. **Discover thoroughly**: Surface every decision hiding in your idea before any agent touches code
 1. **Plan explicitly**: North Star cards, requirements with acceptance criteria, recorded decisions
 2. **Track everything**: Beads (tasks) with dependencies, status, verification requirements
 3. **Coordinate agents**: File reservations, claim/close announcements, message routing
 4. **Verify continuously**: Tests before code (TDD), security scans before commit, calibration between phases
 5. **Bound iteration**: Max 3 repair attempts, then decompose or escalate
+
+**The core principle:** Plan as much as appropriate. Give the AI as few decisions as possible.
 
 **The result:** A repeatable process that produces working software.
 
@@ -85,7 +93,8 @@ Knowledge & Vibes gives you a structured system for building software with AI:
 
 | Document | When to Read |
 |:---------|:-------------|
-| [**Planning Deep Dive**](./docs/workflow/PLANNING_DEEP_DIVE.md) | Starting a new project |
+| [**Discovery**](./docs/workflow/DISCOVERY.md) | Starting from scratch (pre-pipeline) |
+| [**Planning Deep Dive**](./docs/workflow/PLANNING_DEEP_DIVE.md) | Formalizing into artifacts |
 | [**Decomposition**](./docs/workflow/DECOMPOSITION.md) | Breaking plans into tasks |
 | [**Research**](./research/README.md) | Understanding why protocols exist |
 
@@ -113,6 +122,14 @@ Everything else is reference material.
 <tr>
 <td width="50%" valign="top">
 
+### 0. Give AI Few Decisions
+
+**Plan as much as appropriate. Give the AI as few decisions as possible.**
+
+Any decision you don't claim, you implicitly delegate. Gaps become assumptions. Assumptions become architecture. Bad architecture becomes a rewrite.
+
+**The plan is complete when there's nothing left to interpret.**
+
 ### 1. Truth Lives Outside the Model
 
 AI output is not truth. Truth is:
@@ -122,14 +139,14 @@ AI output is not truth. Truth is:
 
 Every claim must be verified, not trusted.
 
+</td>
+<td width="50%" valign="top">
+
 ### 2. Tests Adjudicate, Not Rhetoric
 
 When agents disagree, write tests that distinguish the approaches. Run the tests. Let results decide.
 
 Tests are the tiebreaker.
-
-</td>
-<td width="50%" valign="top">
 
 ### 3. Decompose When Reality Demands It
 
@@ -181,5 +198,6 @@ bd close <id> --reason "..."
 | Look up a term | [**Glossary**](./GLOSSARY.md) |
 | See all templates | [**TEMPLATES.md**](./TEMPLATES.md) |
 | Understand the research | [**Research**](./research/README.md) |
-| Start a new project | [**Setup Guide**](./docs/guides/SETUP_GUIDE.md) then [**North Star Template**](./templates/NORTH_STAR_CARD_TEMPLATE.md) |
+| Start a new project from scratch | [**Discovery**](./docs/workflow/DISCOVERY.md) (pre-pipeline curiosity-driven architecture) |
+| Formalize into the pipeline | [**Ideation to Production**](./docs/workflow/IDEATION_TO_PRODUCTION.md) |
 | Migrate an existing project | [**Migration Guide**](./docs/guides/MIGRATION_GUIDE.md) |

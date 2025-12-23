@@ -1,3 +1,9 @@
+---
+title: AI Code Review 2025 - State of Practice
+tags: [code-review, review, security, comments, adoption, production]
+protocols: [P13, P14]
+---
+
 # AI Code Review 2025: State of Practice
 
 **Sources:**

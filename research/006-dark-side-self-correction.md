@@ -1,3 +1,9 @@
+---
+title: Dark Side of LLM Self-Correction
+tags: [self-correction, iteration, wavering, bias, degradation, feedback]
+protocols: [P8, P11]
+---
+
 # The Dark Side of LLM Self-Correction
 
 **Paper:** Understanding the Dark Side of LLMs' Intrinsic Self-Correction

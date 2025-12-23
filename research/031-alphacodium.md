@@ -1,3 +1,9 @@
+---
+title: AlphaCodium - Flow Engineering for Code Generation
+tags: [flow-engineering, iteration, testing, approach-ranking, code-generation, workflow]
+protocols: [P3, P6, P8]
+---
+
 # AlphaCodium: Flow Engineering for Code Generation
 
 **Paper:** Code Generation with AlphaCodium: From Prompt Engineering to Flow Engineering

@@ -1,3 +1,9 @@
+---
+title: CodePlan - Repository-level Planning
+tags: [planning, repository-level, cascade, dependencies, oracle, adaptive]
+protocols: [P4, P8]
+---
+
 # CodePlan: Repository-level Planning + Chain of Edits
 
 **Paper:** CodePlan: Repository-level Coding using LLMs and Planning

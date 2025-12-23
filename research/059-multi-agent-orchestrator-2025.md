@@ -1,3 +1,9 @@
+---
+title: Multi-Agent Orchestrator Patterns 2025
+tags: [multi-agent, orchestrator, parallel-execution, coordination, tracks, synchronization]
+protocols: [P10]
+---
+
 # Multi-Agent Orchestrator Patterns 2025
 
 **Sources:**

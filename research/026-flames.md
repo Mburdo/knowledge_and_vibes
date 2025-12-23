@@ -1,3 +1,9 @@
+---
+title: FLAMES - Semantic-Guided Search for Program Repair
+tags: [search, test-guided, memory-efficient, reward-function, best-first, repair]
+protocols: [P6, P8]
+---
+
 # FLAMES: Semantic-Guided Search for Program Repair
 
 **Paper:** Memory-Efficient Large Language Models for Program Repair with Semantic-Guided Patch Generation (FLAMES)

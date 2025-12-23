@@ -1,3 +1,9 @@
+---
+title: Lita - Lightweight Agents for Agentic Coding 2025
+tags: [lightweight-agents, simplicity, attribution, scaffolding, minimal, adapt]
+protocols: [P8]
+---
+
 # Lita: Lightweight Agents for Agentic Coding 2025
 
 **Paper:** Lita: Light Agent Uncovers the Agentic Coding Capabilities of LLMs

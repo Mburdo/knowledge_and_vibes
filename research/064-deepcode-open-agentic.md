@@ -1,3 +1,9 @@
+---
+title: DeepCode - Open Agentic Coding
+tags: [synthesis, blueprint, stateful-memory, paper-to-code, context-management, generation]
+protocols: [P3, P8]
+---
+
 # DeepCode: Open Agentic Coding
 
 **Paper:** DeepCode: Open Agentic Coding

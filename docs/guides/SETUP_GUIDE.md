@@ -1,3 +1,9 @@
+---
+title: Setup Guide
+description: Install the Knowledge & Vibes toolchain and verify everything works.
+category: guides
+---
+
 <div align="center">
 
 # Setup Guide

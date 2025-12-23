@@ -1,3 +1,9 @@
+---
+title: SWE-bench Multimodal - Visual Software Engineering Tasks
+tags: [benchmark, multimodal, vision, screenshots, visual-bugs, images]
+protocols: [P12]
+---
+
 # SWE-bench Multimodal: Visual Software Engineering Tasks
 
 **Paper:** SWE-bench Multimodal: Does Your Agent Write Better Code When It Can See?

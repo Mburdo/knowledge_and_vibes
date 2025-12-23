@@ -1,3 +1,9 @@
+---
+title: GraphCodeAgent - Dual Graph-Guided Code Generation
+tags: [graph, retrieval, rag, ast, dependencies, context]
+protocols: [P2, P5]
+---
+
 # GraphCodeAgent: Dual Graph-Guided Code Generation
 
 **Paper:** GraphCodeAgent: Dual Graph-Guided LLM Agent for Retrieval-Augmented Repo-Level Code Generation

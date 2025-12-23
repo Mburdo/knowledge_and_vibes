@@ -1,3 +1,9 @@
+---
+title: METR RCT - AI Coding Productivity
+tags: [rct, productivity, verification, domain-familiarity, security, validation]
+protocols: [P13, P14]
+---
+
 # METR Randomized Controlled Trial 2025
 
 **Paper:** Measuring the Impact of AI Coding Assistants on Developer Productivity: A Randomized Controlled Trial

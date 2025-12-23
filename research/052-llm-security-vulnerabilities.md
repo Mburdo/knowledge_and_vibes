@@ -1,3 +1,9 @@
+---
+title: LLM Security Vulnerabilities
+tags: [security, vulnerabilities, ubs, scanning, owasp]
+protocols: [P13]
+---
+
 # LLM Security Vulnerabilities 2025
 
 **Paper:** Security Vulnerabilities in LLM-Generated Code: A Comprehensive Analysis

@@ -1,3 +1,9 @@
+---
+title: Traceability Matrix Template
+description: Map requirements to implementation. Prevents drift and makes gaps obvious.
+category: templates
+---
+
 # Traceability Matrix Template
 
 A traceability matrix maps requirements to implementation. It prevents drift and makes gaps obvious.

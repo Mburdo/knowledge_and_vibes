@@ -1,3 +1,8 @@
+---
+title: Glossary
+description: Every term used in Knowledge & Vibes, defined. Core concepts, tools, commands, and phrases.
+---
+
 <div align="center">
 
 # Glossary

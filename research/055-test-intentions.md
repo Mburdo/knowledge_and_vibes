@@ -1,3 +1,9 @@
+---
+title: Test Intentions 2025
+tags: [testing, coverage, intentions, test-generation, specification, tdd]
+protocols: [P6, P7]
+---
+
 # Test Intentions 2025
 
 **Paper:** Using Test Intentions to Improve AI-Generated Test Coverage

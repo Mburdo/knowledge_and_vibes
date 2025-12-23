@@ -1,3 +1,10 @@
+---
+title: Risks & Spikes Template
+description: Timeboxed investigations that produce evidence to reduce uncertainty before committing.
+category: templates
+stage: 4
+---
+
 # Risks & Spikes Template
 
 Spikes are timeboxed investigations that produce evidence. They're not features. They exist to reduce uncertainty before you commit to a path.

@@ -1,3 +1,9 @@
+---
+title: Requirements Are All You Need - From Requirements to Code with LLMs
+tags: [requirements, progressive-prompting, checkpoints, pipeline, design, stages]
+protocols: [P1, P3]
+---
+
 # Requirements Are All You Need: From Requirements to Code with LLMs
 
 **Paper:** Requirements are All You Need: From Requirements to Code with LLMs

@@ -1,3 +1,9 @@
+---
+title: Test-Driven Development for Code Generation
+tags: [tdd, testing, remediation, iteration, feedback-loop, code-generation]
+protocols: [P6, P8]
+---
+
 # Test-Driven Development for Code Generation
 
 **Paper:** Test-Driven Development for Code Generation

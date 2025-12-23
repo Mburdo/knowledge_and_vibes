@@ -1,3 +1,9 @@
+---
+title: MapCoder - Multi-Stage Pipeline
+tags: [pipeline, retrieval, planning, debugging, multi-stage, code-generation]
+protocols: [P3, P8]
+---
+
 # MapCoder: Multi-Agent Code Generation Pipeline
 
 **Paper:** MapCoder: Multi-Agent Code Generation for Competitive Problem Solving

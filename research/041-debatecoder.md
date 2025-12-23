@@ -1,3 +1,9 @@
+---
+title: DebateCoder - Test-Case-Driven Debate for Code Generation
+tags: [multi-agent, debate, testing, adversarial, evidence-based, convergence]
+protocols: [P6, P10, P11]
+---
+
 # DebateCoder: Test-Case-Driven Debate for Code Generation
 
 **Paper:** DebateCoder: Towards Collective Intelligence of LLMs via Test Case Driven LLM Debate for Code Generation

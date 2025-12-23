@@ -1,3 +1,9 @@
+---
+title: IRIS - LLM-Assisted Static Analysis for Security
+tags: [security, static-analysis, hybrid, taint-analysis, vulnerabilities, triage]
+protocols: [P13]
+---
+
 # IRIS: LLM-Assisted Static Analysis for Security
 
 **Paper:** IRIS: LLM-Assisted Static Analysis for Detecting Security Vulnerabilities

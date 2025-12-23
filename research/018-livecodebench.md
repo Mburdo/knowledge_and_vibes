@@ -1,3 +1,9 @@
+---
+title: LiveCodeBench - Contamination-Free Evaluation
+tags: [benchmark, contamination, evaluation, self-repair, date-filtering, code-generation]
+protocols: [P6, P12]
+---
+
 # LiveCodeBench: Contamination-Free Code Evaluation
 
 **Paper:** LiveCodeBench: Holistic and Contamination Free Evaluation of Large Language Models for Code

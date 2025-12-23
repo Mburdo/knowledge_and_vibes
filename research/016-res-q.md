@@ -1,3 +1,9 @@
+---
+title: RES-Q - Repository-Scale Benchmark
+tags: [benchmark, repository-scale, multi-file, ambiguity, evaluation]
+protocols: [P6, P8]
+---
+
 # RES-Q: Repository-Scale Evaluation Benchmark
 
 **Paper:** RES-Q: Evaluating Code-Editing Large Language Model Systems at the Repository Scale

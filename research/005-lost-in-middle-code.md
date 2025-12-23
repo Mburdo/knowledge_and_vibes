@@ -1,3 +1,9 @@
+---
+title: Lost-in-Middle for Code
+tags: [context, long-context, semantic, positioning, degradation]
+protocols: [P5]
+---
+
 # Lost-in-Middle for Code
 
 **Paper:** Sense and Sensitivity: Examining the Influence of Semantic Recall on Long Context Code Reasoning

@@ -1,3 +1,9 @@
+---
+title: SWE-smith - Scaling Training Data for SWE Agents
+tags: [training, synthetic-data, bug-injection, test-driven, scaling, datasets]
+protocols: [P6, P8]
+---
+
 # SWE-smith: Scaling Training Data for SWE Agents
 
 **Paper:** SWE-smith: Scaling Data for Software Engineering Agents

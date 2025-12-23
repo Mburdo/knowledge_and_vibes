@@ -1,3 +1,9 @@
+---
+title: SWE-Bench+ - Enhanced Benchmark
+tags: [benchmark, validation, test-quality, decontamination, leakage, evaluation]
+protocols: [P6, P12]
+---
+
 # SWE-Bench+: Enhanced Coding Benchmark for LLMs
 
 **Paper:** SWE-Bench+: Enhanced Coding Benchmark for LLMs

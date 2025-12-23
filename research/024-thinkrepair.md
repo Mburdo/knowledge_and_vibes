@@ -1,3 +1,9 @@
+---
+title: ThinkRepair - Self-Directed Program Repair
+tags: [knowledge-pool, exemplars, chain-of-thought, retrieval, repair, few-shot]
+protocols: [P3, P8]
+---
+
 # ThinkRepair: Self-Directed Automated Program Repair
 
 **Paper:** ThinkRepair: Self-Directed Automated Program Repair

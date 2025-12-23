@@ -1,3 +1,9 @@
+---
+title: Ideation to Shipped Product
+description: Complete end-to-end pipeline from idea to shipped product. Single-page reference for the full 10-stage lifecycle.
+category: workflow
+---
+
 <div align="center">
 
 # Ideation → Shipped Product
@@ -15,7 +21,8 @@ The complete end-to-end pipeline from idea to shipped product. This is the singl
 - [How This Relates to Other Docs](#how-this-document-relates-to-others)
 - [Why This Pipeline Exists](#why-this-pipeline-exists)
 - [First Principles](#first-principles-what-were-optimizing-for)
-- [The 10-Stage Pipeline](#the-pipeline-operatorled-stages--gates)
+- [The Pipeline](#the-pipeline-operatorled-stages--gates)
+  - [Stage -1: Discovery](#stage-1--discovery-before-the-pipeline)
   - [Stage 0: Rigor Mode](#stage-0--set-the-rigor-mode-context-drives-process)
   - [Stage 1: Requirements](#stage-1--requirements-that-compile-reqac-as-the-operator-interface)
   - [Stage 2: Requirements QA](#stage-2--requirements-qa-pass-isostyle-make-ambiguity-expensive)
@@ -36,13 +43,14 @@ The complete end-to-end pipeline from idea to shipped product. This is the singl
 
 | Document | Focus |
 |----------|-------|
+| `DISCOVERY.md` | Pre-pipeline: curiosity-driven architecture |
 | `EVIDENCE_BASED_GUIDE.md` | Same pipeline, more philosophy |
 | `PROTOCOLS.md` | Individual protocol cards |
 | `PLANNING_DEEP_DIVE.md` | Deep dive on planning |
 | `DECOMPOSITION.md` | Decomposition mechanics |
 | This document | **Complete lifecycle overview** |
 
-All of these are consistent. This one shows the full picture.
+All of these are consistent. This one shows the full picture. Start with `DISCOVERY.md` for new projects.
 
 ---
 
@@ -91,6 +99,44 @@ Each stage has:
 - **Operator job** (what a nontechnical person can do)
 - **Agent output artifacts** (what must exist on disk)
 - **Gate** (what must be true before moving on)
+
+### Stage -1 — Discovery (Before the Pipeline)
+
+Before the formal pipeline, there's the work that determines everything else.
+
+**The Core Principle:** Plan as much as appropriate. Give the AI as few decisions as possible.
+
+Any decision you don't claim, you implicitly delegate. When you delegate to the model, it fills gaps with training data—not your intent. Those gaps become assumptions. Assumptions become architecture. Bad architecture becomes a rewrite.
+
+**Operator job**
+- Interrogate a frontier reasoning model with relentless curiosity
+- Surface every decision hiding in your idea
+- Document architecture choices before any agent writes code
+- Pull on every thread until you understand: "What are my options? What are the tradeoffs? What happens if I choose wrong?"
+
+**Artifacts**
+- Master Plan (comprehensive specification, typically 1,000-5,000 lines depending on project complexity)
+- All architecture decisions explicit
+- All data models defined
+- All error handling specified
+- All edge cases documented
+
+**Gate**
+- The plan is complete when there's nothing left to interpret
+- Any capable agent could implement any section without asking clarifying questions
+
+**The test:** If an agent would need to ask "what should happen here?" or "which approach do you want?"—the plan isn't done. That's a gap. And gaps become assumptions.
+
+**For non-technical users:** The lever is relentless curiosity, not technical skill. You won't become a programmer, but you'll understand enough to plan accurately and ask the right questions. Each project you work through, you learn more. What felt overwhelming on project one feels manageable by project five.
+
+**Evidence base:** Requirements quality is the multiplier—everything downstream inherits the quality of this phase.
+`research/033-requirements-to-code.md`, `research/036-requirements-qa-iso-29148.md`, `research/037-requirements-to-code-practices.md`
+
+**Full guide:** `docs/workflow/DISCOVERY.md`
+
+> **Same hours. Different outcomes.** The time gets spent either way. You either spend it upfront, thinking through decisions before the model touches them. Or you spend it later, untangling decisions the model made without you.
+
+---
 
 ### Stage 0 — Set the Rigor Mode (Context drives process)
 
@@ -312,15 +358,22 @@ Everything else is engineered into the workflow.
 
 ---
 
-## Minimal “How to Run This” (One Checklist)
+## Minimal "How to Run This" (One Checklist)
 
+**Stage -1: Discovery** (see `DISCOVERY.md`)
+0. Interrogate a frontier model with relentless curiosity until you understand every decision hiding in your idea
+0. Produce a Master Plan where nothing is left to interpret (test: could any agent implement without asking questions?)
+
+**Stages 0-10: The Pipeline**
 1. Fill and pin `templates/NORTH_STAR_CARD_TEMPLATE.md`
 2. Produce `REQ-*` + `AC-*` (use `templates/REQUIREMENTS_TEMPLATE.md`) and run a requirements QA pass (use `templates/REQUIREMENTS_QA_TEMPLATE.md`)
 3. Generate 2–4 architecture candidates, select, write ADRs (use `templates/DECISIONS_ADRS_TEMPLATE.md`)
 4. Convert top unknowns into spike beads; run them (use `templates/RISKS_AND_SPIKES_TEMPLATE.md`)
 5. Assemble the Plan Pack (contracts/data/errors/tests)
-6. Break into phases (short docs) and mark calibration points
+6. Break into phases and mark calibration points — **Bounded. Complete. Verified.**
 7. Decompose phases into beads; validate graph with `bv --robot-*`
 8. Execute beads with test-driven loops
 9. Run `/calibrate` between phases; update plan
 10. Ship with a rigor-tier release checklist
+
+> **Same hours. Different outcomes.** The discovery phase isn't extra work—it's where you spend the time you'd otherwise spend debugging assumptions.

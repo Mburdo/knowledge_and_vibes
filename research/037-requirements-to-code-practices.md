@@ -1,3 +1,9 @@
+---
+title: From Requirements to Code - How Practitioners Actually Work with LLMs
+tags: [requirements, practitioners, decomposition, interfaces, constraints, integration]
+protocols: [P1, P7]
+---
+
 # From Requirements to Code: How Practitioners Actually Work with LLMs
 
 **Paper:** From Requirements to Code: Understanding Developer Practices in LLM-Assisted Software Engineering

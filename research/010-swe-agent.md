@@ -1,3 +1,9 @@
+---
+title: SWE-agent - Agent-Computer Interfaces
+tags: [aci, interfaces, tools, navigation, swe-bench, ergonomics]
+protocols: [P8]
+---
+
 # SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering
 
 **Paper:** SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering

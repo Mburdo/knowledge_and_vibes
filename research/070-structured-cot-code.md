@@ -1,3 +1,9 @@
+---
+title: Structured Chain-of-Thought for Code Generation
+tags: [chain-of-thought, structured-reasoning, control-flow, planning, prompting, code-generation]
+protocols: [P3, P8]
+---
+
 # Structured Chain-of-Thought for Code Generation
 
 **Paper:** Structured Chain-of-Thought Prompting for Code Generation

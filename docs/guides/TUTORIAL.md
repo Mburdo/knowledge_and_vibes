@@ -1,3 +1,9 @@
+---
+title: "Tutorial: The Complete Tool Guide"
+description: What each tool does, why it matters, and how to use it effectively. Covers Beads, Agent Mail, CASS, UBS, and more.
+category: guides
+---
+
 # Tutorial: The Complete Tool Guide
 
 This tutorial explains what each tool does, why it matters, and how to use it effectively.

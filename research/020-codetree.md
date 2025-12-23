@@ -1,3 +1,9 @@
+---
+title: CodeTree - Agent-Guided Tree Search
+tags: [tree-search, multi-agent, strategy, pruning, uct, search]
+protocols: [P3, P10]
+---
+
 # CodeTree: Agent-Guided Tree Search for Code Generation
 
 **Paper:** CodeTree: Agent-guided Tree Search for Code Generation with Large Language Models

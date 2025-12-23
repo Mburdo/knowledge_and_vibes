@@ -1,3 +1,9 @@
+---
+title: APPATCH - Automated Adaptive Prompting for Vulnerability Patching
+tags: [security, vulnerability, patching, program-analysis, validation, multi-faceted]
+protocols: [P8, P13]
+---
+
 # APPATCH: Automated Adaptive Prompting for Vulnerability Patching
 
 **Paper:** APPATCH: Automated Adaptive Prompting Large Language Models for Real-World Software Vulnerability Patching

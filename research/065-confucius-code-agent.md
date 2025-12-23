@@ -1,3 +1,9 @@
+---
+title: Confucius Code Agent - Scalable Scaffolding
+tags: [scaling, navigation, sessions, checkpoint, hierarchical, long-horizon]
+protocols: [P5, P10]
+---
+
 # Confucius Code Agent: Scalable Agent Scaffolding
 
 **Paper:** Confucius Code Agent: Scalable Agent Scaffolding for Real-World Codebases

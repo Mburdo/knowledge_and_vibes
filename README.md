@@ -1,3 +1,8 @@
+---
+title: Knowledge & Vibes
+description: A research-backed framework for building software with AI. Plans are explicit, work is tracked, and verification is mandatory.
+---
+
 <div align="center">
 
 # Knowledge & Vibes
@@ -34,6 +39,12 @@ You can't prompt your way out of these problems. You need a system where failure
 ---
 
 ## How It Works
+
+### 0. Discover Thoroughly
+
+Before the formal pipeline, surface every decision hiding in your idea. Use relentless curiosity to interrogate frontier models until nothing is left to interpret. **The plan is complete when any capable agent could implement without asking a single clarifying question.**
+
+> Plan as much as appropriate. Give the AI as few decisions as possible.
 
 ### 1. Plan Explicitly
 
@@ -122,6 +133,7 @@ See the [Research summaries](./research/README.md) for the full collection.
 
 | Section | What You'll Find |
 |:--------|:-----------------|
+| [**Discovery**](./docs/workflow/DISCOVERY.md) | Pre-pipeline: curiosity-driven architecture (start here for new projects) |
 | [**Setup Guide**](./docs/guides/SETUP_GUIDE.md) | How to install and configure the toolchain |
 | [**Evidence-Based Guide**](./docs/workflow/EVIDENCE_BASED_GUIDE.md) | The complete 10-stage pipeline |
 | [**Protocols**](./docs/workflow/PROTOCOLS.md) | 19 repeatable procedures for common situations |

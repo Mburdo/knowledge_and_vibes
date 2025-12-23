@@ -1,3 +1,9 @@
+---
+title: LLM Security Vulnerabilities 2025
+tags: [security, vulnerabilities, scanning, owasp, language-specific, ubs]
+protocols: [P13]
+---
+
 # LLM Code Security Vulnerabilities 2025
 
 **Sources:**

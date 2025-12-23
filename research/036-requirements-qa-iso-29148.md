@@ -1,3 +1,9 @@
+---
+title: Requirements QA with LLMs - ISO 29148 Validation
+tags: [requirements, iso-29148, quality-assurance, ambiguity, completeness, validation]
+protocols: [P1, P6]
+---
+
 # Requirements QA with LLMs: ISO 29148 Validation
 
 **Paper:** Leveraging LLMs for the Quality Assurance of Software Requirements

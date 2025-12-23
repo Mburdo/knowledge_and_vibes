@@ -1,3 +1,9 @@
+---
+title: Tool Stack & Operations Guide
+description: What you do vs what the agent does behind the scenes for each operation. Complete reference for slash commands and tool usage.
+category: guides
+---
+
 # Tool Stack & Operations Guide
 
 This guide explains what **you** do vs what **the agent** does behind the scenes for each operation.

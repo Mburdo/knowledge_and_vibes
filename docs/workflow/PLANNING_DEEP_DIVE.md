@@ -1,3 +1,9 @@
+---
+title: Planning Deep Dive
+description: From vague idea to complete master plan that AI agents can execute without guessing.
+category: workflow
+---
+
 <div align="center">
 
 # Planning Deep Dive
@@ -17,6 +23,7 @@ How to take a vague idea and turn it into a complete master plan that AI agents 
 ## Table of Contents
 
 - [Why Planning Matters More With AI](#why-planning-matters-more-with-ai)
+- [The Goal: Nothing Left to Interpret](#the-goal-nothing-left-to-interpret)
 - [Prerequisites](#prerequisites)
 - [Design Principles](#design-principles)
 - [What "Done Planning" Looks Like](#what-done-planning-looks-like)
@@ -25,6 +32,7 @@ How to take a vague idea and turn it into a complete master plan that AI agents 
 - [Required Inputs](#required-inputs-your-truth-pack)
 - [Plan Pack Layout](#plan-pack-recommended-file-layout)
 - [Steering a Model Toward Truth](#the-soft-skills-steering-a-model-toward-truth-when-youre-nontechnical)
+  - [Curiosity-Driven Discovery](#curiosity-driven-discovery-the-engine)
 - [Why Multiple Sessions](#why-this-takes-many-sessions-not-one)
 - [Why Multiple Models](#why-use-multiple-frontier-models-different-providers)
 - [Test-Based Disagreement Resolution](#multimodel-disagreement-resolution-tests-adjudicate-not-rhetoric)
@@ -55,15 +63,35 @@ This guide exists because **the quality of your plan determines the quality of t
 
 ---
 
+## The Goal: Nothing Left to Interpret
+
+**Plan as much as appropriate. Give the AI as few decisions as possible.**
+
+Any decision you don't claim, you implicitly delegate. When you delegate to the model, it fills gaps with training data—not your intent. Those gaps become assumptions. Assumptions become architecture. Bad architecture becomes a rewrite.
+
+**The plan is complete when there's nothing left to interpret.**
+
+Could any capable agent pick up any section and build exactly what you envisioned without asking a single clarifying question? If they'd need to ask "what should happen here?"—the plan isn't done.
+
+This is the test you apply throughout planning. Every thread you explore, every decision you surface—ask yourself: would an agent need to guess here?
+
+> **Same hours. Different outcomes.** The time gets spent either way. You either spend it upfront, thinking through decisions before the model touches them. Or you spend it later, untangling decisions the model made without you.
+
+---
+
 ## Prerequisites
 
-Before using this guide, read:
+Before using this guide:
+- **If you're starting from scratch:** Begin with `DISCOVERY.md` — the pre-pipeline phase where you surface every decision hiding in your idea through curiosity-driven interrogation.
+
+Then read:
 - `START_HERE.md` — System overview
 - `EVIDENCE_BASED_GUIDE.md` — The full 10-stage pipeline
 - `PROTOCOLS.md` — Protocol cards
 
 For execution after planning, see:
 - `IDEATION_TO_PRODUCTION.md` — Full end-to-end pipeline
+- `DECOMPOSITION.md` — Breaking plans into executable phases
 
 ---
 
@@ -191,15 +219,37 @@ Templates that map to the first planning artifacts:
 
 ---
 
-## The Soft Skills: Steering a Model Toward Truth (When You’re Non‑Technical)
+## The Soft Skills: Steering a Model Toward Truth (When You're Non‑Technical)
 
-If you don’t have a technical background, your job is not to “judge the code”. Your job is to **steer the conversation so the truth becomes obvious**.
+If you don't have a technical background, your job is not to "judge the code". Your job is to **steer the conversation so the truth becomes obvious**.
 
 The trick is to stop treating the model like an oracle and start treating it like a **hypothesis generator** that you interrogate.
 
-This is a research‑supported stance: LLMs are strong generators of plausible hypotheses, but their “confidence” is not a reliable truth signal. The planning process works when you repeatedly force hypotheses into contact with **constraints + verification**, not when you accept fluent answers.
+This is a research‑supported stance: LLMs are strong generators of plausible hypotheses, but their "confidence" is not a reliable truth signal. The planning process works when you repeatedly force hypotheses into contact with **constraints + verification**, not when you accept fluent answers.
 
-### The “Truth‑Seeking” Mindset
+### Curiosity-Driven Discovery (The Engine)
+
+Before you can steer toward truth, you need to discover what questions to ask. This is where **relentless curiosity** matters.
+
+Your lever is relentless curiosity. Your tool is a frontier reasoning model.
+
+When a topic comes up, you don't nod and move on. You interrogate:
+
+- "What are my options?"
+- "What are the tradeoffs?"
+- "What happens if I choose wrong?"
+- "What would change your recommendation?"
+- "How does this fail? What does the user see?"
+
+Every answer reveals three more questions. Keep pulling until you actually understand—and can explain it back in plain language.
+
+After 15-30 minutes of this on a single topic, you understand things about your own idea that you didn't know you didn't know.
+
+This curiosity is the engine. Without it, you get surface-level plans that crack under pressure. With it, you surface every decision that matters—and you make those decisions informed.
+
+> For the complete pre-pipeline discovery process, see `DISCOVERY.md`.
+
+### The "Truth‑Seeking" Mindset
 
 You are always trying to force three things into the open:
 1. **Assumptions** (what the plan silently relies on)
@@ -526,3 +576,24 @@ These papers shaped our verification approach:
 - **TDD for AI** (`research/054-tdd-ai-code-gen.md`): TDD yields 45.97% pass@1 improvement
 - **Multi-Agent Patterns** (`research/056-multi-agent-orchestrator.md`): Orchestrator-worker outperforms single-agent by 90.2%
 - **Debugging Decay** (`research/060-debugging-decay-index.md`): 3-iteration cap prevents degradation
+
+---
+
+## Key Refrains
+
+**Plan as much as appropriate. Give the AI as few decisions as possible.**
+
+**The plan is complete when there's nothing left to interpret.**
+
+**Same hours. Different outcomes.**
+
+**Gaps become assumptions. Assumptions become architecture. Bad architecture becomes a rewrite.**
+
+---
+
+## Related Documents
+
+- `DISCOVERY.md` — Pre-pipeline curiosity-driven architecture (start here for new projects)
+- `DECOMPOSITION.md` — Breaking plans into executable phases (Bounded. Complete. Verified.)
+- `IDEATION_TO_PRODUCTION.md` — Full end-to-end pipeline
+- `PHILOSOPHY.md` — Core principles and research backing

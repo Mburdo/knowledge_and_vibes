@@ -1,3 +1,9 @@
+---
+title: Multi-Agent Orchestrator Patterns
+tags: [multi-agent, orchestration, coordination, debate, evidence, calibration]
+protocols: [P10, P11]
+---
+
 # Multi-Agent Orchestrator Patterns 2025
 
 **Paper:** Orchestrator-Worker Patterns for Multi-Agent Code Generation

@@ -1,3 +1,9 @@
+---
+title: SWE-Bench Pro - Realistic AI Software Engineering Benchmark
+tags: [benchmark, contamination, realistic, multi-file, expectations, verification]
+protocols: [P12, P14]
+---
+
 # SWE-Bench Pro: Realistic AI Software Engineering Benchmark
 
 **Paper:** SWE-Bench Pro: A More Realistic Benchmark for AI Software Engineering
