@@ -2,7 +2,7 @@
 
 A properly enhanced bead is a complete specification that any agent can implement correctly.
 
-> **2025 Reality Check:** Even the best AI models solve only ~23% of realistic tasks. This template maximizes your odds through TDD-first, security gates, and iteration limits.
+> **Verification Focus:** This template maximizes success through TDD-first, security gates, and iteration limits. Workflow beats prompting.
 
 ## The TDD Flow (AlphaCodium Pattern)
 

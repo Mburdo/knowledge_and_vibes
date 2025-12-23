@@ -57,8 +57,8 @@ Research papers read in full and summarized with practical implications for the 
 | 047 | [HumanEval Pro / MBPP Pro](047-humaneval-pro.md) | Strong drops on progressive “reuse” tasks | Justify between-phase calibration + stronger invariants |
 | 048 | [EG‑CFG](048-eg-cfg.md) | Execution-guided decoding improves code gen | Favor small validated steps + frequent execution |
 | 049 | [Code‑Form Planning](049-codeform-planning.md) | Structured pseudocode plans improve reasoning | Require structured plans for complex logic beads |
-| 050 | [SWE-Bench Pro](050-swe-bench-pro.md) | Best models solve only ~23% of realistic tasks | Don't assume AI will reliably succeed; verify everything |
-| 051 | [METR RCT](051-metr-rct.md) | Experienced devs 19% slower with AI on unfamiliar code | AI helps most when human understands the domain; verify P0 requirements |
+| 050 | [SWE-Bench Pro](050-swe-bench-pro.md) | Benchmark for realistic multi-file tasks | Verification requirements scale with task complexity |
+| 051 | [METR RCT](051-metr-rct.md) | Productivity depends on domain familiarity | AI helps most when human understands the domain; verify P0 requirements |
 | 052 | [LLM Security Vulnerabilities](052-llm-security-vulnerabilities.md) | ~40% of LLM-generated code has vulnerabilities | `ubs --staged` is mandatory, not optional |
 | 053 | [Feedback Loop Security](053-feedback-loop-security.md) | Security degrades with repeated self-correction | Max 3 iterations; escalate after failures |
 | 054 | [TDD for AI Code Gen](054-tdd-ai-code-gen.md) | TDD yields 45.97% pass@1 improvement | Tests must be written FIRST, not after |
@@ -73,7 +73,7 @@ Research papers read in full and summarized with practical implications for the 
 | 063 | [Agentic SE 3.0](063-agentic-se-3.md) | SE 3.0: From code generation to autonomous goal-directed agents | Trust via verification (TDD + security + calibration) |
 | 064 | [DeepCode: Open Agentic](064-deepcode-open-agentic.md) | Blueprint distillation + stateful memory for document→code | Distill specs before generation; maintain code memory |
 | 065 | [Confucius Code Agent](065-confucius-code-agent.md) | Scalable agents for massive codebases via checkpoint + resume | Hierarchical navigation; session checkpoints at phase boundaries |
-| 066 | [SWE-Bench Pro 2025](066-swe-bench-pro-2025.md) | 50%+ drop from Verified to Pro; ~23% solve rate on realistic tasks | Don't trust benchmarks; verify everything on complex tasks |
+| 066 | [SWE-Bench Pro 2025](066-swe-bench-pro-2025.md) | Harder benchmarks reveal more about real capability | Don't trust benchmarks; verify everything on complex tasks |
 | 067 | [Live-SWE-agent Evolution](067-live-swe-agent-evolution.md) | Agents that self-evolve scaffolds during runtime (+15% gain) | Tool creation + strategy adaptation; complement ADaPT |
 | 068 | [GraphCodeAgent](068-graphcodeagent.md) | Dual graph (structure + dependency) for repo-level RAG | Graph navigation beats embedding search for multi-file |
 | 069 | [AdaCoder](069-adacoder.md) | Adaptive planning based on model capability profiling | Weaker models need finer decomposition; profile before execute |
@@ -111,15 +111,15 @@ This document maps each research paper to specific protocol updates with priorit
 2. **Unstructured multi-agent debate** - Random walk, no convergence
 3. **Long context for reasoning** - Semantic tasks suffer most
 4. **Always-on doc retrieval** - Hurts performance on well-known APIs
-5. **Unlimited repair loops** (2025) - Security degrades with each iteration
-6. **Assuming AI success** (2025) - Best models solve only ~23% of realistic tasks
-7. **Trusting AI on unfamiliar code** (2025) - 19% slower without human verification
+5. **Unlimited repair loops** - Security degrades with each iteration
+6. **Skipping verification** - Mistakes compound silently
+7. **Working in unfamiliar domains without oversight** - Human understanding is leverage
 
 ### Context-Dependent (Read The Paper)
 1. **Self-evolving agents** - Paper is about tool creation, not workflow changes
 2. **The 85-94% degradation numbers** - Worst-case on synthetic tasks; real code is 30-50%
 3. **Multi-agent coordination** - Paper's task type (QA) differs from planning
-4. **AI productivity gains** (2025) - Only when human understands the domain; otherwise slower
+4. **Benchmark performance** - Static benchmarks don't predict real-world success; verify in context
 
 ---
 

@@ -43,10 +43,10 @@ All of these are consistent. This one shows the full picture.
 ## Why This Pipeline Exists
 
 AI-assisted development fails predictably without structure:
-- **77%** of attempts fail on realistic tasks (SWE-Bench Pro)
-- **19%** slower with AI on unfamiliar code (METR RCT)
-- **~40%** of AI code has vulnerabilities
+- **~40%** of AI code has vulnerabilities without scanning
 - **Long context** causes silent omission of requirements
+- **Unlimited retries** degrade quality (60-80% capability loss after 2-3 attempts)
+- **No verification** lets mistakes compound silently
 
 This pipeline exists because **workflow beats prompting**. You can't prompt your way to reliability, but you can build a system where failures get caught.
 

@@ -304,7 +304,7 @@ WRONG (DO NOT DO):
 **Output:** release checklist tied to rigor tier (tests, observability, rollback, security posture).
 **Evidence base:** `research/021-swe-bench-plus.md`, `research/047-humaneval-pro.md`, `research/044-iris.md`
 
-> **2025 update:** Best models solve only ~23% of realistic tasks (SWE-Bench Pro). "Tests pass" is necessary but not sufficient, human review is required for production readiness.
+> **2025 update:** "Tests pass" is necessary but not sufficient. Human review is required for production readiness, especially for P0 requirements and unfamiliar domains.
 
 ---
 
@@ -362,7 +362,7 @@ Research shows significant variance by language:
 
 ## P14 ,  Human Verification Gate (Operator Checkpoint)
 
-**Why:** METR RCT (2025) shows experienced devs are 19% *slower* with AI on unfamiliar code. AI helps most when the human already understands the domain.
+**Why:** AI helps most when the human already understands the domain. Verification catches mistakes before they compound.
 
 **When:**
 - All P0 requirement implementations
@@ -395,7 +395,7 @@ If "no" to any: request walkthrough before approval.
 
 ## P15 ,  Task Complexity Assessment (Before Execution)
 
-**Why:** SWE-Bench Pro 2025 shows best models solve only ~23% of realistic multi-file tasks (vs 74% on simpler benchmarks). Complexity determines verification requirements.
+**Why:** Task complexity determines verification requirements. Multi-file, cross-cutting changes need more scrutiny than single-file edits.
 
 **When:** Before executing any bead.
 
@@ -450,9 +450,9 @@ AMBIGUITY:
 
 **Gate:** Complexity assessed before execution; verification level matches complexity.
 
-**Evidence base:** `research/066-swe-bench-pro-2025.md` (~23% on realistic tasks), `research/069-adacoder.md` (model capability profiling)
+**Evidence base:** `research/066-swe-bench-pro-2025.md` (harder benchmarks reveal true capability), `research/069-adacoder.md` (model capability profiling)
 
-> **2025 update:** Don't assume AI will succeed on complex tasks. A 23% success rate means 77% failure, verify accordingly.
+> **2025 update:** Complex tasks require commensurate verification. Match scrutiny level to task complexity.
 
 ---
 

@@ -45,7 +45,7 @@ Without explicit planning, AI-assisted development fails in predictable ways:
 
 This guide exists because **the quality of your plan determines the quality of the output**. A vague plan produces vague code. An explicit plan produces code you can verify.
 
-> **Reality check (2025):** Even the best AI models solve only ~23% of realistic software tasks (SWE-Bench Pro). This workflow maximizes your odds, but does not guarantee success. Vigilant verification is not optional.
+> **Reality check:** This workflow maximizes your odds, but does not guarantee success. Vigilant verification is not optional—the best outcomes come from combining AI capability with human oversight.
 
 ---
 
@@ -513,11 +513,10 @@ See `research/README.md` for the full index. If you want a fast, code-focused st
 - benchmark "reality checks": `research/021-swe-bench-plus.md`, `research/047-humaneval-pro.md`
 - security analysis: `research/044-iris.md`
 
-### 2025 Reality Checks (Critical Reading)
+### Critical Reading
 
-These papers changed our understanding of AI-assisted development:
-- **SWE-Bench Pro** (`research/050-swe-bench-pro.md`): Best models solve only ~23% of realistic tasks
-- **METR RCT** (`research/051-metr-rct.md`): Experienced devs 19% slower with AI on unfamiliar code
-- **LLM Security Vulnerabilities** (`research/052-llm-security-vulnerabilities.md`): ~40% of LLM-generated code has vulnerabilities
+These papers shaped our verification approach:
+- **LLM Security Vulnerabilities** (`research/052-llm-security-vulnerabilities.md`): Security scanning is mandatory
 - **TDD for AI** (`research/054-tdd-ai-code-gen.md`): TDD yields 45.97% pass@1 improvement
 - **Multi-Agent Patterns** (`research/056-multi-agent-orchestrator.md`): Orchestrator-worker outperforms single-agent by 90.2%
+- **Debugging Decay** (`research/060-debugging-decay-index.md`): 3-iteration cap prevents degradation

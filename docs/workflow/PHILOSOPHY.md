@@ -1,204 +1,239 @@
 # Philosophy: Make It Hard To Be Wrong
 
-## The Problem We're Solving
+## The Gap Nobody Talks About
 
-AI-assisted software development has a fundamental problem that no amount of prompt engineering can fix:
+There's a widening divide in software development right now. Not between languages or frameworks. Between developers who've restructured how they work around AI and those still operating at manual speed.
 
-> **LLMs generate plausible text. They do not reliably generate truth.**
+The second group doesn't see it yet. They're keeping up—for now. But the first group is shipping in days what used to take weeks, and the quality metrics aren't suffering. They're flat or improving.
 
-This isn't a criticism, it's physics. Language models are trained to predict probable next tokens, not to verify facts against reality. When the model says "this code handles all edge cases," it's expressing what sounds right, not what it has verified.
-
-### The 2025 Reality
-
-The research is now clear about the limitations:
-
-| Finding | Number | Source |
-|---------|--------|--------|
-| Best models solve realistic software tasks | **~23%** | SWE-Bench Pro |
-| Experienced devs slower with AI on unfamiliar code | **19%** | METR RCT |
-| LLM-generated code with security vulnerabilities | **~40%** | LLM Security Research |
-| Pass@1 improvement from TDD-first | **45.97%** | TDD for AI Code Gen |
-
-These numbers should change how you think about AI-assisted development:
-
-- **Don't assume AI will succeed.** Best case is ~23% on realistic tasks.
-- **Don't trust AI on unfamiliar code.** You'll be slower, not faster.
-- **Don't skip security scanning.** Nearly half of AI code has vulnerabilities.
-- **Do use TDD.** It's the single highest-impact improvement available.
+This isn't about tools. Cursor vs Claude Code vs whatever dropped last week—that's noise. The gap is **workflow**. It's how you structure the work, what you verify, when you decompose, and what you refuse to skip.
 
 ---
 
-## The Core Insight
+## What The Research Actually Shows
 
-The job is not "get the model to be right." The job is:
+| Finding | Data | Source |
+|---------|------|--------|
+| Improvement from writing tests first | **+45.97%** | `054-tdd-ai-code-gen.md` |
+| Vulnerability rate in unscanned AI code | **~40%** | `052-llm-security-vulnerabilities.md` |
+| Capability decay after 2-3 failed attempts | **60-80%** | `060-debugging-decay-index.md` |
+| Correct answers flipped by "are you sure?" | **58%** | `006-dark-side-self-correction.md` |
+| Quality loss from irrelevant context | **30-50%** | `004-context-length-hurts.md` |
 
-> **Build a workflow where it's hard for the system to be wrong.**
+The models are good. Really good. But without the right workflow, you're leaving massive gains on the table and introducing avoidable risks.
 
-This is a different problem. Instead of trying to make AI output perfect (impossible), we build a system that:
-- Catches failures early through verification
-- Prevents drift through explicit artifacts
-- Limits damage through iteration caps
-- Ensures security through mandatory gates
-
-The model can be wrong 77% of the time and you still ship correct software, if your workflow catches the failures before they matter.
+TDD nearly doubles your success rate. Security scanning catches vulnerabilities before they ship. Iteration caps prevent the model from degrading its own work. These aren't workarounds for weak models—they're how you extract maximum value from strong ones.
 
 ---
 
-## The Five Pillars
+## The Real Skill Is Management, Not Prompting
 
-### 1. Truth Lives Outside the Model
+The developers getting the most out of AI aren't prompt engineers. They're the ones who spent years learning to decompose problems, specify requirements, and catch architectural drift.
 
-**What this means:** The AI's confident output is not evidence. Truth is external:
-- Tests that pass or fail
-- Code that compiles or doesn't
-- Documentation that exists or doesn't
-- Measurements you can observe
+Those skills transfer directly.
 
-**What you do:** Require verification for every claim that matters. "The API supports pagination" isn't verified until you see `?page=2` return different results than `?page=1`.
+When you've managed junior developers, you know you can't just say "build the auth system." You scope the work. You define what done looks like. You review before it ships. You catch the stuff that technically works but doesn't fit the larger design.
 
-**Evidence:** `research/008-api-hallucination.md` (38% of low-frequency API calls are invalid), `research/022-chatrepair.md` (execution feedback loops improve correctness).
+AI is the same problem at higher speed. The model will confidently produce something that compiles and passes basic tests but quietly violates patterns that matter. If you can't see that, you're not getting value—you're accumulating debt.
 
-### 2. Tests Adjudicate Disagreements
+> **Your leverage is bounded by what you understand.** The model amplifies your knowledge. It doesn't substitute for it.
 
-**What this means:** When agents disagree, the answer is not more debate. Research shows extended rhetorical debate actually **degrades** outcomes, voting alone beats unstructured debate.
+---
 
-**What you do:**
-1. Write discriminating tests (tests that PASS for one approach, FAIL for another)
-2. Run the tests
-3. Let results decide
+## The Fundamental Reframe
 
-If tests can't discriminate, preserve both positions for human decision.
+Most people try to make the model produce correct output. That's the wrong goal.
 
-**Evidence:** `research/003-debate-or-vote.md` (more debate rounds made things worse), `research/041-debatecoder.md` (tests as medium of disagreement).
+> **Build a workflow where being wrong gets caught before it matters.**
 
-### 3. Decompose When Reality Demands It
+Even great models make mistakes. The question isn't whether errors happen—it's whether your system catches them.
 
-**What this means:** Don't over-plan. Don't pre-decompose everything "just in case." You don't know what's actually hard until you try.
+- **Verification** catches failures early
+- **Iteration caps** prevent degradation spirals
+- **Security scanning** blocks vulnerable code
+- **Tests** provide ground truth the model can optimize against
 
-**What you do (ADaPT Pattern):**
-1. Start with coarse-grained work (beads)
+You're not compensating for a weak model. You're building a system that maximizes a strong one.
+
+---
+
+## Why Skilled Developers Resist
+
+If you've spent a decade getting good at something, there's gravity pulling you toward "this is how real work gets done." The grind is the point. If it doesn't hurt, it doesn't count.
+
+That identity is expensive now.
+
+Here's the thing though: working effectively with AI *is* demanding. You're orchestrating, verifying, and course-correcting constantly. The cognitive load shifts from "figure out the syntax" to "catch the subtle architectural mistake in 200 lines of generated code."
+
+The challenge didn't go away. It moved.
+
+And yes, you can get lazy and let the tool rot your skills. That's a choice. Reading every line, understanding what got generated, staying sharp—that's also a choice. The tool doesn't decide which one you make.
+
+---
+
+## Context Is The Bottleneck
+
+The model doesn't know your system. It doesn't know why that workaround exists, which services talk to each other, or what patterns the team agreed on.
+
+You have years of accumulated context. The model has whatever you put in the prompt.
+
+> "The smallest set of high-signal tokens that enables correct behavior." — `057-anthropic-context-engineering.md`
+
+More context isn't better. The *right* context is better. Irrelevant information degrades performance 30-50% (`004-context-length-hurts.md`). You want architecture docs, the specific files that matter, and nothing else.
+
+This is why codemaps exist. This is why grounding tools matter. You're not fighting hallucinations with hope—you're giving the model access to verified sources so it doesn't have to guess.
+
+**Evidence:** With grounding, the 38% validity rate on rare APIs (`008-api-hallucination.md`) becomes a non-issue. The model looks it up instead of inventing it.
+
+---
+
+## Tests Are The Reward Function
+
+You can't give the model complete context. Ever. Your codebase is too big, the history too deep. The model operates on a compressed map.
+
+Tests fill the gap.
+
+When the model breaks something outside its context window, tests catch it. The model sees the failure, adjusts, and iterates toward correct behavior. You've given it a feedback loop it can actually optimize against.
+
+This is why TDD isn't optional anymore. Writing tests first doesn't just catch bugs—it fundamentally changes how the model approaches the problem. The 45.97% improvement in `054-tdd-ai-code-gen.md` isn't a prompting trick. It's structural.
+
+**The pattern:**
+1. Define behavior as tests
+2. Let the model implement against those tests
+3. Iterate until passing
+4. The tests become the spec
+
+---
+
+## Three Tries, Then Stop
+
+Extended retry loops make things worse.
+
+This is counterintuitive. You'd expect more attempts to converge on a solution. The research says otherwise:
+
+- Security quality degrades with each self-correction cycle (`053-feedback-loop-security.md`)
+- "Are you sure?" without new evidence flips 58% of *correct* answers (`006-dark-side-self-correction.md`)
+- Capability drops 60-80% within 2-3 attempts (`060-debugging-decay-index.md`)
+
+**The rule:** Three iterations maximum. If it's still failing:
+
+1. Stop the current approach
+2. Decompose—break the problem into smaller pieces
+3. Or escalate to human judgment
+
+Continuing past three is actively counterproductive. You're not being persistent. You're degrading the output.
+
+---
+
+## Disagreement Resolves Through Tests, Not Discussion
+
+When two approaches conflict, extended debate makes things worse. Voting alone outperforms unstructured back-and-forth (`003-debate-or-vote.md`).
+
+**What works:**
+1. Write a discriminating test—one that passes for approach A, fails for approach B
+2. Run it
+3. Accept the result
+
+If you can't write a test that discriminates, you don't have a technical disagreement. You have a values disagreement. Preserve both positions and escalate to human decision.
+
+Rhetorical cross-examination doesn't converge on truth. Tests do.
+
+---
+
+## The Working Pattern
+
+### 1. Requirements
+- Model restates the problem (catches misunderstanding early)
+- Load relevant context only (codemaps, specific files)
+- Declare TDD as the approach
+
+### 2. Planning
+- Outline steps before writing code
+- Ground against real docs (verify APIs exist, patterns match)
+- Approve before implementation starts
+
+### 3. Implementation
+- Tests first
+- Interfaces and signatures before bodies
+- Implement to pass tests
+- Small increments, verified individually
+
+### 4. Verification
+- Run tests, analyze failures
+- Fix and re-run (max 3 iterations)
+- Security scan (`ubs --staged`)
+- Read every line that got generated
+
+**Research backing:**
+- Requirements: `057-anthropic-context-engineering.md`
+- Planning: `002-planning-driven-programming.md` (+2-10%)
+- Implementation: `054-tdd-ai-code-gen.md` (+45.97%)
+- Verification: `022-chatrepair.md`, `053-feedback-loop-security.md`
+
+---
+
+## Decompose When Reality Demands It
+
+Don't pre-plan everything. You don't know what's actually hard until you try.
+
+**ADaPT pattern:**
+1. Start coarse
 2. Attempt execution
-3. If it fails after 3 iterations, decompose, only the failing part
+3. If it fails after 3 iterations, decompose *that specific part*
 4. Repeat
 
-This discovers what's *actually* hard, not what you guessed would be hard.
+This discovers actual complexity instead of guessing at it. Pre-decomposition is speculation. Failure-driven decomposition is evidence.
 
-**Evidence:** `research/038-adapt.md` (decompose only when needed), `research/011-agentless.md` (simple pipelines beat complex agents).
-
-### 4. Minimum Viable Planning
-
-**What this means:** Plan size should match project complexity. A 200-line script doesn't need a 50-page plan.
-
-> "The smallest set of high-signal tokens that enables correct behavior." ,  Anthropic Context Engineering
-
-**What you do:**
-- Include only what reduces guessing
-- "Lossless" means no guessing, not "huge"
-- If you're adding detail "just in case," you're adding noise
-
-**Evidence:** `research/004-context-length-hurts.md` (30-50% degradation as context grows), `research/057-anthropic-context-engineering.md` (minimal high-signal context).
-
-### 5. Fail Fast, Escalate Early
-
-**What this means:** Security degrades with repeated self-correction. After 3 iterations of trying to fix something, continuing makes it worse, not better.
-
-**What you do:**
-- Max 3 repair iterations per task
-- If still failing: STOP, don't keep trying
-- Spawn a sub-task for the specific failing part
-- Notify the human
-
-**Evidence:** `research/053-feedback-loop-security.md` (security degrades with iterations), `research/006-dark-side-self-correction.md` ("are you sure?" without new info makes things worse).
+**Evidence:** `038-adapt.md`, `011-agentless.md` (simple pipelines beat complex agents), `069-adacoder.md`
 
 ---
 
-## What The Operator Does
+## What Still Fails (With Evidence)
 
-You don't need to be a software engineer. You do **value decisions** and **gate enforcement**:
-
-| Your Job | Not Your Job |
-|----------|--------------|
-| Define goals, stakes, priorities (North Star) | Validate implementation details |
-| Answer clarifying questions about intent | Write or review code |
-| Choose between tradeoffs you understand (A/B/C) | Debug technical problems |
-| Enforce "no tests = not done" | Decide architecture |
-| Approve plan changes during calibration | Judge technical correctness |
-
-Your superpower is insisting that "correct" means **testable and verified**, not "looks right."
+| Pattern | Failure Mode | Research |
+|---------|--------------|----------|
+| Tests after implementation | Miss 45.97% improvement | `054-tdd-ai-code-gen.md` |
+| Unlimited retries | Security + capability degrade | `053-feedback-loop-security.md`, `060-debugging-decay-index.md` |
+| Skipping security scan | ~40% vulnerability rate | `052-llm-security-vulnerabilities.md` |
+| Pre-decomposing everything | Guessing at complexity | `038-adapt.md` |
+| Extended debate | Degrades vs voting alone | `003-debate-or-vote.md` |
+| Huge context windows | 30-50% quality loss | `004-context-length-hurts.md` |
+| "Are you sure?" without evidence | Flips 58% of correct answers | `006-dark-side-self-correction.md` |
 
 ---
 
-## What Agents Do
+## Reading Matters More Than Generating
 
-Agents produce technical artifacts and evidence:
+When generation is cheap, comprehension becomes the bottleneck.
 
-- Convert your intent into `REQ-*` and falsifiable `AC-*`
-- Ground claims (repo truth via Warp-Grep; web truth via Exa)
-- Implement in small, verifiable beads
-- Keep traceability current (North Star → REQ/AC → beads → tests)
-- Coordinate via Agent Mail and resolve disagreement through tests
+Every line the model produces needs to be understood. Not skimmed—understood. The model will slip in changes that technically work but don't fit. That's your job to catch.
 
----
+When you stop reading:
+- Refactors slip through without understanding
+- You lose track of what exists in the codebase
+- Prompts get vaguer because you don't know what to specify
+- Six months later you're dependent on a system you can't audit
 
-## What We Avoid (And Why)
-
-### Anti-Patterns With Evidence
-
-| Anti-Pattern | Why It Fails | Evidence | Do Instead |
-|--------------|--------------|----------|------------|
-| Implementing before tests | Miss 45.97% improvement | `054-tdd-ai-code-gen.md` | Tests FIRST, always |
-| Unlimited repair loops | Security degrades | `053-feedback-loop-security.md` | Max 3 iterations |
-| Skipping `ubs --staged` | ~40% vulnerability rate | `052-llm-security-vulnerabilities.md` | Mandatory gate |
-| Trusting AI on unfamiliar code | 19% slower | `051-metr-rct.md` | Human verification (P14) |
-| Assuming high success rates | ~23% realistic success | `050-swe-bench-pro.md` | Verify everything |
-| Over-decomposing upfront | Guesses at complexity | `038-adapt.md` | ADaPT: decompose on failure |
-| Rhetorical agent debate | Voting beats debate | `003-debate-or-vote.md` | Test-based adjudication |
-| Massive "lossless" plans | Context hurts quality | `004-context-length-hurts.md` | Minimal viable plans |
-| One-shot prompts | Single path is fragile | `019-plansearch.md` | Search + selection |
-| "Are you sure?" without evidence | Overturns correct answers | `006-dark-side-self-correction.md` | Only revise with new info |
+Your eyes are the final gate. Tests catch functional breaks. You catch architectural ones.
 
 ---
 
-## How This System Operationalizes The Philosophy
+## The Bar Moved
 
-| Principle | Implementation |
-|-----------|----------------|
-| Truth lives outside | Tests, grounding, verification evidence |
-| Tests adjudicate | P10a protocol, calibration skill |
-| Adaptive decomposition | P8 ADaPT, sub-bead-structure template |
-| Minimum viable planning | Phase sizing, adaptive artifacts |
-| Fail fast, escalate | P9 iteration cap, spike beads |
+This isn't about whether AI is good or bad for engineering. That's not the debate.
 
----
+The capability exists. Some people are using it effectively. The gap between them and everyone else is real and widening.
 
-## The Key Structural Principles
+The patterns that work are clear: verification over trust, tests over debate, iteration caps over persistence, decomposition on failure, reading over hoping.
 
-### 1. Adaptive Decomposition (ADaPT)
-> "Decompose only when execution fails"
-
-Start coarse. Attempt execution. Split only when reality demands it.
-
-### 2. Test-Based Disagreement Resolution
-> "Tests are the medium of disagreement, not rhetoric"
-
-When agents disagree: write discriminating tests, run them, let results decide.
-
-### 3. Minimal Viable Planning
-> "Smallest set of high-signal tokens that enables correct behavior"
-
-Plan size matches project complexity. "Lossless" means no guessing, not "huge."
-
-### 4. TDD-First Everywhere
-> "TDD yields 45.97% pass@1 improvement"
-
-Tests in bead descriptions, written before implementation. This is the single highest-impact practice.
+The tools will keep changing. These principles won't.
 
 ---
 
-## Where To Go Next
+## Next
 
-- **Full lifecycle and gates:** `docs/workflow/EVIDENCE_BASED_GUIDE.md`
-- **Exact repeatable moves:** `docs/workflow/PROTOCOLS.md`
-- **Phase → beads mechanics:** `docs/workflow/DECOMPOSITION.md`
-- **Deep planning tutorial:** `docs/workflow/PLANNING_DEEP_DIVE.md`
+- **Lifecycle and gates:** `docs/workflow/EVIDENCE_BASED_GUIDE.md`
+- **Protocols:** `docs/workflow/PROTOCOLS.md`
+- **Decomposition mechanics:** `docs/workflow/DECOMPOSITION.md`
+- **Planning deep dive:** `docs/workflow/PLANNING_DEEP_DIVE.md`
 - **Research index:** `research/README.md`

@@ -7,11 +7,15 @@
 
 ---
 
+> **⚠️ Historical Note (December 2025):** Model capabilities improve rapidly. The specific success rates cited here reflect a snapshot in time and are likely outdated. The methodological insight—that harder benchmarks reveal more about real capability—remains valuable. Adjust verification based on task complexity, not static percentages.
+
+---
+
 ## Summary
 
-**SWE-Bench Pro** is a new, more challenging benchmark designed to evaluate AI coding agents on **long-horizon, complex, enterprise-level** software engineering tasks.
+**SWE-Bench Pro** is a more challenging benchmark designed to evaluate AI coding agents on **long-horizon, complex, enterprise-level** software engineering tasks.
 
-**Critical finding:** Top models that score 70%+ on SWE-Bench Verified score only ~23% on SWE-Bench Pro.
+**Key insight:** Harder, more realistic benchmarks reveal capability gaps that simpler benchmarks miss. Task complexity should drive verification requirements.
 
 ---
 
