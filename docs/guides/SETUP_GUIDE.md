@@ -1,57 +1,57 @@
+<div align="center">
+
 # Setup Guide
 
-This guide installs the Knowledge & Vibes toolchain and verifies everything works.
+### Install the Knowledge & Vibes toolchain and verify everything works
+
+</div>
 
 ---
 
-## What Is This?
+## 🎯 What Is This?
 
 Knowledge & Vibes is a system for building software with AI assistance. Instead of chatting with AI and hoping for the best, this system gives you:
 
-- **Structured planning** — So the AI builds what you actually want
-- **Task tracking** — So nothing gets forgotten
-- **Security scanning** — So you don't ship broken or dangerous code
-- **Multi-agent coordination** — So multiple AI agents can work together without conflicts
-
-This guide installs the tools that make it work.
+| Capability | What It Does |
+|:-----------|:-------------|
+| **Structured planning** | So the AI builds what you actually want |
+| **Task tracking** | So nothing gets forgotten |
+| **Security scanning** | So you don't ship broken or dangerous code |
+| **Multi-agent coordination** | So multiple AI agents can work together without conflicts |
 
 ---
 
-## Before You Start
+## ✅ Before You Start
 
-### What You Need
+### Requirements
 
 | Requirement | How to Check | How to Get It |
-|-------------|--------------|---------------|
+|:------------|:-------------|:--------------|
 | **macOS or Linux** | You're on one of these | Windows users: use WSL2 |
-| **Terminal access** | Can you open Terminal? | macOS: Cmd+Space, type "Terminal" |
-| **Claude Code installed** | Run `claude --version` | [Install Claude Code](https://docs.anthropic.com/en/docs/claude-code) |
-| **Git installed** | Run `git --version` | macOS: `xcode-select --install` |
+| **Terminal access** | Can you open Terminal? | macOS: Cmd+Space → "Terminal" |
+| **Claude Code** | `claude --version` | [Install Claude Code](https://docs.anthropic.com/en/docs/claude-code) |
+| **Git** | `git --version` | macOS: `xcode-select --install` |
 
-### Check Your Setup
-
-Open Terminal and run:
+### Quick Check
 
 ```bash
 claude --version && git --version && echo "✓ Ready to continue"
 ```
 
-If you see version numbers and "Ready to continue", proceed. If not, install the missing pieces first.
+If you see version numbers and "Ready to continue", proceed.
 
 ---
 
-## What You're Installing
-
-Here's what each tool does (so you're not blindly running scripts):
+## 📦 What You're Installing
 
 | Tool | What It Does | Why You Need It |
-|------|--------------|-----------------|
+|:-----|:-------------|:----------------|
 | **bd** (Beads) | Task tracker | Tracks what needs to be done, what's blocked, what's finished |
 | **bv** (Beads Viewer) | Task analyzer | Recommends what to work on next, finds problems in your task graph |
 | **ubs** | Security scanner | Catches bugs and vulnerabilities before you ship |
 | **cass** | Session search | Searches your past AI conversations to reuse solutions |
 | **cm** | Context memory | Learns patterns from your work to help future sessions |
-| **ntm** | Terminal manager | Runs multiple AI agents in parallel (optional, for advanced use) |
+| **ntm** | Terminal manager | Runs multiple AI agents in parallel (optional) |
 | **Agent Mail** | Agent coordinator | Lets multiple AI agents communicate without stepping on each other |
 
 ---
@@ -61,126 +61,138 @@ Here's what each tool does (so you're not blindly running scripts):
 Copy and paste this entire block into Terminal:
 
 ```bash
-# This installs: bd, bv, Agent Mail, and the am command
+# Beads (bd, bv) and Agent Mail
 curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/mcp_agent_mail/main/scripts/install.sh | bash -s -- --dir "$HOME/mcp_agent_mail" --yes
 
-# This installs: cass (session search)
+# CASS (session search)
 curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/coding_agent_session_search/main/install.sh | bash -s -- --easy-mode
 
-# This installs: ubs (security scanner)
+# UBS (security scanner)
 curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/ultimate_bug_scanner/master/install.sh | bash -s -- --easy-mode
 
-# This installs: ntm (terminal manager) - optional but recommended
+# NTM (terminal manager) - optional but recommended
 curl -fsSL https://raw.githubusercontent.com/Dicklesworthstone/ntm/main/install.sh | bash
 ```
 
-**What's happening:** These scripts download and install each tool to your system. They're safe to run multiple times (they skip if already installed).
-
 ### Install cm (Context Memory)
 
-This one depends on your computer type:
+Choose the right command for your system:
 
-**Mac with Apple Silicon (M1/M2/M3/M4):**
+<table>
+<tr>
+<td width="33%" valign="top">
+
+**Mac (Apple Silicon)**
+
+M1, M2, M3, M4
+
 ```bash
 mkdir -p ~/.local/bin
 curl -L https://github.com/Dicklesworthstone/cass_memory_system/releases/latest/download/cass-memory-macos-arm64 -o ~/.local/bin/cm
 chmod +x ~/.local/bin/cm
 ```
 
-**Mac with Intel:**
+</td>
+<td width="33%" valign="top">
+
+**Mac (Intel)**
+
+Older Macs
+
 ```bash
 mkdir -p ~/.local/bin
 curl -L https://github.com/Dicklesworthstone/cass_memory_system/releases/latest/download/cass-memory-macos-x64 -o ~/.local/bin/cm
 chmod +x ~/.local/bin/cm
 ```
 
-**Linux:**
+</td>
+<td width="33%" valign="top">
+
+**Linux**
+
+x64
+
 ```bash
 mkdir -p ~/.local/bin
 curl -L https://github.com/Dicklesworthstone/cass_memory_system/releases/latest/download/cass-memory-linux-x64 -o ~/.local/bin/cm
 chmod +x ~/.local/bin/cm
 ```
 
-**Not sure which Mac you have?** Click the Apple menu → "About This Mac". If it says "Apple M1/M2/M3/M4", you have Apple Silicon. Otherwise, you have Intel.
+</td>
+</tr>
+</table>
+
+> **Not sure which Mac?** Apple menu → "About This Mac". If it says M1/M2/M3/M4, use Apple Silicon.
 
 ### Add Tools to Your PATH
-
-If the tools aren't found after installation, add this to your shell config:
 
 ```bash
 echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
 source ~/.zshrc
 ```
 
-(If you use bash instead of zsh, replace `.zshrc` with `.bashrc`)
+*(Use `.bashrc` instead if you use bash)*
 
 ---
 
 ## Step 2: Verify Installation
 
-Run this command:
-
 ```bash
 bd --version && bv --version && cass --version && cm --version && ubs --version && echo "✓ All tools installed!"
 ```
 
-**Expected output:** Version numbers for each tool, ending with "All tools installed!"
-
 ### Troubleshooting
 
 | Problem | Solution |
-|---------|----------|
+|:--------|:---------|
 | `command not found: bd` | Run: `source ~/.zshrc` then try again |
-| `command not found: cm` | Check Step 1 - did you run the right command for your Mac type? |
+| `command not found: cm` | Check Step 1 - did you run the right command for your system? |
 | `Permission denied` | Run: `chmod +x ~/.local/bin/*` |
 | Script hangs or fails | Check your internet connection and try again |
-| "curl: command not found" | Install curl: `brew install curl` (requires [Homebrew](https://brew.sh)) |
+| `curl: command not found` | `brew install curl` (requires [Homebrew](https://brew.sh)) |
 
 ---
 
-## Step 3: Set Up Search Tools (Optional but Recommended)
+## Step 3: Set Up Search Tools (Optional)
 
-These tools let the AI search the web and your codebase more effectively. They require free API keys.
+These tools let the AI search the web and your codebase more effectively.
 
 ### Get API Keys
 
-1. **Exa** (web and code search): https://dashboard.exa.ai
-   - Sign up, go to API Keys, create one
-   - Free tier: 1000 searches/month
+| Service | Where to Get It | Free Tier |
+|:--------|:----------------|:----------|
+| **Exa** | https://dashboard.exa.ai | 1000 searches/month |
+| **Morph** | https://morphllm.com | Available |
 
-2. **Morph** (codebase search): https://morphllm.com
-   - Sign up, get your API key
-   - Free tier available
+### Install MCP Servers
 
-### Install the MCP Servers
-
-Replace `<your-exa-key>` and `<your-morph-key>` with your actual keys:
+Replace `<your-key>` with your actual keys:
 
 ```bash
-# Exa - searches the web and code repositories
+# Exa - web and code search
 claude mcp add exa -s user -e EXA_API_KEY=<your-exa-key> -- npx -y @anthropic-labs/exa-mcp-server
 
 # Morph (Warp-Grep) - parallel codebase search
 claude mcp add morph-fast-tools -s user -e MORPH_API_KEY=<your-morph-key> -e ALL_TOOLS=true -- npx -y @morphllm/morphmcp
 ```
 
-**What's an MCP server?** It's a way to give Claude Code extra capabilities. These add web search and advanced code search.
-
-### Verify MCP Setup
+### Verify
 
 ```bash
 claude mcp list
 ```
 
-You should see `exa` and `morph-fast-tools` in the list.
+You should see `exa` and `morph-fast-tools` listed.
 
 ---
 
 ## Step 4: Initialize Your First Project
 
-Now let's set up a project to use with Knowledge & Vibes.
+<table>
+<tr>
+<td width="50%" valign="top">
 
-### Option A: Start a New Project
+### Option A: New Project
 
 ```bash
 mkdir my-project
@@ -189,22 +201,27 @@ git init
 bd init
 ```
 
-### Option B: Add to an Existing Project
+</td>
+<td width="50%" valign="top">
+
+### Option B: Existing Project
 
 ```bash
 cd /path/to/your/project
 bd init
 ```
 
-### Add the Agent Instructions File
+</td>
+</tr>
+</table>
 
-This file tells AI agents how to work in your project:
+### Add Agent Instructions
 
 ```bash
 curl -o AGENTS.md https://raw.githubusercontent.com/Mburdo/knowledge_and_vibes/master/templates/AGENTS_TEMPLATE.md
 ```
 
-### Commit the Setup
+### Commit
 
 ```bash
 git add .beads/ AGENTS.md
@@ -213,30 +230,23 @@ git commit -m "Initialize Knowledge & Vibes"
 
 ---
 
-## Step 5: Test That Everything Works
+## Step 5: Test Everything
 
 ### Test Task Tracking
 
 ```bash
-# Create a test task
-bd create "Test task - delete me" -t task -p 2
-
-# See your tasks
-bd list
-
-# Delete the test task (get the ID from bd list, like bd-a1b2)
-bd delete bd-XXXX --yes
+bd create "Test task - delete me" -t task -p 2   # Create
+bd list                                            # View
+bd delete bd-XXXX --yes                           # Delete (use actual ID)
 ```
 
-### Test the Viewer
+### Test Viewer
 
 ```bash
 bv --robot-next
 ```
 
-This should output a recommendation (or say "no ready tasks" if you deleted the test).
-
-### Test Security Scanning
+### Test Security Scanner
 
 ```bash
 echo 'password = "secret123"' > test.py
@@ -244,7 +254,7 @@ ubs test.py
 rm test.py
 ```
 
-This should flag the hardcoded password as a security issue.
+Should flag the hardcoded password.
 
 ### Test Session Search
 
@@ -253,18 +263,15 @@ cass index --full
 cass search "test" --robot --limit 3
 ```
 
-If you have past Claude Code sessions, this searches them. If not, it returns empty results (that's fine).
-
 ---
 
-## Step 6: Add Slash Commands (Recommended)
+## Step 6: Add Slash Commands
 
-Slash commands give you shortcuts like `/prime` (start a session) and `/calibrate` (check progress).
+Shortcuts like `/prime` and `/calibrate`:
 
 ```bash
 mkdir -p .claude/commands
 
-# Download the commands
 for cmd in prime next-bead ground decompose-task calibrate; do
   curl -fsSL -o .claude/commands/$cmd.md \
     https://raw.githubusercontent.com/Mburdo/knowledge_and_vibes/master/.claude/commands/$cmd.md
@@ -274,21 +281,15 @@ git add .claude/commands
 git commit -m "Add slash commands"
 ```
 
-### Test a Slash Command
+### Test
 
-Start Claude Code and type:
-
-```
-/prime
-```
-
-The agent should run through a startup checklist.
+Start Claude Code and type `/prime`. The agent should run a startup checklist.
 
 ---
 
-## Step 7: Add Safety Rules (Recommended)
+## Step 7: Add Safety Rules
 
-These rules prevent AI agents from accidentally deleting files or running dangerous commands:
+Prevent AI from accidentally deleting files or running dangerous commands:
 
 ```bash
 mkdir -p .claude/rules
@@ -302,12 +303,12 @@ git commit -m "Add safety rules"
 
 ---
 
-## You're Done!
+## ✅ You're Done!
 
 ### What You Installed
 
-| Tool | Command | What It Does |
-|------|---------|--------------|
+| Tool | Command | Purpose |
+|:-----|:--------|:--------|
 | Beads | `bd` | Task tracking |
 | Beads Viewer | `bv --robot-next` | Task recommendations |
 | Security Scanner | `ubs --staged` | Catch bugs before commit |
@@ -317,50 +318,41 @@ git commit -m "Add safety rules"
 ### Quick Reference
 
 ```bash
-# See available tasks
-bd ready --json
-
-# Get recommended next task
-bv --robot-next
-
-# Get full analysis
-bv --robot-triage
-
-# Scan for security issues before committing
-ubs --staged
-
-# Search past sessions
-cass search "how did I solve X" --robot
-
-# Get context for a task
-cm context "what I'm about to do" --json
+bd ready --json              # See available tasks
+bv --robot-next              # Get recommended next task
+bv --robot-triage            # Get full analysis
+ubs --staged                 # Scan before committing
+cass search "query" --robot  # Search past sessions
+cm context "task" --json     # Get context for a task
 ```
 
 ### What's Next?
 
-1. **Read the workflow:** `START_HERE.md` → `docs/workflow/EVIDENCE_BASED_GUIDE.md`
-2. **Try the tutorial:** `docs/guides/TUTORIAL.md`
-3. **Create your first plan:** Use the North Star template in `templates/NORTH_STAR_CARD_TEMPLATE.md`
+| Step | Resource |
+|:-----|:---------|
+| 1. Read the workflow | [START_HERE.md](../../START_HERE.md) → [Evidence-Based Guide](../workflow/EVIDENCE_BASED_GUIDE.md) |
+| 2. Try the tutorial | [Tutorial](./TUTORIAL.md) |
+| 3. Create your first plan | [North Star Template](../../templates/NORTH_STAR_CARD_TEMPLATE.md) |
 
 ---
 
-## Appendix: Updating Tools
+## 📎 Appendix
 
-Tools improve over time. Here's how to update them:
+<details>
+<summary><strong>Updating Tools</strong></summary>
 
 ```bash
-# Update bv (Beads Viewer)
+# Update Beads Viewer
 bv --check-update && bv --update --yes
 
-# Update other tools - rerun their install scripts
+# Other tools - rerun their install scripts
 # They detect existing installs and upgrade
 ```
 
----
+</details>
 
-## Appendix: Uninstalling
-
-If you need to remove everything:
+<details>
+<summary><strong>Uninstalling</strong></summary>
 
 ```bash
 # Remove binaries
@@ -375,13 +367,16 @@ claude mcp remove morph-fast-tools
 rm -rf .beads/ .claude/ AGENTS.md
 ```
 
----
+</details>
 
-## Getting Help
+<details>
+<summary><strong>Getting Help</strong></summary>
 
 | Problem | Where to Go |
-|---------|-------------|
-| Tool not working | Check the troubleshooting section above |
-| Confused about workflow | Read `START_HERE.md` |
+|:--------|:------------|
+| Tool not working | Check troubleshooting above |
+| Confused about workflow | Read [START_HERE.md](../../START_HERE.md) |
 | Bug in the tools | GitHub issues for each tool |
-| Questions about this system | Open an issue on the knowledge_and_vibes repo |
+| Questions about the system | Open an issue on the knowledge_and_vibes repo |
+
+</details>

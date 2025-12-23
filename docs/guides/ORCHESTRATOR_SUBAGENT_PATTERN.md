@@ -10,7 +10,7 @@ Instead of one agent holding everything in context, spawn specialized subagents 
 
 ## What This Is
 
-This is the **optimal pattern for complex multi-phase workflows** in Claude Code. Instead of one agent trying to hold everything in context, an orchestrator skill spawns specialized subagents for each phase, with each subagent getting its own fresh context window.
+This is the **optimal pattern for complex multi-phase agentic workflows**. Instead of one agent trying to hold everything in context, an orchestrator spawns specialized subagents for each phase, with each subagent getting its own fresh context window.
 
 **Why this matters:**
 - Orchestrator-worker patterns beat single-agent by **90.2%** (`research/056-multi-agent-orchestrator.md`)
