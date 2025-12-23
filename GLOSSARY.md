@@ -8,21 +8,21 @@
 
 ---
 
-## 📖 Navigation
+## Navigation
 
 | Section | What's Covered |
 |:--------|:---------------|
-| [Core Concepts](#-core-concepts) | Beads, North Star, Lossless, Grounding, Calibration, Drift |
-| [Requirements & Planning](#-requirements--planning) | REQ, AC, ADR, Rigor Tier, Priorities, Spikes, Gates |
-| [Execution](#-execution) | TDD, 3-Iteration Limit, ADaPT, Verification |
-| [Multi-Agent Coordination](#-multi-agent-coordination) | Agent Mail, File Reservations, Claims, Orchestrator Pattern |
-| [Tools](#-tools) | bd, bv, ubs, cass, cm, MCP, Warp-Grep, Exa |
-| [Slash Commands](#-slash-commands) | /prime, /next-bead, /calibrate, /decompose-task, /ground |
-| [Phrases](#-phrases) | Common expressions and their meaning |
+| [Core Concepts](#core-concepts) | Beads, North Star, Lossless, Grounding, Calibration, Drift |
+| [Requirements & Planning](#requirements--planning) | REQ, AC, ADR, Rigor Tier, Priorities, Spikes, Gates |
+| [Execution](#execution) | TDD, 3-Iteration Limit, ADaPT, Verification |
+| [Multi-Agent Coordination](#multi-agent-coordination) | Agent Mail, File Reservations, Claims, Orchestrator Pattern |
+| [Tools](#tools) | bd, bv, ubs, cass, cm, MCP, Warp-Grep, Exa |
+| [Slash Commands](#slash-commands) | /prime, /next-bead, /calibrate, /decompose-task, /ground |
+| [Phrases](#phrases) | Common expressions and their meaning |
 
 ---
 
-## 🎯 Core Concepts
+## Core Concepts
 
 <table>
 <tr><td>
@@ -49,7 +49,7 @@ A one-page document that anchors the entire project. Contains: goal, success met
 
 A plan or spec where nothing is left to interpretation. Another agent could implement it without asking clarifying questions.
 
-"Lossless" means no guessing required—not "exhaustively long."
+"Lossless" means no guessing required, not "exhaustively long."
 
 </td></tr>
 <tr><td>
@@ -87,7 +87,7 @@ Calibration catches drift before it compounds.
 
 ---
 
-## 📋 Requirements & Planning
+## Requirements & Planning
 
 <table>
 <tr><td>
@@ -107,7 +107,7 @@ Requirements describe **outcomes**, not solutions.
 
 Testable conditions that prove a requirement is met. Format: `AC-001.1`, `AC-001.2`.
 
-> If you can't test it, it's not an AC—it's a hope.
+> If you can't test it, it's not an AC. It's a hope.
 
 *Example:* `AC-001.1: Password reset email arrives within 30 seconds`
 
@@ -173,14 +173,14 @@ A checkpoint that must pass before proceeding:
 
 ---
 
-## ⚡ Execution
+## Execution
 
 <table>
 <tr><td>
 
 ### TDD (Test-Driven Development)
 
-Writing tests before implementation. In this system, TDD is mandatory—tests go in the bead description before code is written.
+Writing tests before implementation. In this system, TDD is mandatory. Tests go in the bead description before code is written.
 
 </td></tr>
 <tr><td>
@@ -216,7 +216,7 @@ Evidence that a bead is complete:
 
 ---
 
-## 👥 Multi-Agent Coordination
+## Multi-Agent Coordination
 
 <table>
 <tr><td>
@@ -273,7 +273,7 @@ A coordination pattern where one agent (orchestrator) assigns work to others (wo
 
 ---
 
-## 🛠 Tools
+## Tools
 
 <table>
 <tr><td>
@@ -303,7 +303,7 @@ bv --robot-triage          # Full analysis
 bv --robot-alerts          # Risks and stale items
 ```
 
-⚠️ **Always use `--robot-*` flags. Bare `bv` hangs.**
+**Always use `--robot-*` flags. Bare `bv` hangs.**
 
 </td></tr>
 <tr><td>
@@ -317,7 +317,7 @@ ubs --staged               # Scan staged changes
 ubs --staged --fail-on-warning  # Strict mode
 ```
 
-⚠️ **Mandatory before every commit.**
+**Mandatory before every commit.**
 
 </td></tr>
 <tr><td>
@@ -331,7 +331,7 @@ cass search "query" --robot
 cass timeline --today --json
 ```
 
-⚠️ **Always use `--robot` or `--json`. Bare `cass` hangs.**
+**Always use `--robot` or `--json`. Bare `cass` hangs.**
 
 </td></tr>
 <tr><td>
@@ -370,19 +370,19 @@ MCP tool for web search. Use to verify documentation, find best practices, resea
 
 ---
 
-## ⌨️ Slash Commands
+## Slash Commands
 
 | Command | Purpose |
 |:--------|:--------|
 | `/prime` | Start a new session. Registers with Agent Mail, checks inbox, discovers tasks. |
-| `/next-bead` | Claim the next task. Handles: close current → discover → claim → reserve files → announce. |
+| `/next-bead` | Claim the next task. Handles: close current, discover, claim, reserve files, announce. |
 | `/calibrate` | Run a calibration checkpoint. Checks coverage, detects drift, resolves disagreements with tests. |
 | `/decompose-task` | Break a phase into beads and sub-beads. Creates the task graph for execution. |
 | `/ground` | Verify claims against real sources before making decisions. |
 
 ---
 
-## 💬 Phrases
+## Phrases
 
 <table>
 <tr><td>
@@ -396,14 +396,14 @@ AI output is not truth. Truth is tests that pass, code that compiles, behavior y
 
 ### "Tests adjudicate, not rhetoric"
 
-When agents disagree, they write tests that distinguish the approaches. Test results decide—not arguments.
+When agents disagree, they write tests that distinguish the approaches. Test results decide, not arguments.
 
 </td></tr>
 <tr><td>
 
 ### "External feedback only"
 
-Don't ask "are you sure?"—that makes the AI second-guess correct answers. Instead, run tests and use results as feedback.
+Don't ask "are you sure?" That makes the AI second-guess correct answers. Instead, run tests and use results as feedback.
 
 </td></tr>
 <tr><td>

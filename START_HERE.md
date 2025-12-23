@@ -8,7 +8,7 @@
 
 ---
 
-## 🎯 What This Framework Enables
+## What This Framework Enables
 
 Knowledge & Vibes gives you a structured system for building software with AI:
 
@@ -20,23 +20,23 @@ Knowledge & Vibes gives you a structured system for building software with AI:
 | Catching issues before they compound | Verification gates and calibration checkpoints |
 | Maintaining evidence that things work | TDD-first with mandatory test coverage |
 
-> **The core insight:** Truth lives outside the model. Tests that pass, code that compiles, documentation that exists—these are truth. Everything else is hypothesis requiring verification.
+> **The core insight:** Truth lives outside the model. Tests that pass, code that compiles, documentation that exists: these are truth. Everything else is hypothesis requiring verification.
 
 ---
 
-## 🚀 The Solution in 60 Seconds
+## The Solution in 60 Seconds
 
-1. **Plan explicitly** — North Star cards, requirements with acceptance criteria, recorded decisions
-2. **Track everything** — Beads (tasks) with dependencies, status, verification requirements
-3. **Coordinate agents** — File reservations, claim/close announcements, message routing
-4. **Verify continuously** — Tests before code (TDD), security scans before commit, calibration between phases
-5. **Bound iteration** — Max 3 repair attempts, then decompose or escalate
+1. **Plan explicitly**: North Star cards, requirements with acceptance criteria, recorded decisions
+2. **Track everything**: Beads (tasks) with dependencies, status, verification requirements
+3. **Coordinate agents**: File reservations, claim/close announcements, message routing
+4. **Verify continuously**: Tests before code (TDD), security scans before commit, calibration between phases
+5. **Bound iteration**: Max 3 repair attempts, then decompose or escalate
 
 **The result:** A repeatable process that produces working software.
 
 ---
 
-## 📖 Reading Order
+## Reading Order
 
 <table>
 <tr>
@@ -49,7 +49,7 @@ Knowledge & Vibes gives you a structured system for building software with AI:
 | [**Setup Guide**](./docs/guides/SETUP_GUIDE.md) | Install all tools, verify they work |
 | [**Glossary**](./GLOSSARY.md) | Bookmark for unfamiliar terms |
 
-✓ *After this:* You can run `bd`, `bv --robot-next`, `ubs`, `cass`, and `cm`
+*After this:* You can run `bd`, `bv --robot-next`, `ubs`, `cass`, and `cm`
 
 </td>
 <td width="50%" valign="top">
@@ -62,7 +62,7 @@ Knowledge & Vibes gives you a structured system for building software with AI:
 | [**Protocols**](./docs/workflow/PROTOCOLS.md) | Learn the 18 procedures |
 | [**Philosophy**](./docs/workflow/PHILOSOPHY.md) | Understand why verification matters |
 
-✓ *After this:* You understand how the system works
+*After this:* You understand how the system works
 
 </td>
 </tr>
@@ -76,7 +76,7 @@ Knowledge & Vibes gives you a structured system for building software with AI:
 | [**Tool Stack & Operations**](./docs/guides/TOOL_STACK_AND_OPERATIONS.md) | What each tool and command does |
 | [**Tutorial**](./docs/guides/TUTORIAL.md) | Detailed walkthroughs with examples |
 
-✓ *After this:* You can run `/prime`, `/next-bead`, `/calibrate`
+*After this:* You can run `/prime`, `/next-bead`, `/calibrate`
 
 </td>
 <td width="50%" valign="top">
@@ -95,7 +95,7 @@ Knowledge & Vibes gives you a structured system for building software with AI:
 
 ---
 
-## ⚡ If You Only Read 3 Things
+## If You Only Read 3 Things
 
 | Priority | Document | Why |
 |:--------:|:---------|:----|
@@ -107,7 +107,7 @@ Everything else is reference material.
 
 ---
 
-## 💡 The Core Principles
+## The Core Principles
 
 <table>
 <tr>
@@ -133,13 +133,13 @@ Tests are the tiebreaker.
 
 ### 3. Decompose When Reality Demands It
 
-Don't pre-plan everything. Start with coarse tasks (beads). Attempt execution. If it fails after 3 tries, *then* decompose—only the failing part.
+Don't pre-plan everything. Start with coarse tasks (beads). Attempt execution. If it fails after 3 tries, *then* decompose. Only the failing part.
 
 ### 4. Minimal Viable Planning
 
 A 200-line script doesn't need a 50-page plan. Match plan size to project complexity.
 
-"Lossless" means no guessing required—not "exhaustively long."
+"Lossless" means no guessing required, not "exhaustively long."
 
 </td>
 </tr>
@@ -147,7 +147,7 @@ A 200-line script doesn't need a 50-page plan. Match plan size to project comple
 
 ---
 
-## 🔄 What a Session Looks Like
+## What a Session Looks Like
 
 ```bash
 # Start session
@@ -173,7 +173,7 @@ bd close <id> --reason "..."
 
 ---
 
-## 🔗 Quick Links
+## Quick Links
 
 | I want to... | Go to... |
 |:-------------|:---------|
@@ -181,5 +181,5 @@ bd close <id> --reason "..."
 | Look up a term | [**Glossary**](./GLOSSARY.md) |
 | See all templates | [**TEMPLATES.md**](./TEMPLATES.md) |
 | Understand the research | [**Research**](./research/README.md) |
-| Start a new project | [**Setup Guide**](./docs/guides/SETUP_GUIDE.md) → [**North Star Template**](./templates/NORTH_STAR_CARD_TEMPLATE.md) |
+| Start a new project | [**Setup Guide**](./docs/guides/SETUP_GUIDE.md) then [**North Star Template**](./templates/NORTH_STAR_CARD_TEMPLATE.md) |
 | Migrate an existing project | [**Migration Guide**](./docs/guides/MIGRATION_GUIDE.md) |

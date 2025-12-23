@@ -8,7 +8,7 @@
 
 ---
 
-## 🔗 How Templates Fit Together
+## How Templates Fit Together
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -32,7 +32,7 @@
 
 ---
 
-## 📄 Operator-Facing Templates
+## Operator-Facing Templates
 
 These are filled out during planning, before implementation begins.
 
@@ -66,11 +66,11 @@ These are filled out during planning, before implementation begins.
 | **Destination** | `PLAN/01_requirements.md` |
 
 **Contains:**
-- `REQ-*` — Observable outcomes or constraints
-- `AC-*` — Acceptance criteria (test-shaped)
+- `REQ-*`: Observable outcomes or constraints
+- `AC-*`: Acceptance criteria (test-shaped)
 - Priority (P0 = must have, P1 = should have, P2 = nice to have)
 
-> **Key rule:** If you can't test it, it's not a requirement—it's a wish.
+> **Key rule:** If you can't test it, it's not a requirement. It's a wish.
 
 ---
 
@@ -178,7 +178,7 @@ These are filled out during planning, before implementation begins.
 
 ---
 
-## ⚙️ Agent-Native Templates
+## Agent-Native Templates
 
 These are used by slash commands during execution. They live in `.claude/templates/`.
 
@@ -216,7 +216,7 @@ Located in `.claude/templates/calibration/`:
 
 ---
 
-## 🚀 Using Templates in Your Project
+## Using Templates in Your Project
 
 <table>
 <tr>
@@ -253,7 +253,7 @@ cp -r .claude/ your-project/.claude/
 
 ---
 
-## 📚 Further Reading
+## Further Reading
 
 | Document | What You'll Learn |
 |:---------|:------------------|

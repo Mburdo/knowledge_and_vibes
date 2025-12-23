@@ -13,23 +13,21 @@
 
 ## What This Is
 
-This is a system for building real software with AI assistance. Not chatting with a model and hoping for the best—but a structured workflow where plans are explicit, work is tracked, and verification is mandatory.
+A structured workflow for building real software with AI assistance. Plans are explicit, work is tracked, and verification is mandatory.
 
-The core insight: **truth lives outside the model.** The AI's confident output is not truth. Truth is tests that pass, code that compiles, documentation that exists. Everything else is a hypothesis requiring verification.
-
-This framework enforces that distinction.
+The core insight: **truth lives outside the model.** The AI's confident output is not truth. Truth is tests that pass, code that compiles, documentation that exists. Everything else is a hypothesis that needs verification.
 
 ---
 
 ## The Problem It Solves
 
-AI-assisted development tends to fail in predictable ways:
+AI-assisted development fails in predictable ways:
 
-- **The AI builds the wrong thing** — because goals weren't explicit
-- **Requirements vanish mid-project** — because context windows have limits
-- **Multiple agents conflict** — because there's no coordination protocol
-- **Bugs compound silently** — because there are no verification gates
-- **"It works" isn't evidence** — because confidence doesn't equal correctness
+- **The AI builds the wrong thing** because goals weren't explicit
+- **Requirements vanish mid-project** because context windows have limits
+- **Multiple agents conflict** because there's no coordination protocol
+- **Bugs compound silently** because there are no verification gates
+- **"It works" isn't evidence** because confidence doesn't equal correctness
 
 You can't prompt your way out of these problems. You need a system where failures get caught before they matter.
 
@@ -43,7 +41,7 @@ Before anyone writes code, the goal is pinned down. A North Star Card captures w
 
 ### 2. Track Everything
 
-Work is broken into **beads**—tasks with dependencies, status, and verification requirements. Nothing gets forgotten. Nothing falls through the cracks. The graph of work is explicit and queryable.
+Work is broken into **beads**: tasks with dependencies, status, and verification requirements. Nothing gets forgotten. Nothing falls through the cracks. The graph of work is explicit and queryable.
 
 ### 3. Coordinate Agents
 
@@ -51,13 +49,13 @@ When multiple AI agents work simultaneously, they need a protocol. File reservat
 
 ### 4. Verify Continuously
 
-Tests are written before implementation (TDD). Security scans run before every commit. If something fails after three attempts, it gets decomposed or escalated—not retried indefinitely.
+Tests are written before implementation (TDD). Security scans run before every commit. If something fails after three attempts, it gets decomposed or escalated rather than retried indefinitely.
 
 ---
 
 ## The Research Behind It
 
-This isn't theory. Every protocol is backed by research—73 papers distilled into actionable practices:
+Every protocol is backed by research. 73 papers distilled into actionable practices:
 
 - Why TDD produces better outcomes with AI
 - Why long context degrades reasoning
@@ -85,17 +83,17 @@ Start with [**START_HERE.md**](./START_HERE.md) for the recommended reading orde
 
 ## About
 
-This framework is the distillation of three years of building with AI—starting from zero.
+This framework is the distillation of three years of building with AI, starting from zero.
 
 When GPT-3.5 launched, I was in high finance. I couldn't write a line of code. But I recognized immediately that AI was going to fundamentally change how things get built, and I wanted to be part of it.
 
 So I went all in. Not with tutorials or bootcamps, but with a first principles approach: *What can these models actually do? Where do they fail? How do you extract every ounce of capability while catching the inevitable mistakes?*
 
-The early days were rough. The models were weaker. The tooling didn't exist. Every technique had to be discovered through trial and error. But I stayed in it—learning, building, refining—session after session, project after project.
+The early days were rough. The models were weaker. The tooling didn't exist. Every technique had to be discovered through trial and error. But I stayed in it, learning, building, refining, session after session, project after project.
 
 Three years later, I'm shipping complex applications with real users and real revenue. Not because I became a traditional developer, but because I learned how to work *with* AI in a way that produces reliable results.
 
-This framework is everything I've learned, systematized. The protocols that prevent the common failures. The tools that catch mistakes before they ship. The workflow that turns "AI-assisted coding" from a gamble into a repeatable process.
+This framework is everything I've learned, systematized. The protocols that prevent the common failures. The tools that catch mistakes before they ship. The workflow that turns AI-assisted coding from a gamble into a repeatable process.
 
 **If you're technical, this will make you faster. If you're not, this is proof that you can build real things anyway.**
 
