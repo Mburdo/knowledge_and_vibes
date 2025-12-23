@@ -177,8 +177,8 @@ The orchestrator maintains shared state:
 
 ### For Knowledge & Vibes
 
-This validates our full-pipeline architecture:
-- **Stage 8 parallel execution** — 10+ agents on tracks
+This validates our parallel execution architecture:
+- **Parallel execution** — Multiple agents on tracks
 - **Agent Mail coordination** — Message-based state
 - **File reservations** — Conflict prevention
 - **Calibration points** — Phase synchronization
