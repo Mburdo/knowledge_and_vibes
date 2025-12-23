@@ -57,104 +57,49 @@ Tests are written before implementation (TDD). Security scans run before every c
 
 ```mermaid
 flowchart TB
-    START([AI Software Build]) --> ENTRY{How to run?}
-    ENTRY -->|Automated| AUTO[Run /full-pipeline]
-    ENTRY -->|Manual| MANUAL[Follow stages 0-10]
-    AUTO --> S0
-    MANUAL --> S0
+    START([Start]) --> S0
 
-    subgraph PLAN[Stages 0-5: Planning]
-        S0[Stage 0: North Star] --> G0{Intent clear?}
-        G0 -->|no| S0
-        G0 -->|yes| S1
-
-        S1[Stage 1: Requirements] --> G1{P0 REQs have ACs?}
-        G1 -->|no| S1
-        G1 -->|yes| S2
-
-        S2[Stage 2: QA] --> G2{No ambiguity?}
-        G2 -->|no| S2
-        G2 -->|yes| S3
-
-        S3[Stage 3: Decisions] --> G3{All decided?}
-        G3 -->|no| S3
-        G3 -->|yes| S4
-
-        S4[Stage 4: Spikes] --> G4{Unknowns resolved?}
-        G4 -->|no| S4
-        G4 -->|yes| S5
-
-        S5[Stage 5: Plan Pack] --> G5{No guessing needed?}
-        G5 -->|no| S5
+    subgraph PLAN[Planning]
+        S0[North Star] --> S1[Requirements]
+        S1 --> S2[QA Pass]
+        S2 --> S3[Decisions]
+        S3 --> S4[Spikes]
+        S4 --> S5[Plan Pack]
     end
 
-    subgraph BREAK[Stages 6-7: Breakdown]
-        S6[Stage 6: Phases] --> G6{Context bounded?}
-        G6 -->|no| S6
-        G6 -->|yes| S7
-
-        S7[Stage 7: Beads] --> G7{Tests defined first?}
-        G7 -->|no| S7
+    subgraph DECOMP[Decomposition]
+        S6[Phases] --> S7[Beads]
     end
 
-    subgraph EXEC[Stage 8: Execution]
-        COORD[Coordinator] --> SPAWN[Spawn agents]
-
-        subgraph WORK[Worker Loop]
-            PRIME[/prime] --> RESERVE[Reserve files]
-            RESERVE --> CLAIM[Announce CLAIMED]
-            CLAIM --> TDD[Write tests FIRST]
-            TDD --> IMPL[Implement]
-            IMPL --> TEST{Pass?}
-            TEST -->|no| RETRY{Try 3?}
-            RETRY -->|yes| IMPL
-            RETRY -->|no| DECOMP[ADaPT: decompose]
-            TEST -->|yes| SEC[ubs --staged]
-            SEC --> CLOSE[Close bead]
-            CLOSE --> RELEASE[Release files]
-        end
-
-        SPAWN --> WORK
-        WORK --> TRACK{Track done?}
-        TRACK -->|no| PRIME
-        TRACK -->|yes| PDONE{Phase done?}
-        PDONE -->|no| SPAWN
+    subgraph EXEC[Execution]
+        COORD[Coordinate] --> TDD[Tests First]
+        TDD --> IMPL[Implement]
+        IMPL --> CHECK{Pass?}
+        CHECK -->|no| RETRY{Try 3?}
+        RETRY -->|yes| IMPL
+        RETRY -->|no| SPLIT[Decompose]
+        SPLIT --> TDD
+        CHECK -->|yes| SEC[Security Scan]
+        SEC --> NEXT{More beads?}
+        NEXT -->|yes| TDD
     end
 
-    subgraph CAL[Stage 9: Calibration]
-        CALSTART[/calibrate] --> COV[Coverage check]
-        COV --> DRIFT[Drift check]
-        DRIFT --> CHALLENGE[Test-based resolution]
-        CHALLENGE --> SYNTH[Synthesis]
-        SYNTH --> REPORT[User report]
-        REPORT --> CALGATE{Passed?}
+    subgraph CAL[Calibration]
+        COV[Coverage] --> DRIFT[Drift Check]
+        DRIFT --> RESOLVE[Test Resolution]
+        RESOLVE --> GATE{Pass?}
     end
 
-    subgraph REL[Stage 10: Release]
-        VERIFY[Full verification] --> TRACE[Traceability complete]
-        TRACE --> ACCEPT[Operator acceptance]
-        ACCEPT --> RELGATE{Ready?}
-        RELGATE -->|yes| SHIP[Ship it]
+    subgraph REL[Release]
+        VERIFY[Verify All] --> ACCEPT[Acceptance]
+        ACCEPT --> SHIP([Ship])
     end
 
-    G5 -->|yes| S6
-    G7 -->|yes| COORD
-    PDONE -->|yes| CALSTART
-    CALGATE -->|pass| VERIFY
-    CALGATE -->|fail| S0
-    RELGATE -->|no| COORD
-    SHIP --> POST[Learning loop]
-    POST --> DONE([Complete])
-
-    classDef stage fill:#e7f1ff,stroke:#1e88e5
-    classDef gate fill:#fff3cd,stroke:#d39e00
-    classDef cmd fill:#f3e6ff,stroke:#6a1b9a
-    classDef work fill:#ffebee,stroke:#c62828
-
-    class S0,S1,S2,S3,S4,S5,S6,S7 stage
-    class G0,G1,G2,G3,G4,G5,G6,G7,TEST,RETRY,TRACK,PDONE,CALGATE,RELGATE gate
-    class AUTO,PRIME,CALSTART cmd
-    class COORD,SPAWN,TDD,IMPL,DECOMP,COV,DRIFT,CHALLENGE,SYNTH,VERIFY work
+    S5 --> S6
+    S7 --> COORD
+    NEXT -->|no| COV
+    GATE -->|yes| VERIFY
+    GATE -->|no| S0
 ```
 
 ---
