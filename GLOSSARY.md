@@ -32,6 +32,17 @@ description: Every term used in Knowledge & Vibes, defined. Core concepts, tools
 <table>
 <tr><td>
 
+### Discovery
+
+The pre-pipeline phase where you surface every decision hiding in your idea through curiosity-driven interrogation of frontier models. Discovery happens before formal planning begins.
+
+> The plan is complete when there's nothing left to interpret.
+
+See `docs/workflow/DISCOVERY.md`.
+
+</td></tr>
+<tr><td>
+
 ### Beads
 
 The unit of work in this system. A bead is a task with a description, status, priority, dependencies, and verification requirements. Managed with the `bd` command.
@@ -391,6 +402,44 @@ MCP tool for web search. Use to verify documentation, find best practices, resea
 ## Phrases
 
 <table>
+<tr><td>
+
+### "Give AI few decisions"
+
+Plan as much as appropriate. Give the AI as few decisions as possible. Any decision you don't claim, you implicitly delegate.
+
+</td></tr>
+<tr><td>
+
+### "Nothing left to interpret"
+
+The plan is complete when there's nothing left to interpret. If an agent would need to ask a clarifying question, you're not done planning.
+
+</td></tr>
+<tr><td>
+
+### "Bounded. Complete. Verified."
+
+The three rules of lossless decomposition:
+- **Bounded** = scoped to what an agent can hold in working memory
+- **Complete** = every detail survives the decomposition
+- **Verified** = audited by someone who wasn't there
+
+</td></tr>
+<tr><td>
+
+### "Gaps become assumptions"
+
+Gaps become assumptions. Assumptions become architecture. Bad architecture becomes a rewrite. This is why discovery matters.
+
+</td></tr>
+<tr><td>
+
+### "Same hours. Different outcomes."
+
+The time gets spent either way. You either spend it upfront thinking through decisions, or later untangling decisions the model made without you.
+
+</td></tr>
 <tr><td>
 
 ### "Truth lives outside the model"
