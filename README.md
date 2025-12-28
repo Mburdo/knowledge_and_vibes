@@ -19,6 +19,24 @@ The core insight: **truth lives outside the model.** The AI's confident output i
 
 ---
 
+## The Toolstack
+
+Six open-source CLI tools that give AI agents structure, memory, and accountability. Together they enable multiple agents to work on the same codebase without conflicts, remember what worked across sessions, and catch bugs before they ship.
+
+| Tool | What It Does | Repo |
+|:-----|:-------------|:-----|
+| [**bd**](https://github.com/Dicklesworthstone/mcp_agent_mail) | Track tasks with dependencies and verification gates | mcp_agent_mail |
+| [**bv**](https://github.com/Dicklesworthstone/mcp_agent_mail) | Analyze task graph—blockers, critical path, what's ready | mcp_agent_mail |
+| [**Agent Mail**](https://github.com/Dicklesworthstone/mcp_agent_mail) | Coordinate agents—file reservations, messaging, handoffs | mcp_agent_mail |
+| [**ubs**](https://github.com/Dicklesworthstone/ultimate_bug_scanner) | Scan for security vulnerabilities before every commit | ultimate_bug_scanner |
+| [**cass**](https://github.com/Dicklesworthstone/coding_agent_session_search) | Search past sessions—find how you solved it before | coding_agent_session_search |
+| [**cm**](https://github.com/Dicklesworthstone/cass_memory_system) | Persist learned patterns and rules across sessions | cass_memory_system |
+
+> **Quick install:** Each tool installs with a single `curl | bash` command.
+> See the [Setup Guide](./docs/guides/SETUP_GUIDE.md) for details.
+
+---
+
 ## The Problem It Solves
 
 AI-assisted development fails in predictable ways:
